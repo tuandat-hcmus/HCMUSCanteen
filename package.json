@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon --inspect src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,14 @@
   "bugs": {
     "url": "https://github.com/tuandat-hcmus/HCMUSCanteen/issues"
   },
-  "homepage": "https://github.com/tuandat-hcmus/HCMUSCanteen#readme"
+  "homepage": "https://github.com/tuandat-hcmus/HCMUSCanteen#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "sass": "^1.69.6"
+  }
 }

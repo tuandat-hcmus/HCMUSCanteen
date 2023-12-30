@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --inspect src/app.js",
+    "watch": "sass --watch --update src/scss:public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

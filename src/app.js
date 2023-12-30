@@ -9,7 +9,10 @@ app.engine('.hbs', hbs.engine({
     extname: '.hbs'
 }));
 app.set('view engine', '.hbs')
-app.set('views', path.join(__dirname, 'src', 'views'));
+app.set('views', path.join(__dirname, 'views'));
+
+// set static files
+app.use(express.static('public'));
 
 app.get('/home', (req, res) => {
     res.render('home');

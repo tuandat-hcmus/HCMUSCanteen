@@ -15,7 +15,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
 app.get('/home', (req, res) => {
-    res.render('home');
+    res.render('home', {
+        title: 'Home Page'
+    });
 })
 
 app.listen(port, () => {

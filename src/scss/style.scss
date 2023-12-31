@@ -1,5 +1,6 @@
-$red : red;
+@import 'variables';
 
-body {
-    background-color: $red;
+h2 {
+    font-family: $base-font-family;
+    color: $base-color;
 }

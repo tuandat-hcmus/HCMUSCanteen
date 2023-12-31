@@ -1,6 +1,6 @@
-@import 'variables';
+@import 'sidebar';
 
-h2 {
-    font-family: $base-font-family;
-    color: $base-color;
+#app {
+    min-height: 100vh;
+    display: flex;
 }

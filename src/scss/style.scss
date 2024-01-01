@@ -1,4 +1,7 @@
-@import 'sidebar';
+@import 'mixins';
+@import "sidebar";
+@import "order";
+
 * {
     box-sizing: border-box;
 }
@@ -7,8 +10,3 @@
     height: 100vh;
     display: flex;
 }
-
-
-
-
-

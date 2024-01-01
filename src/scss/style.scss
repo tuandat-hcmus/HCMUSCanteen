@@ -1,6 +1,19 @@
 @import 'sidebar';
+* {
+    box-sizing: border-box;
+}
 
 #app {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
 }
+
+.test {
+    height: 120px;
+    background-color: red;
+    margin: 4rem 0;
+}
+
+
+
+

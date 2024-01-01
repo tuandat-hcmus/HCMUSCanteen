@@ -16,8 +16,17 @@ app.use(express.static('public'));
 
 app.get('/home', (req, res) => {
     res.render('home', {
-        title: 'Home Page'
+        title: 'Home Page',
+        text: 'Hello World',
+        oke: false,
+        arr: [1, 2, 3, 4, 5]
     });
+});
+
+app.get('/bills', (req, res) => {
+    res.render('bills', {
+        title: 'Bills'
+    })
 })
 
 app.listen(port, () => {

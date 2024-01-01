@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Comfortaa:wght@700&display=swap");
 .sidebar {
+  background-color: #FFF;
   width: 15.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
   display: flex;
@@ -84,6 +85,7 @@ a.nav-item {
   gap: 0.75rem;
   align-items: center;
   text-decoration: none;
+  transition: all 350ms;
 }
 a.nav-item p {
   font-family: "Be Vietnam Pro", sans-serif;
@@ -94,9 +96,10 @@ a.nav-item p {
 a.nav-item i {
   color: #808080;
   font-size: 1.5rem;
+  transition: color 350ms;
 }
 a.nav-item:hover, a.nav-item.active {
-  border-left: 0.175rem #243C74 solid;
+  box-shadow: -0.175rem 0 0 0 #243C74;
   background-color: #F2F4F7;
 }
 a.nav-item:hover p, a.nav-item.active p {
@@ -143,7 +146,7 @@ a.nav-item:hover i, a.nav-item.active i {
 }
 
 .sidebar.collapse {
-  width: 5.5rem;
+  width: 5.25rem;
 }
 .sidebar.collapse .logo-container {
   display: none;
@@ -155,9 +158,19 @@ a.nav-item:hover i, a.nav-item.active i {
   justify-content: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 #app {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
+}
+
+.test {
+  height: 120px;
+  background-color: red;
+  margin: 4rem 0;
 }
 
 /*# sourceMappingURL=style.css.map */

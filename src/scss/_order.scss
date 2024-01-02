@@ -12,7 +12,7 @@
     hr {
         margin: 0.625rem 0;
     }
-
+    transition: transform 0.5s ease;
     &.slide {
         transition: transform 0.5s ease;
         transform: translateX(100%);
@@ -26,14 +26,6 @@
     .dat-mon {
         @include textStyle($base-color-darker, 600, $base-font-family);
         font-size: 1.5rem;
-    }
-
-    .arrow {
-        font-size: 1.5rem;
-        transition: transform 0.5s ease;
-        &.reverse {
-            transform: rotate(180deg);
-        }
     }
 }
 
@@ -238,5 +230,24 @@
     &:disabled {
         background-color: $yellow-total-color;
         cursor: not-allowed;
+    }
+}
+
+.order-card {
+    position: relative;
+}
+.arrow-container {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    z-index: 999;
+    transform: translateY(-50%);
+
+    .arrow {
+        font-size: 1.5rem;
+        transition: transform 0.5s ease;
+        &.reverse {
+            transform: rotate(180deg);
+        }
     }
 }

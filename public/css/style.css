@@ -167,6 +167,7 @@ a.nav-item:hover i, a.nav-item.active i {
   flex-direction: column;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
   height: 100vh;
+  transition: transform 0.5s ease;
 }
 .order hr {
   margin: 0.625rem 0;
@@ -186,13 +187,6 @@ a.nav-item:hover i, a.nav-item.active i {
   font-weight: 600;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1.5rem;
-}
-.top-order .arrow {
-  font-size: 1.5rem;
-  transition: transform 0.5s ease;
-}
-.top-order .arrow.reverse {
-  transform: rotate(180deg);
 }
 
 .table-header {
@@ -393,6 +387,25 @@ a.nav-item:hover i, a.nav-item.active i {
 .order-btn:disabled {
   background-color: #ffd580;
   cursor: not-allowed;
+}
+
+.order-card {
+  position: relative;
+}
+
+.arrow-container {
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  z-index: 999;
+  transform: translateY(-50%);
+}
+.arrow-container .arrow {
+  font-size: 1.5rem;
+  transition: transform 0.5s ease;
+}
+.arrow-container .arrow.reverse {
+  transform: rotate(180deg);
 }
 
 * {

@@ -22,6 +22,16 @@ app.get('/home', (req, res) => {
         arr: [1, 2, 3, 4, 5]
     });
 });
+app.get('/login', (req, res) => {
+    res.render('login', {
+        title: 'Login page'
+    });
+});
+app.get('/signup', (req, res) => {
+    res.render('signup', {
+        title: 'Signup page'
+    });
+});
 
 app.get('/bills', (req, res) => {
     res.render('bills', {

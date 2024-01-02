@@ -15,16 +15,16 @@
         </a>
       </p>
     </div>
-    <form action="#" class="login-form">
+    <form action="/login" method="post" class="login-form">
 
       <h2 class="title">Đăng nhập</h2>
       <div class="input-field">
         
-        <input type="text" placeholder="Tên đăng nhập" />
+        <input type="text" placeholder="Tên đăng nhập" value="{{username}}"/>
         <i class='bx bx-user'></i>
       </div>
       <div class="input-field">
-        <input type="password" placeholder="Mật khẩu" />
+        <input type="password" placeholder="Mật khẩu" value="{{password}}"/>
         <i class='bx bx-cog icon'></i>
         <i class='show bx bx-show-alt'></i>
         {{!-- <i class='hide bx bx-hide'></i> --}}

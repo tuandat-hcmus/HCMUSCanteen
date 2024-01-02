@@ -1,21 +1,19 @@
 const passport = require('passport');
 const MyStrategy = require('../utils/customSPP');
-const accModel = require('../model/acc.m');
+const AccountModel = require('../model/acc.m');
 const bcrypt = require('bcrypt');
+const saltBounds = 10;
 
 passport.serializeUser((user, done) => {
-    done(null, user.Username);
+    done(null, user.UserName);
 });
 passport.deserializeUser(async (username, done) => {
-    const user = await accModel.getUser(username);
-    if (!user) {
-        return done('Invalid', null);
-    }
+    const user = await AccountModel.getUser(username);
     done(null, user);
 });
 
 passport.use('passport-login', new MyStrategy(async (req, username, password, done) => {
-    const rs = await accModel.getUser(username);
+    const rs = await AccountModel.getUser(username);
     if (rs) {
         auth = await bcrypt.compare(password, rs.Password);
     }
@@ -24,28 +22,33 @@ passport.use('passport-login', new MyStrategy(async (req, username, password, do
     }
     done('Invalid auth');
 }, {
-    username: 'username', 
+    username: 'username',
     password: 'password'
 }));
 
 passport.use('passport-signup', new MyStrategy(async (req, username, password, done) => {
-    const rs = await accModel.getUser(username);
+    let rs = await AccountModel.getUser(username);
     if (!rs) {
-        const Fullname = req.body.fullanme;
-        const Phone = req.body.phone;
-        const Birth = req.body.birth;
-        const Gender = req.body.gender;
-        const Username = req.body.username;
-        const Password = req.body.password;
-        const HashPW = await bcrypt.hash(Password, saltBounds);
-        // Mặc định là khách hàng 
-        rs = new User(Fullname, Phone, Birth, Gender, Username, HashPW, '0', '1', '0', '', '');
-        await accModel.insert(rs);
+        try {
+            const Fullname = req.body.fullname;
+            const Phone = req.body.phone;
+            const Birth = req.body.birth;
+            const Gender = req.body.gender;
+            const Username = req.body.username;
+            const Password = req.body.password;
+            const HashPW = await bcrypt.hash(Password, saltBounds);
+            // Mặc định là khách hàng 
+            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, '0', '1', '0', null, null);
+            console.log(rs);
+            await AccountModel.insert(rs);
+        } catch (e) {
+            console.log("Passport signup error", e);
+        }
         return done(null, rs);
     }
     done('Invalid auth');
 }, {
-    username: 'username', 
+    username: 'username',
     password: 'password'
 }));
 

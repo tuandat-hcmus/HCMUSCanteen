@@ -7,7 +7,7 @@ module.exports = class User {
         this.SDT = SDT;
         this.NgaySinh = NgaySinh;
         this.GioiTinh = GioiTinh;
-        this.Username = Username;
+        this.UserName = Username;
         this.MatKhau = MatKhau;
         this.LaKhachHang = LaKhachHang;
         this.LaAdmin = LaAdmin;
@@ -16,10 +16,10 @@ module.exports = class User {
         this.giolam = giolam;
     }
     static async insert(user) {
-        return db.insert(tbName, user);
+        return db.insertWithoutID(tbName, user);
     }
     static async getUser(username) {
-        const res = db.select(tbName, "Username", username);
+        const res = db.select(tbName, "UserName", username);
         if (res instanceof User) return res;
         return null;
     }

@@ -1,20 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 router.get('/login', (req, res) => {
     let username = null;
     let pw = null;
     // Nếu chưa đóng trình duyệt thì vẫn còn giữ đăng nhập
-    if (req.signedCookies.info) {
-        const info = JSON.parse(req.signedCookies.info);
-        username = info.u;
-        pw = info.pw;
-    }
+    // if (req.signedCookies.info) {
+    //     const info = JSON.parse(req.signedCookies.info);
+    //     username = info.u;
+    //     pw = info.pw;
+    // }
     // res.render('login', {
     //     username: username,
     //     password: pw,
     // });
-    res.send('login page');
+    res.render('login', {
+        title: 'Login page'
+    });
 });
 
 router.post('/login', passport.authenticate('passport-login', {
@@ -44,15 +47,19 @@ router.post('/login', passport.authenticate('passport-login', {
 
 router.get('/signup', (req, res) => {
     // res.render('signup');
-    res.send('sign in page');
+    res.render('signup', {
+        title: 'Signup page'
+    });
 });
 
 router.post('/signup', passport.authenticate('passport-signup', {
     failureRedirect: '/',
-    successRedirect: '/'
+    successRedirect: '/home'
 }));
 
 router.post('/logout', (req, res) => {
     delete req.session.logined;
     res.redirect('/');
 })
+
+module.exports = router;

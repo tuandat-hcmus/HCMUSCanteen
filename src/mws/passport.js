@@ -1,3 +1,4 @@
+require('dotenv').config();
 const passport = require('passport');
 const MyStrategy = require('../utils/customSPP');
 const AccountModel = require('../model/acc.m');
@@ -50,7 +51,6 @@ passport.use('passport-signup', new MyStrategy(async (req, username, password, d
             const HashPW = await bcrypt.hash(Password, saltBounds);
             // Mặc định là khách hàng 
             rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '0', '1', '0', null, null);
-            console.log(rs);
             await AccountModel.insert(rs);
         } catch (e) {
             console.log("Passport signup error: ", e);

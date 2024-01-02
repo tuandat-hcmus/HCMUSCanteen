@@ -19,6 +19,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
 //---
+const https = require('https');
+const fs = require('fs');
 const secrect = 'mysecrectkey';
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(secrect));
@@ -28,7 +30,10 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+require('./mws/ggpassport')(app);
+require('./mws/fbpassport')(app);
 require('./mws/passport')(app);
+
 app.use(accountRouter);
 
 app.get('/home', (req, res) => {
@@ -46,6 +51,13 @@ app.get('/bills', (req, res) => {
     })
 })
 
-app.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`App listening at http://localhost:${port}`);
+// });
+
+const server = https.createServer({
+    key: process.env.key,
+    cert: process.env.cert
+}, app);
+
+server.listen(port, () => console.log(`Listening on port ${port}`));

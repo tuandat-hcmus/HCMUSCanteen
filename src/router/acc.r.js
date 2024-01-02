@@ -3,6 +3,11 @@ const router = express.Router();
 const passport = require('passport');
 
 router.get('/login', (req, res) => {
+    if (req.user) {
+        // console.log(req.user);
+        res.redirect('/home');
+        return;
+    }
     let username = null;
     let pw = null;
     // Ghi nhớ đăng nhập
@@ -56,6 +61,26 @@ router.post('/signup', passport.authenticate('passport-signup', {
 router.post('/logout', (req, res) => {
     delete req.session.logined;
     res.redirect('/');
-})
+});
 
+router.get('/gg', passport.authenticate('google', {
+    scope: ['profile']
+}));
+
+router.get('/gg/auth', passport.authenticate('google', {
+    failureRedirect: '/login'
+}),
+    function (req, res) {
+        res.redirect('/home');
+    });
+
+
+router.get('/fb', passport.authenticate('facebook'));
+
+router.get('/fb/auth', passport.authenticate('facebook', {
+    failureRedirect: '/login'
+}),
+    function (req, res) {
+        res.redirect('/home');
+    });
 module.exports = router;

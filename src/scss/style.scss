@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Comfortaa:wght@700&display=swap');
 @import 'sidebar';
+@import 'login';
 * {
     box-sizing: border-box;
 }
@@ -8,77 +9,4 @@
     height: 100vh;
     display: flex;
 }
-
-
-.fas{
-    font-family: $base-font-family;
-    font-size: 1.25rem;
-    p{
-        display: inline;
-        margin: 0;
-    }
-}
-
-.forms-container{
-
-    .title{
-        font-family: $base-font-family;
-        font-size: 1.75rem;
-        color: $heading-color;
-        text-align: center;
-        font-weight: bold;
-    }
-}
-
-
-.left{
-
-    &>h1{
-        display: inline-block;
-    }
-
-    .school{
-        text-transform: uppercase;
-        font-size: 2rem;
-        color: $heading-color;
-        font-family: $base-font-family;
-        font-weight: bold;
-        display: inline;
-    }
-    
-    
-    .cteen{
-        text-transform: uppercase;
-        font-size: 2rem;
-        color: $base-color;
-        font-family: $base-font-family;
-        
-    }
-
-}
-
-
-.right{
-
-    .social-media{
-        a {
-            .img_gg{
-                width: 1.25rem;
-            }
-            .img_fb{
-                width: 2rem;
-                display: inline-block;
-        
-            }
-            &>p{
-                display: inline-block;
-            }
-            display: block;
-        }
-
-    }
-
-}
-
-
 

@@ -5,30 +5,27 @@ const passport = require('passport');
 router.get('/login', (req, res) => {
     let username = null;
     let pw = null;
-    // Nếu chưa đóng trình duyệt thì vẫn còn giữ đăng nhập
-    // if (req.signedCookies.info) {
-    //     const info = JSON.parse(req.signedCookies.info);
-    //     username = info.u;
-    //     pw = info.pw;
-    // }
-    // res.render('login', {
-    //     username: username,
-    //     password: pw,
-    // });
+    // Ghi nhớ đăng nhập
+    if (req.signedCookies.info) {
+        const info = JSON.parse(req.signedCookies.info);
+        username = info.u;
+        pw = info.pw;
+    }
     res.render('login', {
-        title: 'Login page'
+        title: 'Login page',
+        username: username,
+        password: pw,
     });
 });
 
 router.post('/login', passport.authenticate('passport-login', {
     failureRedirect: '/',
-    successRedirect: '/home'
 }), (req, res) => {
     try {
+        // Ghi đăng nhập cũ vào input
         const Username = req.body.username;
         const Password = req.body.password;
         const RememberPw = req.body.rememberPw;
-        req.session.logined = true;
         if (RememberPw) {
             const info = { u: Username, pw: Password };
             const timeout = 60 * 60 * 1000;
@@ -42,11 +39,10 @@ router.post('/login', passport.authenticate('passport-login', {
     catch (e) {
         console.log(e);
     }
-    res.redirect('/');
+    res.redirect('/home');
 });
 
 router.get('/signup', (req, res) => {
-    // res.render('signup');
     res.render('signup', {
         title: 'Signup page'
     });

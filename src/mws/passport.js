@@ -12,10 +12,19 @@ passport.deserializeUser(async (username, done) => {
     done(null, user);
 });
 
+// PPassport xử lí đăng nhập
 passport.use('passport-login', new MyStrategy(async (req, username, password, done) => {
     const rs = await AccountModel.getUser(username);
+    let auth;
     if (rs) {
-        auth = await bcrypt.compare(password, rs.MatKhau);
+        try {
+            auth = await bcrypt.compare(password, rs.MatKhau);
+            // Session giữ đăng nhập đến khi tắt trình duyệt
+            // req.session.logined = true;
+        }
+        catch (e) {
+            console.log("Passport login error: ", e);
+        }
     }
     if (auth) {
         return done(null, rs);
@@ -26,6 +35,7 @@ passport.use('passport-login', new MyStrategy(async (req, username, password, do
     password: 'password'
 }));
 
+// Passport xử lí đăng kí
 passport.use('passport-signup', new MyStrategy(async (req, username, password, done) => {
     let rs = await AccountModel.getUser(username);
     if (!rs) {
@@ -33,16 +43,17 @@ passport.use('passport-signup', new MyStrategy(async (req, username, password, d
             const Fullname = req.body.fullname;
             const Phone = req.body.phone;
             const Birth = req.body.birth;
+            const Email = req.body.email;
             const Gender = req.body.gender;
             const Username = req.body.username;
             const Password = req.body.password;
             const HashPW = await bcrypt.hash(Password, saltBounds);
             // Mặc định là khách hàng 
-            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, '0', '1', '0', null, null);
+            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '0', '1', '0', null, null);
             console.log(rs);
             await AccountModel.insert(rs);
         } catch (e) {
-            console.log("Passport signup error", e);
+            console.log("Passport signup error: ", e);
         }
         return done(null, rs);
     }

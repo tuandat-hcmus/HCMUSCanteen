@@ -19,8 +19,6 @@ module.exports = class User {
         return db.insertWithoutID(tbName, user);
     }
     static async getUser(username) {
-        const res = db.select(tbName, "UserName", username);
-        if (res instanceof User) return res;
-        return null;
+        return db.select(tbName, "UserName", username);
     }
 }

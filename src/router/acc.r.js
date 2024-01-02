@@ -22,7 +22,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('passport-login', {
     failureRedirect: '/',
-    successRedirect: '/'
+    successRedirect: '/home'
 }), (req, res) => {
     try {
         const Username = req.body.username;

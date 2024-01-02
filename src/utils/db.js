@@ -85,7 +85,7 @@ module.exports = {
                 FROM "${tbName}"
                 WHERE "${prop}" = '${condition}'
             `;
-            return db.any(query);
+            return db.oneOrNone(query);
         } catch (error) {
             console.log('Select property by condition error: ', error);
         }

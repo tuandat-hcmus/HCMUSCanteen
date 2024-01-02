@@ -15,7 +15,7 @@ passport.deserializeUser(async (username, done) => {
 passport.use('passport-login', new MyStrategy(async (req, username, password, done) => {
     const rs = await AccountModel.getUser(username);
     if (rs) {
-        auth = await bcrypt.compare(password, rs.Password);
+        auth = await bcrypt.compare(password, rs.MatKhau);
     }
     if (auth) {
         return done(null, rs);

@@ -4,16 +4,16 @@ function checkOrderConditions() {
     $(".order-btn").prop("disabled", !(hasItems && paymentOptionChosen));
 }
 checkOrderConditions();
-$(".bx-trash").on("click", function () {
-    $(this).closest(".item").remove();
+$(".bx-trash").on("click", (event) => {
+    $(event.target).closest(".item").remove();
     checkOrderConditions();
 });
 
-$(".btn-check").on("change", function () {
+$(".bt-cnheck").on("change", () => {
     checkOrderConditions();
 });
 
-$(".arrow").on("click", function () {
+$(".arrow").on("click", (event) => {
     $(".order").toggleClass("toggle");
-    $(this).toggleClass("reverse");
+    $(event.target).toggleClass("reverse");
 });

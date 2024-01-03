@@ -328,11 +328,12 @@ a.nav-item:hover i, a.nav-item.active i {
   font-family: "Be Vietnam Pro", sans-serif;
   margin-bottom: 0.5rem;
 }
-.thanhtoan-container .options {
+.thanhtoan-container .payment-options {
   display: flex;
   justify-content: space-around;
 }
-.thanhtoan-container .options .option {
+.thanhtoan-container .payment-options .option {
+  cursor: pointer;
   background-color: #e9ecf1;
   border: none;
   border-radius: 0.625rem;
@@ -340,32 +341,34 @@ a.nav-item:hover i, a.nav-item.active i {
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.thanhtoan-container .options .option input[type=radio] {
+.thanhtoan-container .payment-options .option input[type=radio] {
   opacity: 0;
   position: fixed;
   width: 0;
   border: none;
   width: 5.813rem;
 }
-.thanhtoan-container .options .option input[type=radio]:hover {
+.thanhtoan-container .payment-options .option input[type=radio]:hover {
   background-color: #90ee90;
 }
-.thanhtoan-container .options .option input[type=radio]:checked + label {
+.thanhtoan-container .payment-options .option input[type=radio]:checked + label {
   background-color: #00a67e;
   color: #fff;
-  border: none;
 }
-.thanhtoan-container .options .option label {
-  cursor: pointer;
+.thanhtoan-container .payment-options .option label {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 0.625rem;
 }
-.thanhtoan-container .options .option.choosen {
+.thanhtoan-container .payment-options .option.choosen {
   background: #00a67e;
   color: #fff;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
+}
+.thanhtoan-container .payment-options .option:hover {
+  background: #00a67e;
+  color: #fff;
 }
 
 .order-btn {

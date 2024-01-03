@@ -6,33 +6,59 @@
         @include textStyle($base-color, 600, $base-font-family);
         font-size: 1.25rem;
     }
+    .sub-header{
+        @include textStyle($base-color, 600, $base-font-family);
+            
+    }
+    
 }
+
 section {
     background-color: $nav-bg;
     border-radius: 0.5rem;
 }
 .cashier-infor {
+    display: flex;
     padding: 1.438rem;
     display: flex;
-    @include textStyle($base-color, 400, $base-font-family);
+    align-items: center;
+    @include textStyle($normal-text-color, 400, $base-font-family);
     font-size: 1rem;
-    
+
+    i {
+        font-size: 1rem;
+        padding-right: 1rem;
+    }
+
     .cashier-image {
         display: inline-block;
         width: 9.438rem;
         border-radius: 50%;
     }
-    
-    .col1,.col2{
+
+    .col1,
+    .col2 {
         display: flex;
         flex-direction: column;
+        gap: 1rem;
+    }
+    .col1 {
+        padding-left: 2rem;
+    }
+    .col2 {
+        padding-left: 15rem;
     }
 }
-
+.state-container{
+    margin-top: 3rem;   
+}
 .newest-order {
+    flex:3.5;
 }
 
 .newest-customer {
+    flex:1;
+    
 }
 
 .state-container {

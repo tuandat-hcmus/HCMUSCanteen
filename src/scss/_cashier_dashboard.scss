@@ -67,7 +67,7 @@ section {
     }
 }
 .newest-order {
-    flex: 2;
+    flex: 1;
 }
 .newest-order section {
     position: relative;
@@ -139,7 +139,7 @@ section {
         padding: 1.125rem 0.813rem 0 0.813rem;
 
         .client {
-            padding: 1rem;
+            padding: 0.5rem 1rem;
             display: flex;
             align-items: center;
             div {
@@ -147,20 +147,19 @@ section {
             }
             .no {
                 @include textStyle($base-color, 600, $base-font-family);
-                font-size: 1.5rem;
             }
             .img-client {
-                width: 4.5rem;
+                width: 4rem;
                 border-radius: 4.5rem;
             }
 
             ._name {
-                font-size: 1.25rem;
                 @include textStyle($normal-text-color, 400, $base-font-family);
                 margin-bottom: 1rem;
             }
             ._time {
                 @include textStyle($normal-text-color, 300, $base-font-family);
+                font-size: 0.75rem;
             }
 
             &:hover {
@@ -172,11 +171,15 @@ section {
 
 .state-container {
     display: flex;
+    width: 100%;
+    section {
+        min-height: 24rem;
+    }
 }
 
-[class*="btn-"]{
+[class*="btn-"] {
     cursor: pointer;
-    
+
     &:hover {
         transform: scale(1.05);
     }

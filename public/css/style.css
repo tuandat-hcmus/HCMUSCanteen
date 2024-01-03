@@ -655,7 +655,7 @@ section {
 }
 
 .newest-order {
-  flex: 2;
+  flex: 1;
 }
 
 .newest-order section {
@@ -730,7 +730,7 @@ section {
   padding: 1.125rem 0.813rem 0 0.813rem;
 }
 .newest-customer section .client {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
 }
@@ -741,14 +741,12 @@ section {
   color: #243c74;
   font-weight: 600;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 1.5rem;
 }
 .newest-customer section .client .img-client {
-  width: 4.5rem;
+  width: 4rem;
   border-radius: 4.5rem;
 }
 .newest-customer section .client ._name {
-  font-size: 1.25rem;
   color: #000;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
@@ -758,6 +756,7 @@ section {
   color: #000;
   font-weight: 300;
   font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 0.75rem;
 }
 .newest-customer section .client:hover {
   background-color: #f2f4f7;
@@ -765,6 +764,10 @@ section {
 
 .state-container {
   display: flex;
+  width: 100%;
+}
+.state-container section {
+  min-height: 24rem;
 }
 
 [class*=btn-] {

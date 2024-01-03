@@ -57,7 +57,7 @@
                             <input type="text" name="note" />
                         </div>
                         <div class="trash">
-                            <i class="bx bx-trash"></i>
+                            <i class="bx bx-trash delete-order"></i>
                         </div>
 
                     </div>
@@ -101,7 +101,7 @@
                             <input type="text" name="note" />
                         </div>
                         <div class="trash">
-                            <i class="bx bx-trash"></i>
+                            <i class="bx bx-trash delete-order"></i>
                         </div>
 
                     </div>
@@ -144,51 +144,7 @@
                             <input type="text" />
                         </div>
                         <div class="trash">
-                            <i class="bx bx-trash"></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="item">
-                    <div class="row-1">
-                        <img
-                            src="img/logo_hcmus.png"
-                            class="img-fluid rounded-top"
-                            alt=""
-                        />
-
-                        <div class="name-price">
-                            <div class="name">
-                                {{name}}
-                                Cơm chiên dương châu
-                            </div>
-
-                            <div class="price">
-                                {{price}}
-                                25.000 VND
-                            </div>
-                        </div>
-
-                        <div class="qty">
-                            <input
-                                type="number"
-                                min="0"
-                                value="1"
-                                onkeyup="if(value<0) value=0;"
-                            />
-
-                        </div>
-                    </div>
-
-                    <div class="row-2">
-
-                        <div class="input-text">
-                            <input type="text" />
-                        </div>
-                        <div class="trash">
-                            <i class="bx bx-trash"></i>
+                            <i class="bx bx-trash delete-order"></i>
                         </div>
 
                     </div>
@@ -232,7 +188,51 @@
                             <input type="text" />
                         </div>
                         <div class="trash">
-                            <i class="bx bx-trash"></i>
+                            <i class="bx bx-trash delete-order"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item">
+                    <div class="row-1">
+                        <img
+                            src="img/logo_hcmus.png"
+                            class="img-fluid rounded-top"
+                            alt=""
+                        />
+
+                        <div class="name-price">
+                            <div class="name">
+                                {{name}}
+                                Cơm chiên dương châu
+                            </div>
+
+                            <div class="price">
+                                {{price}}
+                                25.000 VND
+                            </div>
+                        </div>
+
+                        <div class="qty">
+                            <input
+                                type="number"
+                                min="0"
+                                value="1"
+                                onkeyup="if(value<0) value=0;"
+                            />
+
+                        </div>
+                    </div>
+
+                    <div class="row-2">
+
+                        <div class="input-text">
+                            <input type="text" />
+                        </div>
+                        <div class="trash">
+                            <i class="bx bx-trash delete-order"></i>
                         </div>
 
                     </div>
@@ -262,7 +262,7 @@
                     <div class="option">
                         <input
                             type="radio"
-                            class="btn-check"
+                            class="payment-btn"
                             name="options"
                             id="tienmat"
                             autocomplete="off"
@@ -273,7 +273,7 @@
                     <div class="option">
                         <input
                             type="radio"
-                            class="btn-check"
+                            class="payment-btn"
                             name="options"
                             id="VNPay"
                             autocomplete="off"
@@ -287,7 +287,7 @@
                     <div class="option">
                         <input
                             type="radio"
-                            class="btn-check"
+                            class="payment-btn"
                             name="options"
                             id="momo"
                             autocomplete="off"

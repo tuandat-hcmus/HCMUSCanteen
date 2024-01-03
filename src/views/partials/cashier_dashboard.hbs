@@ -45,7 +45,36 @@
             </div>
 
             <section>
-
+                <table class="newest-order-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Mã hóa đơn</th>
+                            <th>Phương thức</th>
+                            <th>Tình trạng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{no}}1</td>
+                            <td>{{id}}HD001</td>
+                            <td>{{method}}Card</td>
+                            <td>{{state}}Đã thanh toán</td>
+                        </tr>
+                        <tr>
+                            <td> {{no}}1</td>
+                            <td>{{id}}HD001</td>
+                            <td>{{method}}Card</td>
+                            <td>{{state}}Hủy</td>
+                        </tr>
+                        <tr>
+                            <td> {{no}}1</td>
+                            <td>{{id}}HD001</td>
+                            <td>{{method}}Card</td>
+                            <td>{{state}}Chưa thanh toán</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </div>
 
@@ -61,3 +90,5 @@
         </div>
     </div>
 </div>
+
+<script src="js/newest_order.js"></script>

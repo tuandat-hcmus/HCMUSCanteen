@@ -2,18 +2,16 @@
     width: 23.188rem;
     padding: 1rem;
     background-color: $nav-bg;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 0.5rem rgba($color: #000000, $alpha: 0.3);
     height: 100vh;
-    hr {
-        margin: 0.625rem 0;
-    }
-    transition: transform 0.5s ease;
-    &.slide {
-        transition: transform 0.5s ease;
-        transform: translateX(100%);
+    opacity: 1;
+    overflow: hidden;
+    transition: all 3s;
+    &.toggle {
+        width: 0;
+        padding: 0;
     }
 }
 
@@ -70,7 +68,6 @@
         border-bottom: 1.375rem;
         width: 20.188rem;
         margin: 0.6rem;
-
         input {
             text-align: center;
             border: none;
@@ -128,8 +125,9 @@
             .input-text {
                 width: 16.188rem;
                 input {
-                    padding: 0.563rem 1.5rem;
+                    padding: 0rem 1.5rem;
                     width: 100%;
+                    height: 2rem;
                 }
             }
 
@@ -216,12 +214,10 @@
     @include textStyle($nav-bg, 600, $base-font-family);
     &:hover:not(:disabled),
     &:focus:not(:disabled) {
-        background-color: $yellow-total-color;
-        transform: scale(0.95);
+        transform: scale(1.05);
     }
 
     &:active:not(:disabled) {
-        background-color: $yellow-total-color;
         transform: scale(0.95);
     }
 
@@ -240,7 +236,6 @@
     right: 1rem;
     z-index: 999;
     transform: translateY(-50%);
-
     .arrow {
         font-size: 1.5rem;
         transition: transform 0.5s ease;

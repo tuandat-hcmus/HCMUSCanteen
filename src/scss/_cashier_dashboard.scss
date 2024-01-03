@@ -1,0 +1,40 @@
+.dashboard-container {
+    flex: 1;
+    background-color: $light-bg-color;
+    padding: 1.375rem 1rem;
+    header {
+        @include textStyle($base-color, 600, $base-font-family);
+        font-size: 1.25rem;
+    }
+}
+section {
+    background-color: $nav-bg;
+    border-radius: 0.5rem;
+}
+.cashier-infor {
+    padding: 1.438rem;
+    display: flex;
+    @include textStyle($base-color, 400, $base-font-family);
+    font-size: 1rem;
+    
+    .cashier-image {
+        display: inline-block;
+        width: 9.438rem;
+        border-radius: 50%;
+    }
+    
+    .col1,.col2{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.newest-order {
+}
+
+.newest-customer {
+}
+
+.state-container {
+    display: flex;
+}

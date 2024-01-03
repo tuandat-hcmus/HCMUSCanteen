@@ -251,18 +251,18 @@ button.filter-btn:hover {
 .order-space .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13.785rem, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 0.5rem;
 }
 .order-space .card-container .card-item {
   box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.3);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background-color: #FFF;
 }
 .order-space .card-container .card-item .img-container {
   padding-top: 100%;
   position: relative;
   background-color: #F2F4F7;
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 .order-space .card-container .card-item .img-container img {
   position: absolute;

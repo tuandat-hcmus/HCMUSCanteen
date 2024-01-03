@@ -26,6 +26,12 @@ app.get('/bills', (req, res) => {
     })
 })
 
+app.get('/products/detail', (req, res) => {
+    res.render('products/detail', {
+        title: 'Product'
+    })
+})
+
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });

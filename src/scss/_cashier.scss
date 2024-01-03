@@ -1,0 +1,22 @@
+@import 'variables';
+
+.bill-content{
+    .tt{
+
+        margin: 1.5rem 1rem;
+        .title{
+            font-family: $base-font-family;
+            color: $base-color;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+        .subtitle{
+            font-size: 1rem;
+            color: $unactive-nav-color;
+            font-weight: 300;
+            margin:  0.75rem 0;
+
+        }
+    }
+
+}

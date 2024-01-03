@@ -5,13 +5,13 @@ rows.each(function () {
     console.log(this);
     switch (status) {
         case "Đã thanh toán":
-            statusCell.toggleClass("paid");
+            $(this).find("td:nth-child(4)").toggleClass("paid");
             break;
         case "Chưa thanh toán":
-            $(this).toggleClass("pending");
+            $(this).find("td:nth-child(4)").toggleClass("pending");
             break;
         case "Hủy":
-            $(this).toggleClass("canceled");
+            $(this).find("td:nth-child(4)").toggleClass("canceled");
             break;
     }
 });

@@ -3,7 +3,7 @@
     background-color: $light-bg-color;
     padding: 1.375rem 1rem;
     header {
-        @include textStyle($base-color, 600, $base-font-family);
+        @include textStyle($base-color, 800, $base-font-family);
         font-size: 1.25rem;
     }
     .sub-header {
@@ -14,8 +14,10 @@
 section {
     background-color: $nav-bg;
     border-radius: 0.5rem;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
 }
 .cashier-infor {
+    position: relative;
     display: flex;
     padding: 1.438rem;
     margin-top: 0.938rem;
@@ -31,7 +33,7 @@ section {
 
     .cashier-image {
         display: inline-block;
-        width: 9.438rem;
+        width: 6.438rem;
         border-radius: 50%;
     }
 
@@ -47,25 +49,47 @@ section {
     .col2 {
         padding-left: 15rem;
     }
+
+    .btn-edit {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        border: none;
+        border-radius: 1rem;
+        padding: 0.5rem 0.75rem;
+        @include textStyle($base-color, 400, $base-font-family);
+    }
 }
 .state-container {
     margin-top: 3rem;
     section {
-        margin-top: 20px;
+        margin-top: 1rem;
     }
 }
 .newest-order {
-    flex: 3;
+    flex: 2;
+}
+.newest-order section {
+    position: relative;
+}
+
+.btn-expand {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: $unactive-nav-color;
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
 .newest-order-table {
+    position: relative;
     border-collapse: separate;
-    border-spacing: 0.375rem;
     text-align: left;
     width: 100%;
-    height: 100%;
-    padding: 3.375rem 1.063rem 0 1.063rem;
-
+    padding: 3.375rem 1.063rem 1rem 1.063rem;
     th,
     td {
         border-bottom: 1px solid $border-table;
@@ -79,7 +103,16 @@ section {
         font-size: 0.813rem;
     }
 
-    tr {
+    .btn-detail {
+        @include textStyle($normal-text-color, 300, $base-font-family);
+        font-size: 1.5rem;
+    }
+
+    tbody tr:hover {
+        background-color: $light-bg-color !important;
+        border-color: $light-bg-color !important;
+    }
+    td {
         &.paid {
             color: $green-active;
         }
@@ -88,14 +121,63 @@ section {
         }
         &.canceled {
             color: $danger-color;
-        }   
+        }
+    }
+    th,
+    td {
+        background-clip: padding-box;
     }
 }
 
 .newest-customer {
     flex: 1;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    section {
+        padding: 1.125rem 0.813rem 0 0.813rem;
+
+        .client {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            div {
+                margin-right: 1rem;
+            }
+            .no {
+                @include textStyle($base-color, 600, $base-font-family);
+                font-size: 1.5rem;
+            }
+            .img-client {
+                width: 4.5rem;
+                border-radius: 4.5rem;
+            }
+
+            ._name {
+                font-size: 1.25rem;
+                @include textStyle($normal-text-color, 400, $base-font-family);
+                margin-bottom: 1rem;
+            }
+            ._time {
+                @include textStyle($normal-text-color, 300, $base-font-family);
+            }
+
+            &:hover {
+                background-color: $light-bg-color;
+            }
+        }
+    }
 }
 
 .state-container {
     display: flex;
+}
+
+[class*="btn-"]{
+    cursor: pointer;
+    
+    &:hover {
+        transform: scale(1.05);
+    }
 }

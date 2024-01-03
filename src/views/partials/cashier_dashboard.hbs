@@ -35,7 +35,9 @@
             <div><i class="bx bx-target-lock"></i>Địa chỉ:
                 {{address}}</div>
         </div>
-
+        <button class="btn-edit">
+            Chỉnh sửa
+        </button>
     </section>
 
     <div class="state-container">
@@ -44,7 +46,7 @@
                 Hóa đơn mới nhất
             </div>
 
-            <section>
+            <section >
                 <table class="newest-order-table">
                     <thead>
                         <tr>
@@ -52,6 +54,7 @@
                             <th>Mã hóa đơn</th>
                             <th>Phương thức</th>
                             <th>Tình trạng</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,21 +63,26 @@
                             <td>{{id}}HD001</td>
                             <td>{{method}}Card</td>
                             <td>{{state}}Đã thanh toán</td>
+                            <td><i class="bx bx-file-find btn-detail"></i></td>
                         </tr>
                         <tr>
                             <td> {{no}}1</td>
                             <td>{{id}}HD001</td>
                             <td>{{method}}Card</td>
                             <td>{{state}}Hủy</td>
+                            <td><i class="bx bx-file-find btn-detail"></i></td>
                         </tr>
                         <tr>
                             <td> {{no}}1</td>
                             <td>{{id}}HD001</td>
                             <td>{{method}}Card</td>
                             <td>{{state}}Chưa thanh toán</td>
+                            <td><i class="bx bx-file-find btn-detail"></i></td>
+
                         </tr>
                     </tbody>
                 </table>
+                <i class="bx bx-expand-alt btn-expand"></i>
             </section>
         </div>
 
@@ -85,7 +93,51 @@
             </div>
 
             <section>
+                <div class="client">
+                    <div class="no">{{no_client}}1</div>
+                    <div> <img src="" alt="" class="img-client" /></div>
+                    <div class="name-time">
+                        <div class="_name">
+                            {{name_client}}
+                            Nguyễn Văn A
+                        </div>
+                        <div class="_time">
+                            {{time}}2 phút trước
+                        </div>
 
+                    </div>
+
+                </div>
+                <div class="client">
+                    <div class="no">{{no_client}}1</div>
+                    <div> <img src="" alt="" class="img-client" /></div>
+                    <div class="name-time">
+                        <div class="_name">
+                            {{name_client}}
+                            Nguyễn Văn A
+                        </div>
+                        <div class="_time">
+                            {{time}}2 phút trước
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="client">
+                    <div class="no">{{no_client}}1</div>
+                    <div> <img src="" alt="" class="img-client" /></div>
+                    <div class="name-time">
+                        <div class="_name">
+                            {{name_client}}
+                            Nguyễn Văn A
+                        </div>
+                        <div class="_time">
+                            {{time}}2 phút trước
+                        </div>
+
+                    </div>
+
+                </div>
             </section>
         </div>
     </div>

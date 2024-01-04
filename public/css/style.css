@@ -1123,14 +1123,14 @@ button.filter-btn:hover {
 .bill-order-table {
   position: relative;
   border-collapse: separate;
-  text-align: left;
   width: 100%;
   margin-top: 2.25rem;
-  padding: 0 12.125rem;
+  padding: 0 8rem;
   background-color: #fff;
+  padding-bottom: 2rem;
 }
 .bill-order-table th {
-  padding: 2rem 0;
+  padding: 2rem 5rem 2rem 0;
 }
 .bill-order-table td {
   border-bottom: 1px solid #f0f0f0;
@@ -1169,6 +1169,9 @@ button.filter-btn:hover {
 .bill-order-table th,
 .bill-order-table td {
   background-clip: padding-box;
+}
+.bill-order-table [class*=btn-]:hover {
+  transform: scale(1.05);
 }
 
 .cashier_report_table {
@@ -1252,6 +1255,12 @@ button.filter-btn:hover {
   font-family: "Be Vietnam Pro", sans-serif;
   margin-top: 0.75rem;
   margin-bottom: 1.938rem;
+}
+
+.ic-plus {
+  font-size: 1.95rem;
+  color: #243c74;
+  float: right;
 }
 
 * {

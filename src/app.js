@@ -7,8 +7,6 @@ const hbs = require('express-handlebars');
 //---
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const accountRouter = require('./routes/acc.r');
-const homeRouter = require('./routes/home.r');
 
 app.engine('.hbs', hbs.engine({
     extname: '.hbs'
@@ -35,8 +33,9 @@ require('./mws/ggpassport')(app);
 require('./mws/fbpassport')(app);
 require('./mws/passport')(app);
 
-app.use(accountRouter);
-app.use(homeRouter);
+// app.use(accountRouter);
+const route = require('./routes');
+route(app);
 
 app.get('/bills', (req, res) => {
     res.render('bills', {

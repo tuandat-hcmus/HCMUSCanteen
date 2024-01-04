@@ -12,7 +12,7 @@ loadPage('Tất cả', 1);
 
 function loadPage(type, page) {
     $.ajax({
-        url: `/home/page?type=${type}&page=${page}`,
+        url: `/client/page?type=${type}&page=${page}`,
         method: 'GET',
         success: function (data) {
             currentPage = page;

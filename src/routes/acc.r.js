@@ -5,14 +5,16 @@ const passport = require('passport');
 router.get('/login', (req, res) => {
     if (req.user) {
         // console.log(req.user);
-        res.redirect('/home');
+        res.redirect('/client');
         return;
     }
     let username = null;
     let pw = null;
     // Ghi nhớ đăng nhập
+    console.log(req.signedCookies);
     if (req.signedCookies.info) {
         const info = JSON.parse(req.signedCookies.info);
+        
         username = info.u;
         pw = info.pw;
     }
@@ -44,7 +46,7 @@ router.post('/login', passport.authenticate('passport-login', {
     catch (e) {
         console.log(e);
     }
-    res.redirect('/home');
+    res.redirect('/client');
 });
 
 router.get('/signup', (req, res) => {
@@ -55,7 +57,7 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', passport.authenticate('passport-signup', {
     failureRedirect: '/',
-    successRedirect: '/home'
+    successRedirect: '/client'
 }));
 
 router.post('/logout', (req, res) => {
@@ -73,7 +75,7 @@ router.get('/gg/auth', passport.authenticate('google', {
     failureRedirect: '/login'
 }),
     function (req, res) {
-        res.redirect('/home');
+        res.redirect('/client');
     });
 
 
@@ -83,7 +85,7 @@ router.get('/fb/auth', passport.authenticate('facebook', {
     failureRedirect: '/login'
 }),
     function (req, res) {
-        res.redirect('/home');
+        res.redirect('/client');
     });
 
 module.exports = router;

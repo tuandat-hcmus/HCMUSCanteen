@@ -125,6 +125,8 @@ a.nav-item {
 .user-container {
     padding: 1.5rem 1rem;
     .user {
+        text-decoration: none;
+        color: $normal-text-color;
         font: {
             family: $base-font-family;
             size: 1rem;

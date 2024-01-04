@@ -27,6 +27,9 @@
         &.row {
             @include textStyle($sub-color, 400, $base-font-family);
             padding: 1.063rem;
+            &:hover{
+                background-color:$light-bg-color;
+            }
         }
 
         &.header-container {

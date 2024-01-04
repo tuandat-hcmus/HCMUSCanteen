@@ -1399,6 +1399,9 @@ button.filter-btn:hover {
   font-family: "Be Vietnam Pro", sans-serif;
   padding: 1.063rem;
 }
+.new_revenue_container .grid.row:hover {
+  background-color: #f2f4f7;
+}
 .new_revenue_container .grid.header-container {
   border-bottom: 1px solid #243c74;
   margin-bottom: 1rem;

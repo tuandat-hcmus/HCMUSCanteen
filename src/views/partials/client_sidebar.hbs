@@ -16,23 +16,23 @@
     </section>
     <ul class="item-container">
         <li>
-            <a href="/home" class="nav-item">
+            <a href="/home" class="nav-item {{#if isHome}} active {{/if}}">
                 <i class='bx bx-home'></i>
                 <p class="open">Trang chủ</p>
             </a>
         </li>
         <li>
-            <a href="/bills" class="nav-item">
+            <a href="/user/bill" class="nav-item {{#if isBill}} active {{/if}}">
                 <i class='bx bx-money-withdraw'></i>
                 <p class="open">Hóa đơn</p>
             </a>
         </li>
     </ul>
     <section class="user-container">
-        <div class="user">
+        <a class="user" href="/user/profile">
             <img src="" alt="" class="avatar">
             <p class="open">{{name}}</p>
-        </div>
+        </a>
         <form action="/logout" method="post">
             <button type="submit" class="logout-btn ">
                 <i class='bx bx-log-out'></i>
@@ -41,4 +41,4 @@
         </form>
     </section>
 </aside>
-<script src="js/sidebar.js"></script>
+<script src="/js/sidebar.js"></script>

@@ -1,0 +1,30 @@
+<div id="overlay">
+  <div id="text">
+{{>cashier_new_revenue}}
+    
+  </div>
+</div>
+
+
+{{>sidebar}}
+<div class="main-content">
+<div class="title_content">
+       <div>
+            <div class="main-header">
+                Báo cáo doanh thu
+            </div>
+            
+            <div class="sub-header">
+                Tổng hợp và tạo báo cáo doanh thu theo ngày, tháng
+            </div>   
+       </div>
+       <div class="ic-plus" >
+         <i class='bx bxs-plus-square btn-pluss' onclick="on()"></i>
+       </div>
+</div>
+    
+    {{> filter }}
+    {{> cashier_report_table }}
+</div> 
+
+<script src="/js/overlay.js"></script>

@@ -1,8 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Comfortaa:wght@700&display=swap');
-@import 'sidebar';
-@import 'HomeClient';
-@import 'login';
-@import 'signup';
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Comfortaa:wght@700&display=swap");
+@import "mixins";
+@import "variables";
+@import "sidebar";
+@import "order";
+@import "HomeClient";
+@import "cashier_dashboard";
+@import "login";
+@import "signup";
+@import "filter";
+@import "cashier_bill_table";
+@import "cashier_report_table";
+@import "header";
+@import "cashier_report";
+@import "import";
+@import "cashier_new_revenue";
+@import "comment";
+@import "profile";
+
 * {
     box-sizing: border-box;
 }
@@ -11,4 +25,3 @@
     height: 100vh;
     display: flex;
 }
-

@@ -59,6 +59,8 @@ module.exports = {
             res.render('home', {
                 title: 'Home Page',
                 type: data,
+                isHome: true,
+                isUser: true,
                 name: name
             });
         }

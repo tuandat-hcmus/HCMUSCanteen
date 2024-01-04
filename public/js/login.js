@@ -13,3 +13,19 @@ function togglePasswordVisibility(inputId) {
         hideIcon.style.display = 'none';
     }
 }
+
+function toggleConfirmPasswordVisibility(inputId) {
+    const passwordInput = document.getElementById(inputId);
+    const showIcon1 = document.querySelector('.show1');
+    const hideIcon1 = document.querySelector('.hide1');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        showIcon1.style.display = 'none';
+        hideIcon1.style.display = 'inline';
+    } else {
+        passwordInput.type = 'password';
+        showIcon1.style.display = 'inline';
+        hideIcon1.style.display = 'none';
+    }
+}

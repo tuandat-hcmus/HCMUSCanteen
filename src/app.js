@@ -54,6 +54,11 @@ app.get("/cashier/report", (req, res) => {
         title: "report page",
     });
 });
+app.get("/cashier/import", (req, res) => {
+    res.render("cashier_import", {
+        title: "import page",
+    });
+});
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);

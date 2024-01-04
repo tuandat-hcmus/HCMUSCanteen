@@ -1257,6 +1257,115 @@ button.filter-btn:hover {
   float: right;
 }
 
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+#text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.title_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content_import {
+  background-color: #f2f4f7;
+  font-family: "Be Vietnam Pro", sans-serif;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.content_import .head_import {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content_import .head_import .import_title .id_import {
+  color: #000;
+  font-size: 1.5rem;
+}
+.content_import .head_import .import_title .date_import {
+  color: #243c74;
+  font-size: 1.25rem;
+}
+.content_import .head_import .import_add button {
+  height: 2rem;
+  width: auto;
+  border: 0.125rem solid #243c74;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #243c74;
+  cursor: pointer;
+}
+.content_import .head_import .import_add button .icon {
+  font-weight: 600;
+}
+.content_import .head_import .import_add button:hover {
+  border: 0.25rem solid #1b2d57;
+}
+.content_import .table_content {
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 3rem 15rem 25rem 15rem 15rem 5rem;
+  margin: 1rem 0;
+}
+.content_import .table_content div {
+  text-align: center;
+}
+.content_import .thead {
+  color: #243c74;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.125rem solid #808080;
+}
+.content_import .sub {
+  color: #7c8cac;
+  padding: 1rem 0;
+}
+.content_import .sum_import {
+  background-color: #00a67e;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+  padding: 1rem 0.25rem;
+}
+.content_import .foot_import {
+  display: flex;
+  justify-content: flex-end;
+}
+.content_import .foot_import button {
+  background-color: #243c74;
+  height: 2.5rem;
+  width: 6.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border: none;
+  color: #f2f4f7;
+  cursor: pointer;
+}
+.content_import .foot_import button:hover {
+  background-color: #1b2d57;
+}
+
 body {
   background-color: black;
 }

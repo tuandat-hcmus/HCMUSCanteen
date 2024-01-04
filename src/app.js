@@ -66,6 +66,12 @@ app.get("/admin", (req, res) => {
     });
 });
 
+app.get("/user/comment", (req, res) => {
+    res.render("comment", {
+        title: "user comment",
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);

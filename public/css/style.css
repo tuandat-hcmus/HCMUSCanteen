@@ -1440,6 +1440,213 @@ button.filter-btn:hover {
   background-color: #1b2d57;
 }
 
+.comment-container {
+  flex: 1;
+  background-color: #f2f4f7;
+  padding: 1.375rem 1rem;
+}
+.comment-container header {
+  color: #243c74;
+  font-weight: 800;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.25rem;
+}
+.comment-container .dashboard-sub-header {
+  color: #243c74;
+  font-weight: 600;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.comment-container section {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+}
+.comment-container .card_food {
+  position: relative;
+  display: flex;
+  padding: 1.438rem;
+  margin-top: 0.938rem;
+  display: flex;
+  color: #000;
+  font-weight: 400;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1rem;
+}
+.comment-container .card_food i {
+  font-size: 1rem;
+  padding-right: 1rem;
+}
+.comment-container .card_food .img_food {
+  display: inline-block;
+  width: 20rem;
+  height: 12.125rem;
+  border-radius: 50%;
+}
+.comment-container .card_food .btn-order {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #243c74;
+  padding: 0.5rem 3rem;
+  background-color: transparent;
+  color: #243c74;
+  font-weight: 400;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.comment-container .card_food .food-detail {
+  padding-left: 1rem;
+}
+.comment-container .card_food .food-detail * {
+  margin-top: 0.5rem;
+}
+.comment-container .card_food .food-detail .type {
+  color: #7c8cac;
+  font-weight: 400;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.25rem;
+}
+.comment-container .card_food .food-detail .name {
+  color: #000;
+  font-weight: 700;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.5rem;
+}
+.comment-container .card_food .food-detail .stock {
+  color: #808080;
+  font-weight: 400;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.comment-container .card_food .food-detail .price {
+  margin-top: 1.563rem;
+  color: #243c74;
+  font-weight: 500;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.5rem;
+}
+.comment-container .state-container {
+  margin-top: 3rem;
+}
+.comment-container .state-container section {
+  margin-top: 1rem;
+}
+.comment-container .newest-order {
+  flex: 1;
+}
+.comment-container .newest-order section {
+  position: relative;
+}
+.comment-container .btn-expand {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #808080;
+}
+.comment-container .btn-expand:hover {
+  transform: scale(1.05);
+}
+.comment-container .newest-order-table {
+  position: relative;
+  border-collapse: separate;
+  text-align: left;
+  width: 100%;
+  padding: 3.375rem 1.063rem 1rem 1.063rem;
+}
+.comment-container .newest-order-table th,
+.comment-container .newest-order-table td {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0.375rem;
+}
+.comment-container .newest-order-table thead {
+  color: #000;
+  font-weight: 600;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.comment-container .newest-order-table tbody {
+  color: #000;
+  font-weight: 300;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 0.813rem;
+}
+.comment-container .newest-order-table .btn-detail {
+  color: #000;
+  font-weight: 300;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.5rem;
+}
+.comment-container .newest-order-table tbody tr:hover {
+  background-color: #f2f4f7 !important;
+  border-color: #f2f4f7 !important;
+}
+.comment-container .newest-order-table td.paid {
+  color: #00a67e;
+}
+.comment-container .newest-order-table td.pending {
+  color: #f29339;
+}
+.comment-container .newest-order-table td.canceled {
+  color: #dc3545;
+}
+.comment-container .newest-order-table th,
+.comment-container .newest-order-table td {
+  background-clip: padding-box;
+}
+.comment-container .newest-customer {
+  flex: 1;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.comment-container .newest-customer section {
+  padding: 1.125rem 0.813rem 0 0.813rem;
+}
+.comment-container .newest-customer section .client {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+.comment-container .newest-customer section .client div {
+  margin-right: 1rem;
+}
+.comment-container .newest-customer section .client .no {
+  color: #243c74;
+  font-weight: 600;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.comment-container .newest-customer section .client .img-client {
+  width: 4rem;
+  border-radius: 4.5rem;
+}
+.comment-container .newest-customer section .client ._name {
+  color: #000;
+  font-weight: 400;
+  font-family: "Be Vietnam Pro", sans-serif;
+  margin-bottom: 1rem;
+}
+.comment-container .newest-customer section .client ._time {
+  color: #000;
+  font-weight: 300;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 0.75rem;
+}
+.comment-container .newest-customer section .client:hover {
+  background-color: #f2f4f7;
+}
+.comment-container .state-container {
+  display: flex;
+  width: 100%;
+}
+.comment-container .state-container section {
+  min-height: 24rem;
+}
+.comment-container [class*=btn-] {
+  cursor: pointer;
+}
+.comment-container [class*=btn-]:hover {
+  transform: scale(1.05);
+}
+
 * {
   box-sizing: border-box;
 }

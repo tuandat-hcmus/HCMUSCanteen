@@ -1,0 +1,114 @@
+<div class="comment-container">
+    <section class="card_food">
+        <img src="" alt="" class="img_food" />
+   
+        <button class="btn-order">
+            Đặt món
+        </button>
+        
+        <div class="food-detail">
+            <div class="type">{{type}} Cơm</div>
+            <div class="name">{{name}} Cơm chiên trứng</div>
+            <div class="stock">{{stock}} Số lượng còn: 20 {{stock}}</div>
+            <div class="star">{{n_star}} 4.0   ({{n_comment }} đánh giá)</div>
+            <div class="price">{{price}} 25.000 VND</div>
+        </div>
+    </section>
+
+    
+    <div class="state-container">
+        <div class="newest-order">
+            <section>
+                <table class="newest-order-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Mã hóa đơn</th>
+                            <th>Phương thức</th>
+                            <th>Tình trạng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{no}}1</td>
+                            <td>{{id}}HD001</td>
+                            <td>{{method}}Card</td>
+                            <td>{{state}}Đã thanh toán</td>
+                            <td><i class="bx bx-file-find btn-detail"></i></td>
+                        </tr>
+                        <tr>
+                            <td> {{no}}1</td>
+                            <td>{{id}}HD001</td>
+                            <td>{{method}}Card</td>
+                            <td>{{state}}Hủy</td>
+                            <td><i class="bx bx-file-find btn-detail"></i></td>
+                        </tr>
+                        <tr>
+                            <td> {{no}}1</td>
+                            <td>{{id}}HD001</td>
+                            <td>{{method}}Card</td>
+                            <td>{{state}}Chưa thanh toán</td>
+                            <td><i class="bx bx-file-find btn-detail"></i></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <i class="bx bx-expand-alt btn-expand"></i>
+            </section>
+        </div>
+
+        <div class="newest-customer">
+
+            <section>
+                <div class="client">
+                    <div class="no">{{no_client}}1</div>
+                    <div> <img src="" alt="" class="img-food" /></div>
+                    <div class="name-time">
+                        <div class="_name">
+                            {{name_client}}
+                            Nguyễn Văn A
+                        </div>
+                        <div class="_time">
+                            {{time}}2 phút trước
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="client">
+                    <div class="no">{{no_client}}1</div>
+                    <div> <img src="" alt="" class="img-client" /></div>
+                    <div class="name-time">
+                        <div class="_name">
+                            {{name_client}}
+                            Nguyễn Văn A
+                        </div>
+                        <div class="_time">
+                            {{time}}2 phút trước
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="client">
+                    <div class="no">{{no_client}}1</div>
+                    <div> <img src="" alt="" class="img-client" /></div>
+                    <div class="name-time">
+                        <div class="_name">
+                            {{name_client}}
+                            Nguyễn Văn A
+                        </div>
+                        <div class="_time">
+                            {{time}}2 phút trước
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script src="/js/table.js"></script>

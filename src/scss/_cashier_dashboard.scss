@@ -6,7 +6,7 @@
         @include textStyle($base-color, 800, $base-font-family);
         font-size: 1.25rem;
     }
-    .sub-header {
+    .dashboard-sub-header {
         @include textStyle($base-color, 600, $base-font-family);
     }
 

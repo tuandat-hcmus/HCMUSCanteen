@@ -17,13 +17,13 @@
     </section>
     <ul class="item-container">
         <li>
-            <a href="/dashboard" class="nav-item">
+            <a href="/admin/dashboard" class="nav-item {{#if isDashboard}} active {{/if}}">
                 <i class="bx bx-home"></i>
                 <p class="open">Dashboard</p>
             </a>
         </li>
         <li>
-            <a href="/bills" class="nav-item">
+            <a href="/admin/bill" class="nav-item {{#if isBill}} active {{/if}}">
                 <i class="bx bxs-report"></i>
                 <p class="open">Hóa đơn</p>
             </a>
@@ -41,29 +41,29 @@
             </a>
         </li>
         <li>
-            <a href="/report" class="nav-item">
+            <a href="/admin/report" class="nav-item {{#if isReport}} active {{/if}}">
                 <i class="bx bxs-report"></i>
                 <p class="open">Báo cáo</p>
             </a>
         </li>
         <li>
-            <a href="/report" class="nav-item">
+            <a href="/admin/users" class="nav-item">
                 <i class="bx bx-user"></i>
                 <p class="open">User</p>
             </a>
         </li>
         <li>
-            <a href="/report" class="nav-item">
+            <a href="/admin/import" class="nav-item {{#if isImport}} active {{/if}}">
                 <i class="bx bx-import"></i>
                 <p class="open">Nhập kho</p>
             </a>
         </li>
     </ul>
     <section class="user-container">
-        <div class="user">
+        <a class="user" href="/admin/profile">
             <img src="" alt="" class="avatar" />
             <p class="open">Admin</p>
-        </div>
+        </a>
         <button class="logout-btn">
             <i class="bx bx-log-out"></i>
             <p class="open">Đăng xuất</p>

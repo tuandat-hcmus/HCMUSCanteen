@@ -117,6 +117,8 @@ a.nav-item:hover i, a.nav-item.active i {
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1rem;
   font-weight: 600;
+  text-decoration: none;
+  color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -770,21 +772,14 @@ button.filter-btn:hover {
   transform: scale(1.05);
 }
 
-.login-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  min-height: 100vh;
+.left {
+  padding: 1rem;
+  flex: 1;
 }
-.login-container .left {
-  padding: 2rem;
-  width: 45vw;
-}
-.login-container .left .name-logo > h1 {
+.left .name-logo > h1 {
   display: inline-block;
 }
-.login-container .left .school {
+.left .school {
   text-transform: uppercase;
   font-size: 2rem;
   color: #1b2d57;
@@ -793,113 +788,122 @@ button.filter-btn:hover {
   font-weight: 900;
   line-height: normal;
 }
-.login-container .left .cteen {
+.left .cteen {
   text-transform: uppercase;
-  color: #243c74;
+  color: #7c8cac;
   font-family: "Comfortaa", sans-serif;
   font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
-.login-container .right {
-  width: 45vw;
+.left img {
+  height: 100%;
+}
+
+.right {
+  flex: 1;
   padding: 2rem;
   position: relative;
 }
-.login-container .right .cre-account {
+.right .cre-account {
   display: flex;
+  margin-bottom: 1rem;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
 }
-.login-container .right .login-form .title {
+.right .cre-account a {
+  color: #7c8cac;
+}
+
+.login-form .title {
   position: relative;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #243c74;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-align: center;
 }
-.login-container .right .login-form .input-field {
+.login-form .input-field {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 3rem;
   margin: 2rem 0;
+  border-bottom: 2px #7c8cac solid;
 }
-.login-container .right .login-form .input-field > input {
-  position: absolute;
+.login-form .input-field > input {
   width: 100%;
   height: 100%;
-  padding: 0 3rem;
+  padding: 0 0 0 2rem;
   background: transparent;
   border: none;
   outline: none;
-  border-bottom: 0.125rem solid #7c8cac;
-  border-top: 0.125rem soild transparent;
   font-size: 1rem;
 }
-.login-container .right .login-form .input-field > input:focus-within {
-  border-bottom-color: #243c74;
+.login-form .input-field:focus-within {
+  border-bottom: 2px #243c74 solid;
 }
-.login-container .right .login-form .input-field > input::placeholder {
-  padding: 0 3rem;
-}
-.login-container .right .login-form .input-field > i {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.login-form .input-field > i {
   font-size: 1.5rem;
   color: #808080;
 }
-.login-container .right .login-form .input-field > i ~ input:focus, .login-container .right .login-form .input-field > i ~ input:valid {
-  border-bottom-color: #243c74;
-}
-.login-container .right .login-form .input-field > i.icon {
+.login-form .input-field > i.first-icon {
+  position: absolute;
   left: 0;
 }
-.login-container .right .login-form .input-field > i.show {
+.login-form .input-field > i ~ input:focus, .login-form .input-field > i ~ input:valid {
+  border-bottom-color: #243c74;
+}
+.login-form .input-field > i.icon {
+  left: 0;
+}
+.login-form .input-field > i.show {
   right: 0;
 }
-.login-container .right .login-form .input-field > i.hide {
+.login-form .input-field > i.hide {
   right: 0;
 }
-.login-container .right .login-form .checkbox-text {
+.login-form .checkbox-text {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1.5rem 0;
 }
-.login-container .right .login-form .checkbox-text .checkbox-content {
+.login-form .checkbox-text .checkbox-content {
   display: flex;
   align-items: center;
 }
-.login-container .right .login-form .checkbox-text .checkbox-content input {
+.login-form .checkbox-text .checkbox-content input {
+  width: 1rem;
   margin: 0 8px -2px 4px;
   accent-color: #243c74;
 }
-.login-container .right .login-form .checkbox-text .text {
+.login-form .checkbox-text .text {
   color: #243c74;
   font-size: 1rem;
+  font-family: "Be Vietnam Pro", sans-serif;
 }
-.login-container .right .login-form .checkbox-text a {
+.login-form .checkbox-text a {
   text-decoration: none;
 }
-.login-container .right .login-form .checkbox-text a:hover {
+.login-form .checkbox-text a:hover {
   text-decoration: underline;
 }
-.login-container .right .login-form > button {
+.login-form > button {
   width: 100%;
-  height: 100%;
   border: none;
   color: #f2f4f7;
   height: 3rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
+  font-family: "Be Vietnam Pro", sans-serif;
   letter-spacing: 1px;
   border-radius: 1.5rem;
   background-color: #243c74;
@@ -908,194 +912,153 @@ button.filter-btn:hover {
   margin: 1rem 0;
   margin-bottom: 2rem;
 }
-.login-container .right .login-form > button > hover {
+.login-form > button > hover {
   background-color: #1b2d57;
 }
-.login-container .right .login-form .ruler {
+.login-form .ruler {
   width: 100%;
-  height: 15px;
-  border-bottom: 1px solid #808080;
-  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
-.login-container .right .login-form .ruler .section {
-  font-size: 1.5rem;
+.login-form .ruler hr {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.login-form .ruler .section {
+  font-size: 1rem;
+  width: fit-content;
+  font-family: "Be Vietnam Pro", sans-serif;
   color: #808080;
   background-color: #fff;
   padding: 0 10px;
+  position: relative;
+  z-index: 10;
 }
-.login-container .right .login-form .social-media {
+
+.social-media {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
-.login-container .right .login-form .social-media li {
-  width: 100%;
+.social-media li {
   height: auto;
   display: list-item;
   text-align: center;
+}
+.social-media li form button {
   display: flex;
-  flex-direction: row-reverse;
-}
-.login-container .right .login-form .social-media li > button {
-  margin: 1rem 0;
-  width: 100%;
-  height: 100%;
-  border: 0.125rem solid #243c74;
-  color: #243c74;
+  padding: 0.5rem 2rem;
   height: 3rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 2px #243c74 solid;
   border-radius: 1.5rem;
+  background-color: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
-.login-container .right .login-form .social-media li > button > hover {
-  background-color: #1b2d57;
+.social-media li form button img {
+  width: 1.5rem;
 }
-.login-container .right .login-form .social-media li > button .name {
+.social-media li form button .name {
+  font-family: "Be Vietnam Pro", sans-serif;
   flex: 1;
-}
-.login-container .right .login-form .social-media li > button .img_gg {
   margin: auto;
-  height: 1.5rem;
+  font-size: 1rem;
 }
-.login-container .right .login-form .social-media li > button .img_fb {
-  margin: auto;
-  height: 2.5rem;
+.social-media li form button:hover {
+  transform: scale(1.01);
 }
 
-.signup-container {
+.signup-form .title {
   position: relative;
-  min-width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.signup-container .left {
-  padding: 2rem;
-  width: 45vw;
-}
-.signup-container .left .name-logo > h1 {
-  display: inline-block;
-}
-.signup-container .left .school {
-  text-transform: uppercase;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: 2rem;
-  color: #1b2d57;
-  font-family: "Be Vietnam Pro", sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-}
-.signup-container .left .cteen {
-  text-transform: uppercase;
-  color: #243c74;
-  font-family: "Comfortaa", sans-serif;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.signup-container .right {
-  width: 45vw;
-  padding: 2rem;
-  position: relative;
-}
-.signup-container .right .login-account {
-  display: flex;
-  font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-}
-.signup-container .right .login-form .title {
-  position: relative;
-  font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 3rem;
   color: #243c74;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-align: center;
+  margin-top: 2rem;
 }
-.signup-container .right .login-form .input-field {
+.signup-form .input-field {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 3rem;
   margin: 2rem 0;
+  border-bottom: 2px #7c8cac solid;
 }
-.signup-container .right .login-form .input-field > input {
-  position: absolute;
+.signup-form .input-field > input {
   width: 100%;
   height: 100%;
-  padding: 0;
   background: transparent;
   border: none;
   outline: none;
-  border-bottom: 0.125rem solid #808080;
-  border-top: 0.125rem soild transparent;
   font-size: 1rem;
 }
-.signup-container .right .login-form .input-field > input:focus, .signup-container .right .login-form .input-field > input:valid {
-  border-bottom-color: #243c74;
+.signup-form .input-field:focus-within {
+  border-bottom: 2px #243c74 solid;
 }
-.signup-container .right .login-form .input-field > input::placeholder {
-  padding: 0;
-}
-.signup-container .right .login-form .input-field > i {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.signup-form .input-field > i {
   font-size: 1.5rem;
   color: #808080;
 }
-.signup-container .right .login-form .input-field > i ~ input:focus, .signup-container .right .login-form .input-field > i ~ input:valid {
+.signup-form .input-field > i.first-icon {
+  position: absolute;
+  left: 0;
+}
+.signup-form .input-field > i ~ input:focus, .signup-form .input-field > i ~ input:valid {
   border-bottom-color: #243c74;
 }
-.signup-container .right .login-form .input-field > i.show {
+.signup-form .input-field > i.icon {
+  left: 0;
+}
+.signup-form .input-field > i.show {
   right: 0;
 }
-.signup-container .right .login-form .input-field > i.hide {
+.signup-form .input-field > i.hide {
   right: 0;
 }
-.signup-container .right .login-form .birthday,
-.signup-container .right .login-form .gender-checkbox {
+.signup-form .birthday,
+.signup-form .gender-checkbox {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  color: #243c74;
+  font-weight: 300;
+  line-height: normal;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1.5rem 0;
   font-size: 1rem;
 }
-.signup-container .right .login-form .birthday .checkbox-content,
-.signup-container .right .login-form .gender-checkbox .checkbox-content {
-  display: flex;
-  align-items: center;
+.signup-form .birthday input {
+  margin-left: 2rem;
+  border: 0.125rem solid #243c74;
+  height: 2rem;
+  border-radius: 0.5rem;
 }
-.signup-container .right .login-form .birthday .checkbox-content input,
-.signup-container .right .login-form .gender-checkbox .checkbox-content input {
-  margin: 0 8px -2px 4px;
-  color: #243c74;
-  width: auto;
-  height: 100%;
-}
-.signup-container .right .login-form .button {
-  margin: 0.5rem 0;
-}
-.signup-container .right .login-form .button input {
+.signup-form > button {
+  width: 100%;
   border: none;
   color: #f2f4f7;
   height: 3rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
+  font-family: "Be Vietnam Pro", sans-serif;
   letter-spacing: 1px;
   border-radius: 1.5rem;
   background-color: #243c74;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin: 1rem 0;
+  margin-bottom: 2rem;
 }
-.signup-container .right .login-form .button input > hover {
+.signup-form > button > hover {
   background-color: #1b2d57;
 }
 

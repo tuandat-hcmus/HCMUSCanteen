@@ -1,21 +1,24 @@
-{{> cashier_sidebar }}
+{{!-- {{> cashier_sidebar }}
 <div class="main-content">
-<div style="display:float">
-       <div>
-            <div class="main-header">
-                Báo cáo doanh thu
-            </div>
-            
-            <div class="sub-header">
-                Tổng hợp và tạo báo cáo doanh thu theo ngày, tháng
-            </div>   
-       </div>
-       <div class="ic-plus" >
-        <i class='bx bxs-plus-square'></i>
-       </div>
+<div>
+        <div>
+                <div class="main-header">
+                    Báo cáo doanh thu
+                </div>
+                
+                <div class="sub-header">
+                    Tổng hợp và tạo báo cáo doanh thu theo ngày, tháng
+                </div>   
+        </div>
+        <div class="ic-plus" style="float:right" >
+            <i class='bx bxs-plus-square'></i>
+        </div>
 </div>
+    
     {{> filter }}
     {{> cashier_report_table }}
 </div> 
 
+ --}}
 
+{{>cashier_new_revenue}}

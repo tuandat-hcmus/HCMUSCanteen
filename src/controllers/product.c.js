@@ -30,20 +30,40 @@ module.exports = {
                 data = await Product.getBy(type, orderBy, isDesc);
             }
             const total = data.length;
-            
+
             const currentPage = req.query.page || 1;
             const itemsPerPage = 6;
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
             data = data.slice(startIndex, endIndex);
 
-            res.json({ 
+            res.json({
                 data: data,
                 perpage: itemsPerPage,
                 total: total,
-                type: type });
+                type: type
+            });
         } catch (error) {
             console.log('Product page error: ', error);
+        }
+    },
+
+    getType: async (req, res) => {
+        try {
+            let name = '';
+            if (req.user) {
+                if (req.user.HoTen) name = req.user.HoTen;
+                if (req.user.displayName) name = req.user.displayName;
+            }
+            const data = await Product.getType();
+            res.render('home', {
+                title: 'Home Page',
+                type: data,
+                name: name
+            });
+        }
+        catch (err) {
+            console.log('Get type err: ', err);
         }
     }
 }

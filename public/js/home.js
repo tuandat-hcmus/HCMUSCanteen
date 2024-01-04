@@ -3,12 +3,9 @@ let currentType = 'Tất cả';
 loadPage('Tất cả', 1);
 
 // Xử lí chọn loại
-// $('.dropdown-item').on('click', function () {
-//     $('#btn').html($(this).text());
-//     let type = $(this).text();
-//     type = type.replace(/(\r\n|\n|\r)/gm, "");
-//     loadPage(type, 1);
-// });
+$('input[name="categories"]').on('click', function() {
+    loadPage($(this).val(), 1);
+});
 
 function loadPage(type, page) {
     $.ajax({
@@ -17,7 +14,6 @@ function loadPage(type, page) {
         success: function (data) {
             currentPage = page;
             currentType = type;
-            console.log(data);
 
             const pages = Math.ceil(data.total / data.perpage);
             let pagination = ``;

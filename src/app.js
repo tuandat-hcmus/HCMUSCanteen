@@ -55,9 +55,53 @@ app.get('/bills', (req, res) => {
 //     console.log(`App listening at http://localhost:${port}`);
 // });
 
+const orderRouter = require('./router/orders.r');
+app.use(orderRouter);
+app.get('/customer', (req, res) => {
+    if (req.user.LaNhanVien !== '0')
+        res.render('home');
+    else
+        res.render('test1', {
+            role: 'khach'
+        });
+});
+app.get('/employee', (req, res) => {
+    if (req.user.LaNhanVien === '1')
+        res.render('test2', {
+            role: 'nv'
+        });
+    else
+        res.render('home');
+})
+
 const server = https.createServer({
     key: process.env.key,
     cert: process.env.cert
 }, app);
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
+
+const customer = new Set();
+const employee = new Set();
+const io = require('socket.io')(server);
+io.on('connection', socket => {
+    console.log(socket.id);
+    socket.on('sendOrder', (data) => {
+        console.log(data);
+        io.to('employees').emit('orders', data);
+    });
+
+    socket.on('identify', (userData) => {
+        if (userData && userData.role === 'khach') {
+            console.log("customer");
+            socket.join('customers');
+        } else if (userData && userData.role === 'nv') {
+            console.log("employee");
+            socket.join('employees');
+        }
+    });
+
+    socket.on('disconnect', () => {
+        console.log('disconnected: ', socket.id);
+    })
+});

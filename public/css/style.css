@@ -218,6 +218,41 @@ a.nav-item:hover i, a.nav-item.active i {
   gap: 2rem;
 }
 
+.filter-btn {
+  float: left;
+  width: 6rem;
+  height: 3rem;
+  position: relative;
+}
+.filter-btn label,
+.filter-btn input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.filter-btn label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 500;
+  color: #7C8CAC;
+  transition: color 350ms;
+}
+.filter-btn input[type=radio] {
+  opacity: 0;
+}
+.filter-btn input[type=radio]:checked + label {
+  border-bottom: 3px #243C74 solid;
+  color: #243C74;
+}
+.filter-btn:hover label {
+  color: #243C74;
+}
+
 button.filter-btn {
   background-color: transparent;
   border: none;
@@ -328,6 +363,8 @@ button.filter-btn:hover {
 .left {
   padding: 1rem;
   width: 60%;
+  display: flex;
+  flex-direction: column;
 }
 .left .name-logo > h1 {
   display: inline-block;
@@ -350,13 +387,19 @@ button.filter-btn:hover {
   font-weight: 700;
   line-height: normal;
 }
-.left img {
-  width: 60%;
+.left .image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.left .image-container img {
+  margin: 0 auto;
+  width: 75%;
 }
 
 .right {
   width: 40%;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
   position: relative;
 }
 .right .cre-account {
@@ -524,137 +567,94 @@ button.filter-btn:hover {
   transform: scale(1.01);
 }
 
-.login-container {
+.signup-form .title {
   position: relative;
-  min-width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.login-container .left {
-  padding: 2rem;
-  width: 45vw;
-}
-.login-container .left .name-logo > h1 {
-  display: inline-block;
-}
-.login-container .left .school {
-  text-transform: uppercase;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-size: 2rem;
-  color: #1B2D57;
-  font-family: "Be Vietnam Pro", sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-}
-.login-container .left .cteen {
-  text-transform: uppercase;
-  color: #243C74;
-  font-family: "Comfortaa", sans-serif;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.login-container .right {
-  width: 45vw;
-  padding: 2rem;
-  position: relative;
-}
-.login-container .right .login-account {
-  display: flex;
-  font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-}
-.login-container .right .login-form .title {
-  position: relative;
-  font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 3rem;
   color: #243C74;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-align: center;
+  margin-top: 2rem;
 }
-.login-container .right .login-form .input-field {
+.signup-form .input-field {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 3rem;
   margin: 2rem 0;
+  border-bottom: 2px #7C8CAC solid;
 }
-.login-container .right .login-form .input-field > input {
-  position: absolute;
+.signup-form .input-field > input {
   width: 100%;
   height: 100%;
-  padding: 0;
   background: transparent;
   border: none;
   outline: none;
-  border-bottom: 0.125rem solid #808080;
-  border-top: 0.125rem soild transparent;
   font-size: 1rem;
 }
-.login-container .right .login-form .input-field > input:focus, .login-container .right .login-form .input-field > input:valid {
-  border-bottom-color: #243C74;
+.signup-form .input-field:focus-within {
+  border-bottom: 2px #243C74 solid;
 }
-.login-container .right .login-form .input-field > input::placeholder {
-  padding: 0;
-}
-.login-container .right .login-form .input-field > i {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.signup-form .input-field > i {
   font-size: 1.5rem;
   color: #808080;
 }
-.login-container .right .login-form .input-field > i ~ input:focus, .login-container .right .login-form .input-field > i ~ input:valid {
+.signup-form .input-field > i.first-icon {
+  position: absolute;
+  left: 0;
+}
+.signup-form .input-field > i ~ input:focus, .signup-form .input-field > i ~ input:valid {
   border-bottom-color: #243C74;
 }
-.login-container .right .login-form .input-field > i.show {
+.signup-form .input-field > i.icon {
+  left: 0;
+}
+.signup-form .input-field > i.show {
   right: 0;
 }
-.login-container .right .login-form .input-field > i.hide {
+.signup-form .input-field > i.hide {
   right: 0;
 }
-.login-container .right .login-form .birthday,
-.login-container .right .login-form .gender-checkbox {
+.signup-form .birthday,
+.signup-form .gender-checkbox {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  color: #243C74;
+  font-weight: 300;
+  line-height: normal;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1.5rem 0;
   font-size: 1rem;
 }
-.login-container .right .login-form .birthday .checkbox-content,
-.login-container .right .login-form .gender-checkbox .checkbox-content {
-  display: flex;
-  align-items: center;
+.signup-form .birthday input {
+  margin-left: 2rem;
+  border: 0.125rem solid #243C74;
+  height: 2rem;
+  border-radius: 0.5rem;
 }
-.login-container .right .login-form .birthday .checkbox-content input,
-.login-container .right .login-form .gender-checkbox .checkbox-content input {
-  margin: 0 8px -2px 4px;
-  color: #243C74;
-  width: auto;
-  height: 100%;
-}
-.login-container .right .login-form .button {
-  margin: 0.5rem 0;
-}
-.login-container .right .login-form .button input {
+.signup-form > button {
+  width: 100%;
   border: none;
   color: #F2F4F7;
   height: 3rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
+  font-family: "Be Vietnam Pro", sans-serif;
   letter-spacing: 1px;
   border-radius: 1.5rem;
   background-color: #243C74;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin: 1rem 0;
+  margin-bottom: 2rem;
 }
-.login-container .right .login-form .button input > hover {
+.signup-form > button > hover {
   background-color: #1B2D57;
 }
 

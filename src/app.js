@@ -34,7 +34,9 @@ require('./mws/ggpassport')(app);
 require('./mws/fbpassport')(app);
 require('./mws/passport')(app);
 
-app.use(accountRouter);
+// app.use(accountRouter);
+const route = require('./routes');
+route(app);
 
 app.get('/home', (req, res) => {
     res.render('home', {

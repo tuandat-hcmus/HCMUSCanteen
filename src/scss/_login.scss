@@ -2,7 +2,7 @@
 
 .left {
   padding: 1rem;
-  flex: 1;
+  width: 60%;
   .name-logo {
     &>h1 {
       display: inline-block;
@@ -33,7 +33,7 @@
 
 
 .right {
-  flex: 1;
+  width: 40%;
   padding: 2rem;
   position: relative;
 

@@ -11,8 +11,10 @@ router.get('/login', (req, res) => {
     let username = null;
     let pw = null;
     // Ghi nhớ đăng nhập
+    console.log(req.signedCookies);
     if (req.signedCookies.info) {
         const info = JSON.parse(req.signedCookies.info);
+        
         username = info.u;
         pw = info.pw;
     }

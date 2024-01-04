@@ -325,7 +325,7 @@ button.filter-btn:hover {
 
 .left {
   padding: 1rem;
-  flex: 1;
+  width: 60%;
 }
 .left .name-logo > h1 {
   display: inline-block;
@@ -353,7 +353,7 @@ button.filter-btn:hover {
 }
 
 .right {
-  flex: 1;
+  width: 40%;
   padding: 2rem;
   position: relative;
 }

@@ -1,0 +1,102 @@
+.content_import {
+    background-color: $light-bg-color;
+    font-family: $base-font-family;
+    border-radius: 1rem;
+    padding: 2rem;
+
+    .head_import {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .import_title {
+
+
+            .id_import {
+                color: $normal-text-color;
+                font-size: 1.5rem;
+
+            }
+
+            .date_import {
+                color: $base-color;
+                font-size: 1.25rem;
+            }
+        }
+
+        .import_add {
+            button {
+                height: 2rem;
+                width: auto;
+                border: 0.125rem solid $base-color;
+                border-radius: 0.5rem;
+                font-size: 1rem;
+                color: $base-color;
+                cursor: pointer;
+
+                .icon {
+
+                    font-weight: 600;
+                }
+
+                &:hover {
+                    border: 0.25rem solid $heading-color;
+                }
+            }
+        }
+    }
+
+    .table_content {
+        font-size: 1rem;
+        display: grid;
+        grid-template-columns: 3rem 15rem 25rem 15rem 15rem 5rem;
+        margin: 1rem 0;
+
+        div {
+            text-align: center;
+        }
+
+    }
+
+    .thead {
+        color: $base-color;
+        padding-bottom: 0.75rem;
+        border-bottom: 0.125rem solid $unactive-nav-color;
+    }
+
+    .sub {
+        color: $sub-color;
+        padding: 1rem 0;
+    }
+
+    .sum_import {
+        background-color: $green-active;
+        border-radius: 0.5rem;
+        margin: 2rem 0;
+        padding: 1rem 0.25rem;
+    }
+
+    .foot_import {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            background-color: $base-color;
+            height: 2.5rem;
+            width: 6.5rem;
+            border-radius: 0.25rem;
+            text-align: center;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            border: none;
+            color: $light-bg-color;
+            cursor: pointer;
+            &:hover{
+                background-color: $heading-color;
+            }
+        }
+    }
+
+}

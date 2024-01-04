@@ -1595,10 +1595,25 @@ button.filter-btn:hover {
   margin-top: 0.5rem;
 }
 
+#edit {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
 .profile {
   flex: 1;
   background-color: #f2f4f7;
   padding: 1.375rem 1rem;
+  overflow: auto;
 }
 .profile header {
   color: #243c74;
@@ -1619,8 +1634,8 @@ button.filter-btn:hover {
 .profile .phead {
   position: relative;
   display: flex;
-  padding: 1.438rem;
-  margin-top: 0.938rem;
+  padding: 1rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   color: #000;
@@ -1629,10 +1644,10 @@ button.filter-btn:hover {
   font-size: 1rem;
 }
 .profile .phead .avatar {
-  width: 8rem;
-  height: 8rem;
-  margin: 2rem;
-  border-radius: 4rem;
+  width: 6rem;
+  height: 6rem;
+  margin: 1.5rem;
+  border-radius: 3rem;
 }
 .profile .phead .col1 {
   margin-left: 2rem;
@@ -1648,7 +1663,7 @@ button.filter-btn:hover {
   border-radius: 0.5rem;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
   width: 100%;
-  padding-bottom: 5rem;
+  padding-bottom: 1rem;
 }
 .profile .detail_pro .d_title {
   margin: 3rem;
@@ -1673,6 +1688,16 @@ button.filter-btn:hover {
 .profile .detail_pro p {
   font-size: 1rem;
   margin: 2rem 3rem;
+}
+
+.edit_detail {
+  background-color: #f2f4f7;
+  font-family: "Be Vietnam Pro", sans-serif;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 50vw;
+  height: 50vh;
+  margin: 25vh auto;
 }
 
 * {

@@ -55,7 +55,7 @@ $(document).ready(function () {
                         <div class="bottom-container">
 
                             <div class="subcontent">
-                            <p>Số lượng còn: ${data.data.SoLuongTon}</p>
+                            <p>Số lượng còn: ${data.data[i].SoLuongTon}</p>
                             <div class="star-rating">
                                 <i class='bx bxs-star'></i>
                                 <span>5.0</span>

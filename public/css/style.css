@@ -1242,7 +1242,11 @@ button.filter-btn:hover {
   justify-content: space-between;
 }
 
-.content_import {
+.content_pos {
+  position: relative;
+}
+.content_pos .content_import {
+  position: relative;
   background-color: #f2f4f7;
   font-family: "Be Vietnam Pro", sans-serif;
   border-radius: 1rem;
@@ -1251,20 +1255,20 @@ button.filter-btn:hover {
   height: 85vh;
   margin: 7vh auto;
 }
-.content_import .head_import {
+.content_pos .content_import .head_import {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.content_import .head_import .import_title .id_import {
+.content_pos .content_import .head_import .import_title .id_import {
   color: #000;
   font-size: 1.5rem;
 }
-.content_import .head_import .import_title .date_import {
+.content_pos .content_import .head_import .import_title .date_import {
   color: #243c74;
   font-size: 1.25rem;
 }
-.content_import .head_import .import_add button {
+.content_pos .content_import .head_import .import_add button {
   height: 2rem;
   width: auto;
   border: 0.125rem solid #243c74;
@@ -1273,45 +1277,45 @@ button.filter-btn:hover {
   color: #243c74;
   cursor: pointer;
 }
-.content_import .head_import .import_add button .icon {
+.content_pos .content_import .head_import .import_add button .icon {
   font-weight: 600;
 }
-.content_import .head_import .import_add button:hover {
+.content_pos .content_import .head_import .import_add button:hover {
   border: 0.25rem solid #1b2d57;
 }
-.content_import .table_content {
+.content_pos .content_import .table_content {
   font-size: 1rem;
   display: grid;
   grid-template-columns: 1fr 3fr 6fr 3fr 3fr 1fr;
   margin: 1rem 0;
 }
-.content_import .table_content div {
+.content_pos .content_import .table_content div {
   text-align: center;
 }
-.content_import .table_container {
+.content_pos .content_import .table_container {
   height: 20rem;
   overflow: auto;
 }
-.content_import .thead {
+.content_pos .content_import .thead {
   color: #243c74;
   padding-bottom: 0.75rem;
   border-bottom: 0.125rem solid #808080;
 }
-.content_import .sub {
+.content_pos .content_import .sub {
   color: #7c8cac;
   padding: 1rem 0;
 }
-.content_import .sum_import {
+.content_pos .content_import .sum_import {
   background-color: #00a67e;
   border-radius: 0.5rem;
   margin: 2rem 0;
   padding: 1rem 0.25rem;
 }
-.content_import .foot_import {
+.content_pos .content_import .foot_import {
   display: flex;
   justify-content: flex-end;
 }
-.content_import .foot_import button {
+.content_pos .content_import .foot_import button {
   background-color: #243c74;
   height: 2.5rem;
   width: 6.5rem;
@@ -1326,8 +1330,17 @@ button.filter-btn:hover {
   cursor: pointer;
   border-radius: 0.625rem;
 }
-.content_import .foot_import button:hover {
+.content_pos .content_import .foot_import button:hover {
   background-color: #1b2d57;
+}
+.content_pos .content_import .btn-close {
+  position: absolute;
+  top: -2.5rem;
+  right: -2.5rem;
+  cursor: pointer;
+}
+.content_pos .content_import .btn-close i {
+  font-size: 2.5rem;
 }
 
 .new_revenue_container {

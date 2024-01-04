@@ -2,8 +2,6 @@ require('dotenv').config();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const AccountModel = require('../models/acc.m');
-const bcrypt = require('bcrypt');
-const saltBounds = 10;
 
 passport.serializeUser((user, done) => {
     done(null, user);
@@ -19,18 +17,16 @@ passport.use(new GoogleStrategy({
     callbackURL: `https://localhost:3000/gg/auth`
 },
     async function (accessToken, refreshToken, profile, done) {
-        // // const rs = await AccountModel.getUser(profile.name.givenName);
-        // if (!rs) {
-        //     try {
-        //         // rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '0', '1', '0', null, null);
-        //         // await AccountModel.insert(rs);
-        //     }
-        //     catch (e) {
-        //         console.log("Passport login error: ", e);
-        //     }
-
-        // }
-        // console.log(profile);
+        let rs = await AccountModel.getUser(profile.id);
+        if (!rs) {
+            try {
+                rs = new AccountModel(profile.displayName, null, null, null, profile.id, null, null, '1', '0', '0', null, null);
+                await AccountModel.insert(rs);
+            }
+            catch (e) {
+                console.log("Passport login error: ", e);
+            }
+        }
         done(null, profile);
     }
 ));

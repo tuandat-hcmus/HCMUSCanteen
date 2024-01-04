@@ -59,8 +59,8 @@ router.post('/signup', passport.authenticate('passport-signup', {
 }));
 
 router.post('/logout', (req, res) => {
-    delete req.session.logined;
-    res.redirect('/');
+    delete req.user;
+    res.redirect('/login');
 });
 
 router.get('/gg', passport.authenticate('google', {

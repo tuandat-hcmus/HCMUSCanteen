@@ -1,0 +1,172 @@
+@import 'variables';
+
+.main-content {
+    padding: 0.5rem 1rem;
+    flex: 1;
+    background-color: $light-bg-color;
+    overflow: auto;
+}
+.top-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .curr-date {
+        color: $sub-color;
+        font: {
+            size: 1.25rem;
+            family: $base-font-family;
+            weight: 300;
+        }
+    }
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    i {
+        position: absolute;
+        font-size: 1.5rem;
+        color: $sub-color;
+        left: 0.5rem;
+    }
+    input {
+        flex: 1;
+        height: 100%;
+        border: 1px $unactive-nav-color solid;
+        padding: 0.25rem 0.5rem 0.25rem 2.25rem;
+        border-radius: 1.5rem;
+        background-color: transparent;
+        pointer-events: auto;
+        font: {
+            size: 1rem;
+            family: $base-font-family;
+        }
+        &:focus {
+            border: 1px $base-color solid;
+            outline: $base-color 1px solid
+        }
+        &::placeholder {
+            font-weight: 300;
+        }
+    }
+}
+
+.categories {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+button.filter-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0.25rem ;
+    color: $sub-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 350ms;
+    font: {
+        size: 1rem;
+        family: $base-font-family;
+        weight: 500;
+    }
+    &.active {
+        color: $base-color;
+        border-bottom: 3px $base-color solid;
+    }
+    &:hover {
+        color: $base-color;
+    }
+}
+
+.order-space {
+    margin-top: 1rem;
+     h2 {
+        color: $heading-color;
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-family: $base-font-family;
+        margin-bottom: 1rem;
+    }
+}
+
+.order-space .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13.785rem, 1fr));
+    grid-gap: 0.5rem;
+    .card-item {
+        box-shadow: 0 0 0.75rem rgba($color: #000000, $alpha: .3);
+        border-radius: 0.5rem;
+        background-color: $nav-bg;
+        .img-container {
+            padding-top: 100%;
+            position: relative;
+            background-color: $light-bg-color;
+            border-radius: 0.5rem 0.5rem 0 0;
+            img {
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                max-height: 100%;
+                max-width: 100%;
+                margin: auto;
+            }
+        }
+        .content {
+            padding: 0.75rem;
+            font-family: $base-font-family;
+            font-size: 1rem;
+            line-height: 1.6;
+            & > p {
+                color: $base-color;
+            }
+            .bottom-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                button.add-btn {
+                    background-color: $base-color;
+                    border: none;
+                    color: $nav-bg;
+                    font-size: 1.75rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.25rem;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+                .subcontent {
+                    p {
+                        font-size: 0.75rem;
+                        color: $sub-color;
+                    }
+                    i {
+                        color: $star-rating-color;
+                    }
+                }
+            }
+        }
+        &:hover {
+            outline: 2px $base-color solid;
+        }
+    }
+}
+
+.item-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: $normal-text-color;
+    &:hover {
+        color: $base-color;
+    }
+}

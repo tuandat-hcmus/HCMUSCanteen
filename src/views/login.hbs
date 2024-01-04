@@ -1,59 +1,64 @@
-<div class="login-container">
-  <div class="left">
-    <div class="name-logo">
-      <h1 class="school">hcmus</h1>
-      <h1 class="cteen">canteen</h1>
-    </div>
-    <img src="img/Login_img.svg" alt="Login_img">
+<div class="left">
+  <div class="name-logo">
+    <h1 class="school">hcmus</h1>
+    <h1 class="cteen">canteen</h1>
   </div>
-
-  <div class="right">
-    <div class="cre-account">
-      <p>Chưa có tài khoản?
-        <a href="/signup">
-          Đăng kí ngay
-        </a>
-      </p>
-    </div>
-    <form action="/login" method="post" class="login-form">
-
-      <h2 class="title">Đăng nhập</h2>
-      <div class="input-field">
-        
-        <input type="text" placeholder="Tên đăng nhập" name="username" value="{{username}}"/>
-        <i class='bx bx-user'></i>
-      </div>
-      <div class="input-field">
-        <input type="password" placeholder="Mật khẩu" name="password" value="{{password}}"/>
-        <i class='bx bx-cog icon'></i>
-        <i class='show bx bx-show-alt'></i>
-        {{!-- <i class='hide bx bx-hide'></i> --}}
-      </div>
-      <div class="checkbox-text">
-        <div class="checkbox-content">
-        <input type="checkbox" id="logCheck" name="rememberPw" {{#if username}} checked {{/if}}>
-        <label for="logCheck" class= "text">Ghi nhớ tôi</label>
-        </div>
-        <a href="#" class="text">Quên mật khẩu</a>
-      </div>
-      <div class="input-field button">
-      <input type="submit" value="Đăng nhập" />
-      </div>
-
-      <div class="social-media">
-
-        <div class="button">
-          <a href="/gg">
-          <img src="img/google.svg" alt="logo_Google" class="img_gg">
-          <p>Đăng nhập với Google</p>
-        </a></div>
-        <div class="button">
-          <a href="/fb">
-          <img src="img/facebook.svg" alt="logo_Facebook" class="img_fb">
-          <p>Đăng nhập với Facebook</p>
-        </a></div>
-        
-      </div>
-    </form>
-  </div>
+  <img src="img/Login_img.svg" alt="Login_img">
 </div>
+
+<div class="right">
+  <div class="cre-account">
+    <p>Chưa có tài khoản?
+      <a href="/signup">
+        Đăng kí ngay
+      </a>
+    </p>
+  </div>
+  <form action="/login" method="post" class="login-form">
+
+    <h2 class="title">Đăng nhập</h2>
+    <div class="input-field">
+
+      <input type="text" placeholder="Tên đăng nhập" name="username" value="{{username}}" />
+      <i class='bx bx-user'></i>
+    </div>
+    <div class="input-field">
+      <input type="text" placeholder="Tên đăng nhập" name="username" value="{{username}}" />
+      <i class='bx bx-cog first-icon'></i>
+      <i class='show bx bx-show-alt' onclick="togglePasswordVisibility('password')"></i>
+      <i class='hide bx bx-hide' style="display: none;" onclick="togglePasswordVisibility('password')"></i>
+    </div>
+    <div class="checkbox-text">
+      <div class="checkbox-content">
+        <input type="checkbox" id="logCheck" name="rememberPw" {{#if username}} checked {{/if}}>
+        <label for="logCheck" class="text">Ghi nhớ tôi</label>
+      </div>
+      <a href="#" class="text">Quên mật khẩu</a>
+    </div>
+    <button type="submit" value="Đăng nhập">Đăng nhập </button>
+    <div class="ruler">
+      <hr class="horizontal-line">
+      <div class="section">Hoặc</div>
+    </div>
+  </form>
+  <ul class="social-media">
+    <li>
+      <form action="/gg">
+        <button type="submit">
+          <img src="img/google.svg" class="img_gg">
+          <span class="name">Đăng nhập với Google</span>
+        </button>
+      </form>
+    </li>
+    <li>
+      <form action="/fb">
+        <button>
+          <img src="img/facebook.svg" class="img_fb">
+          <span class="name">Đăng nhập với Facebook</span>
+        </button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+<script src="/js/login.js"></script>

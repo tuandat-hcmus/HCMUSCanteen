@@ -8,6 +8,7 @@ const hbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const accountRouter = require('./routes/acc.r');
+const homeRouter = require('./routes/home.r');
 
 app.engine('.hbs', hbs.engine({
     extname: '.hbs'
@@ -35,12 +36,7 @@ require('./mws/fbpassport')(app);
 require('./mws/passport')(app);
 
 app.use(accountRouter);
-
-app.get('/home', (req, res) => {
-    res.render('home', {
-        title: 'Home Page'
-    });
-});
+app.use(homeRouter);
 
 app.get('/bills', (req, res) => {
     res.render('bills', {
@@ -53,6 +49,7 @@ app.get('/bills', (req, res) => {
 // });
 
 const orderRouter = require('./routes/orders.r');
+const { get } = require('http');
 app.use(orderRouter);
 app.get('/customer', (req, res) => {
     if (req.user.LaNhanVien !== '0')

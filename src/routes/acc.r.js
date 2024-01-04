@@ -59,8 +59,10 @@ router.post('/signup', passport.authenticate('passport-signup', {
 }));
 
 router.post('/logout', (req, res) => {
-    delete req.user;
-    res.redirect('/login');
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/login');
+    });
 });
 
 router.get('/gg', passport.authenticate('google', {
@@ -83,4 +85,5 @@ router.get('/fb/auth', passport.authenticate('facebook', {
     function (req, res) {
         res.redirect('/home');
     });
+
 module.exports = router;

@@ -65,9 +65,9 @@ module.exports = {
     },
 
     selectAll: async (tbName) => {
-        let dbcn = null;
         try {
-            const data = await dbcn.any(`SELECT * FROM "${tbName}"`);
+            const query = `SELECT * FROM "${tbName}"`;
+            const data = await db.any(query);
             return data;
         }
         catch (error) {
@@ -76,7 +76,6 @@ module.exports = {
     },
 
     selectAllBy: async (tbName, colOrder, isDesc) => {
-        let dbcn = null;
         try {
             const query = `
             SELECT * FROM "${tbName}"
@@ -87,7 +86,7 @@ module.exports = {
                 }
                 else query += `ORDER BY ${colOrder} ASC `;
             }
-            const data = await dbcn.any(query);
+            const data = await db.any(query);
             return data;
         }
         catch (error) {

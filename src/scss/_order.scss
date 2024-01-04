@@ -1,5 +1,4 @@
-@import 'variables';
-
+@import "variables";
 
 .order {
     width: 23.188rem;
@@ -13,6 +12,9 @@
     overflow: hidden;
     transition: all 350ms;
     &.toggle {
+        * {
+            display: none;
+        }
         width: 0;
         padding: 0;
     }

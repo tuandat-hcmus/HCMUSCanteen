@@ -175,6 +175,9 @@ a.nav-item:hover i, a.nav-item.active i {
   width: 0;
   padding: 0;
 }
+.order.toggle * {
+  display: none;
+}
 
 .top-order {
   display: flex;

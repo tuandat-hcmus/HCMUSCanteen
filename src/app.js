@@ -60,6 +60,13 @@ app.get("/cashier/import", (req, res) => {
     });
 });
 
+app.get("/admin", (req, res) => {
+    res.render("admin", {
+        title: "admin page",
+    });
+});
+
+
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });

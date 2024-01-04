@@ -1,114 +1,123 @@
-<div class="comment-container">
+<section class="comment-container">
     <section class="card_food">
         <img src="" alt="" class="img_food" />
-   
+
         <button class="btn-order">
             Đặt món
         </button>
-        
+
         <div class="food-detail">
             <div class="type">{{type}} Cơm</div>
             <div class="name">{{name}} Cơm chiên trứng</div>
             <div class="stock">{{stock}} Số lượng còn: 20 {{stock}}</div>
-            <div class="star">{{n_star}}   ({{n_comment }} đánh giá)</div>
+            <div class="star">{{n_star}} ({{n_comment}} đánh giá)</div>
             <div class="price">{{price}} 25.000 VND</div>
         </div>
     </section>
 
-    
-    <div class="state-container">
-        <div class="newest-order">
-            <section>
-                <table class="newest-order-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Mã hóa đơn</th>
-                            <th>Phương thức</th>
-                            <th>Tình trạng</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{no}}1</td>
-                            <td>{{id}}HD001</td>
-                            <td>{{method}}Card</td>
-                            <td>{{state}}Đã thanh toán</td>
-                            <td><i class="bx bx-file-find btn-detail"></i></td>
-                        </tr>
-                        <tr>
-                            <td> {{no}}1</td>
-                            <td>{{id}}HD001</td>
-                            <td>{{method}}Card</td>
-                            <td>{{state}}Hủy</td>
-                            <td><i class="bx bx-file-find btn-detail"></i></td>
-                        </tr>
-                        <tr>
-                            <td> {{no}}1</td>
-                            <td>{{id}}HD001</td>
-                            <td>{{method}}Card</td>
-                            <td>{{state}}Chưa thanh toán</td>
-                            <td><i class="bx bx-file-find btn-detail"></i></td>
+    <section class="comment-container">
+        <div class="overal">
+            <div class="header">
+                Đánh giá từ khách hàng
+            </div>
 
-                        </tr>
-                    </tbody>
-                </table>
-                <i class="bx bx-expand-alt btn-expand"></i>
-            </section>
+            <div class="star-container">
+                <div class="row1">
+                    {{n_star}}4.0 / 5.0
+                </div>
+                <div class="row2">
+
+                </div>
+            </div>
+
+            <div class="sub-header">
+                {{n_comment}}
+                100 đánh giá
+            </div>
+
+            <div class="detail-star">
+                <div class="row">
+                    <div class="star-number">5</div>
+                    <i class="bx bxs-star"></i>
+
+                </div>
+            </div>
         </div>
 
-        <div class="newest-customer">
-
-            <section>
-                <div class="client">
-                    <div class="no">{{no_client}}1</div>
-                    <div> <img src="" alt="" class="img-food" /></div>
-                    <div class="name-time">
-                        <div class="_name">
-                            {{name_client}}
-                            Nguyễn Văn A
-                        </div>
-                        <div class="_time">
-                            {{time}}2 phút trước
-                        </div>
-
+        <div class="detail-container">
+            <div class="card-comment">
+                <img src="" alt="" class="img-comment" />
+                <div class="detail">
+                    <div class="name">
+                        {{name-client}}Johnny Cage
                     </div>
 
-                </div>
-                <div class="client">
-                    <div class="no">{{no_client}}1</div>
-                    <div> <img src="" alt="" class="img-client" /></div>
-                    <div class="name-time">
-                        <div class="_name">
-                            {{name_client}}
-                            Nguyễn Văn A
-                        </div>
-                        <div class="_time">
-                            {{time}}2 phút trước
-                        </div>
-
+                    <div class="star-rated">
+                        {{star-rated}}
+                        5
                     </div>
 
-                </div>
-                <div class="client">
-                    <div class="no">{{no_client}}1</div>
-                    <div> <img src="" alt="" class="img-client" /></div>
-                    <div class="name-time">
-                        <div class="_name">
-                            {{name_client}}
-                            Nguyễn Văn A
-                        </div>
-                        <div class="_time">
-                            {{time}}2 phút trước
-                        </div>
-
+                    <div class="time">
+                        {{date}}
+                        {{time}}
+                        2024-1-1 3:05
                     </div>
 
+                    <div class="content">
+                        {{content}}One of the best food I’ve ever had in my life</div>
                 </div>
-            </section>
+            </div>
+
+            <div class="card-comment">
+                <img src="" alt="" class="img-comment" />
+                <div class="detail">
+                    <div class="name">
+                        {{name-client}}Johnny Cage
+                    </div>
+
+                    <div class="star-rated">
+                        {{star-rated}}
+                        5
+                    </div>
+
+                    <div class="time">
+                        {{date}}
+                        {{time}}
+                        2024-1-1 3:05
+                    </div>
+
+                    <div class="content">
+                        {{content}}One of the best food I’ve ever had in my life</div>
+                </div>
+            </div>
+
+            <div class="card-comment">
+                <img src="" alt="" class="img-comment" />
+                <div class="detail">
+                    <div class="name">
+                        {{name-client}}Johnny Cage
+                    </div>
+
+                    <div class="star-rated">
+                        {{star-rated}}
+                        5
+                    </div>
+
+                    <div class="time">
+                        {{date}}
+                        {{time}}
+                        2024-1-1 3:05
+                    </div>
+
+                    <div class="content">
+                        {{content}}One of the best food I’ve ever had in my life</div>
+                </div>
+            </div>
+
         </div>
-    </div>
-</div>
+
+    </section>
+
+</section>
 
 <script src="/js/table.js"></script>

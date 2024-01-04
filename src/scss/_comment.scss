@@ -1,4 +1,6 @@
 .comment-container {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     background-color: $light-bg-color;
     padding: 1.375rem 1rem;
@@ -30,11 +32,11 @@
             padding-right: 1rem;
         }
 
-        .img_food {
+        img.img_food {
             display: inline-block;
             width: 20rem;
             height: 12.125rem;
-            border-radius: 50%;
+            border-radius: 0.5rem;
         }
         .btn-order {
             position: absolute;
@@ -78,138 +80,108 @@
         }
     }
 
-    .state-container {
-        margin-top: 3rem;
-        section {
-            margin-top: 1rem;
-        }
-    }
-
-    .newest-order {
+    .comment-container {
         flex: 1;
-    }
-
-    .newest-order section {
-        position: relative;
-    }
-
-    .btn-expand {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        font-size: 1.5rem;
-        color: $unactive-nav-color;
-        &:hover {
-            transform: scale(1.05);
-        }
-    }
-
-    .newest-order-table {
-        position: relative;
-        border-collapse: separate;
-        text-align: left;
-        width: 100%;
-        padding: 3.375rem 1.063rem 1rem 1.063rem;
-        th,
-        td {
-            border-bottom: 1px solid $border-table;
-            padding: 0.375rem;
-        }
-        thead {
-            @include textStyle($normal-text-color, 600, $base-font-family);
-        }
-        tbody {
-            @include textStyle($normal-text-color, 300, $base-font-family);
-            font-size: 0.813rem;
-        }
-
-        .btn-detail {
-            @include textStyle($normal-text-color, 300, $base-font-family);
-            font-size: 1.5rem;
-        }
-
-        tbody tr:hover {
-            background-color: $light-bg-color !important;
-            border-color: $light-bg-color !important;
-        }
-        td {
-            &.paid {
-                color: $green-active;
-            }
-            &.pending {
-                color: $pending-color;
-            }
-            &.canceled {
-                color: $danger-color;
-            }
-        }
-        th,
-        td {
-            background-clip: padding-box;
-        }
-    }
-
-    .newest-customer {
-        flex: 1;
-        margin-left: 2rem;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        width: 100%;
+        background-color: $nav-bg;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        .overal {
+            border-right: 1px solid $sub-color;
+            flex: 1;
+            .header {
+                @include textStyle($normal-text-color, 600, $base-font-family);
+                font-size: 1.25rem;
+            }
 
-        section {
-            padding: 1.125rem 0.813rem 0 0.813rem;
+            .star-container {
+                padding: 1.563rem 0;
+                text-align: center;
+                .row1 {
+                    @include textStyle($base-color, 400, $base-font-family);
+                    font-size: 1.75rem;
+                }
+            }
 
-            .client {
-                padding: 0.5rem 1rem;
+            .sub-header {
+                @include textStyle($unactive-nav-color, 400, $base-font-family);
+            }
+
+            .detail-star {
+                .row {
+                    display: grid;
+                    grid-template-columns: 1;
+
+                    .star-number {
+                        @include textStyle(
+                            $normal-text-color,
+                            400,
+                            $base-font-family
+                        );
+                    }
+                }
+                .bxs-star {
+                    color: $star-rating-color;
+                }
+            }
+        }
+
+        .detail-container {
+            flex: 2;
+            margin-left: 0.938rem;
+            height: 25rem;
+            overflow: auto;
+
+            .card-comment {
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+                border-radius: 0.5rem;
+                padding: 0.688rem 0.875rem;
+                margin-bottom: 1rem;
+
                 display: flex;
-                align-items: center;
-                div {
-                    margin-right: 1rem;
-                }
-                .no {
-                    @include textStyle($base-color, 600, $base-font-family);
-                }
-                .img-client {
-                    width: 4rem;
-                    border-radius: 4.5rem;
+                flex-direction: row;
+
+                img.img-comment {
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 2rem;
                 }
 
-                ._name {
-                    @include textStyle(
-                        $normal-text-color,
-                        400,
-                        $base-font-family
-                    );
-                    margin-bottom: 1rem;
-                }
-                ._time {
-                    @include textStyle(
-                        $normal-text-color,
-                        300,
-                        $base-font-family
-                    );
-                    font-size: 0.75rem;
-                }
+                .detail {
+                    margin-left: 0.375rem;
+                    * {
+                        margin-top: 0.188rem;
+                    }
+                    .name {
+                        @include textStyle(
+                            $normal-text-color,
+                            500,
+                            $base-font-family
+                        );
+                        font-size: 0.75rem;
+                    }
 
-                &:hover {
-                    background-color: $light-bg-color;
+                    .star-rated {
+                        @include textStyle($base-color, 400, $base-font-family);
+                        font-size: 0.75rem;
+                    }
+
+                    .time {
+                        @include textStyle(
+                            $unactive-nav-color,
+                            300,
+                            $base-font-family
+                        );
+                        font-size: 0.75rem;
+                    }
+
+                    .content {
+                        margin-top: 0.5rem;
+                    }
                 }
             }
-        }
-    }
-
-    .state-container {
-        display: flex;
-        width: 100%;
-        section {
-            min-height: 24rem;
-        }
-    }
-
-    [class*="btn-"] {
-        cursor: pointer;
-
-        &:hover {
-            transform: scale(1.05);
         }
     }
 }

@@ -1,4 +1,3 @@
-
 .new_revenue_container {
     background-color: $nav-bg;
     width: 70vw;
@@ -6,9 +5,12 @@
     margin: 7vh auto;
     display: grid;
     border-radius: 1.25rem;
-    padding-left: 2.75rem;
-    padding-right: 2.75rem;
+    padding: 1.375rem 2.75rem;
 
+    .date {
+        @include textStyle($base-color, 400, $base-font-family);
+        font-size: 1.5rem;
+    }
     .grid {
         width: 100%;
         display: grid;
@@ -47,7 +49,7 @@
         @include textStyle($base-color, 400, $base-font-family);
     }
 
-    .btn-confirm button{
+    .btn-confirm button {
         float: right;
         border: none;
         border-radius: 0.625rem;
@@ -57,9 +59,7 @@
         margin-top: 3rem;
         cursor: pointer;
         &:hover {
-           border: 0.125rem solid  $base-color;
+            background-color: $heading-color;
         }
     }
 }
-
-

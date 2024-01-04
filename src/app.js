@@ -7,7 +7,7 @@ const hbs = require('express-handlebars');
 //---
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const accountRouter = require('./router/acc.r');
+const accountRouter = require('./routes/acc.r');
 
 app.engine('.hbs', hbs.engine({
     extname: '.hbs'
@@ -55,7 +55,7 @@ app.get('/bills', (req, res) => {
 //     console.log(`App listening at http://localhost:${port}`);
 // });
 
-const orderRouter = require('./router/orders.r');
+const orderRouter = require('./routes/orders.r');
 app.use(orderRouter);
 app.get('/customer', (req, res) => {
     if (req.user.LaNhanVien !== '0')

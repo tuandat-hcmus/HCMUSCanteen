@@ -1,7 +1,7 @@
 require('dotenv').config();
 const passport = require('passport');
 const MyStrategy = require('../utils/customSPP');
-const AccountModel = require('../model/acc.m');
+const AccountModel = require('../models/acc.m');
 const bcrypt = require('bcrypt');
 const saltBounds = 10;
 

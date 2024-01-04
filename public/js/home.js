@@ -4,6 +4,11 @@ $(document).ready(function () {
     loadPages(currentType);
     loadPage(currentType, 1);
     // Xử lí chọn loại
+    $('input[name="categories"]').on('click', function () {
+        loadPage($(this).val(), 1);
+        $('#pagination').empty();
+        loadPages($(this).val());
+    });
     // $('.dropdown-item').on('click', function () {
     //     $('#btn').html($(this).text());
     //     let type = $(this).text();
@@ -22,8 +27,6 @@ $(document).ready(function () {
             loadPage(currentType, parseInt($(this).text()));
         })
     }
-
-
 
     function loadPage(type, page) {
         $.ajax({

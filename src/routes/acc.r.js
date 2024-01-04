@@ -5,7 +5,7 @@ const passport = require('passport');
 router.get('/login', (req, res) => {
     if (req.user) {
         // console.log(req.user);
-        res.redirect('/home');
+        res.redirect('/client');
         return;
     }
     let username = null;
@@ -73,7 +73,7 @@ router.get('/gg/auth', passport.authenticate('google', {
     failureRedirect: '/login'
 }),
     function (req, res) {
-        res.redirect('/home');
+        res.redirect('/client');
     });
 
 
@@ -83,7 +83,7 @@ router.get('/fb/auth', passport.authenticate('facebook', {
     failureRedirect: '/login'
 }),
     function (req, res) {
-        res.redirect('/home');
+        res.redirect('/client');
     });
 
 module.exports = router;

@@ -11,185 +11,20 @@
   </header>
   <section class="categories">
     <div class="filter-btn">
-      <input type="radio" name="categories" id="all" value="Tất cả">
+      <input type="radio" name="categories" id="all" value="Tất cả" checked>
       <label for="all">Tất cả</label>
     </div>
+    {{#each type}}
     <div class="filter-btn">
-      <input type="radio" name="categories" id="drinks" value="Đồ uống">
-      <label for="drinks">Đồ uống</label>
+      <input type="radio" name="categories" id='{{this.MaLoai}}' value='{{this.TenLoai}}'>
+      <label for='{{this.MaLoai}}'>{{this.TenLoai}}</label>
     </div>
-    <div class="filter-btn">
-      <input type="radio" name="categories" id="chicken" value="Gà">
-      <label for="chicken">Gà</label>
-    </div>
+    {{/each}}
   </section>
   <section class="order-space">
     <h2>Chọn món</h2>
     <section class="card-container" id="card-container">
-      {{!-- <div class="card-item">
-        <a href="" class="item-link">
-          <div class="img-container">
-            <img src="/img/products/Fried-rice.jpg" alt="rice">
-          </div>
-        </a>
 
-        <div class="content">
-          <a href="" class="item-link">
-            <h3>Cơm chiên dương châu</h3>
-          </a>
-          <p>25.000Đ</p>
-          <div class="bottom-container">
-
-            <div class="subcontent">
-              <p>Số lượng còn: 10</p>
-              <div class="star-rating">
-                <i class='bx bxs-star'></i>
-                <span>5.0</span>
-              </div>
-            </div>
-            <button class="add-btn">
-              <i class='bx bx-plus'></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-item">
-        <a href="" class="item-link">
-          <div class="img-container">
-            <img src="/img/products/noodle.jpeg" alt="rice">
-          </div>
-        </a>
-
-        <div class="content">
-          <a href="" class="item-link">
-            <h3>Cơm chiên dương châu</h3>
-          </a>
-          <p>25.000Đ</p>
-          <div class="bottom-container">
-
-            <div class="subcontent">
-              <p>Số lượng còn: 10</p>
-              <div class="star-rating">
-                <i class='bx bxs-star'></i>
-                <span>5.0</span>
-              </div>
-            </div>
-            <button class="add-btn">
-              <i class='bx bx-plus'></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-item">
-        <a href="" class="item-link">
-          <div class="img-container">
-            <img src="/img/products/noodle.jpeg" alt="rice">
-          </div>
-        </a>
-
-        <div class="content">
-          <a href="" class="item-link">
-            <h3>Cơm chiên dương châu</h3>
-          </a>
-          <p>25.000Đ</p>
-          <div class="bottom-container">
-
-            <div class="subcontent">
-              <p>Số lượng còn: 10</p>
-              <div class="star-rating">
-                <i class='bx bxs-star'></i>
-                <span>5.0</span>
-              </div>
-            </div>
-            <button class="add-btn">
-              <i class='bx bx-plus'></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <a href="" class="item-link">
-          <div class="img-container">
-            <img src="/img/products/noodle.jpeg" alt="rice">
-          </div>
-        </a>
-
-        <div class="content">
-          <a href="" class="item-link">
-            <h3>Cơm chiên dương châu</h3>
-          </a>
-          <p>25.000Đ</p>
-          <div class="bottom-container">
-
-            <div class="subcontent">
-              <p>Số lượng còn: 10</p>
-              <div class="star-rating">
-                <i class='bx bxs-star'></i>
-                <span>5.0</span>
-              </div>
-            </div>
-            <button class="add-btn">
-              <i class='bx bx-plus'></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <a href="" class="item-link">
-          <div class="img-container">
-            <img src="/img/products/noodle.jpeg" alt="rice">
-          </div>
-        </a>
-
-        <div class="content">
-          <a href="" class="item-link">
-            <h3>Cơm chiên dương châu</h3>
-          </a>
-          <p>25.000Đ</p>
-          <div class="bottom-container">
-
-            <div class="subcontent">
-              <p>Số lượng còn: 10</p>
-              <div class="star-rating">
-                <i class='bx bxs-star'></i>
-                <span>5.0</span>
-              </div>
-            </div>
-            <button class="add-btn">
-              <i class='bx bx-plus'></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <a href="" class="item-link">
-          <div class="img-container">
-            <img src="/img/products/noodle.jpeg" alt="rice">
-          </div>
-        </a>
-
-        <div class="content">
-          <a href="" class="item-link">
-            <h3>Cơm chiên dương châu</h3>
-          </a>
-          <p>25.000Đ</p>
-          <div class="bottom-container">
-
-            <div class="subcontent">
-              <p>Số lượng còn: 10</p>
-              <div class="star-rating">
-                <i class='bx bxs-star'></i>
-                <span>5.0</span>
-              </div>
-            </div>
-            <button class="add-btn">
-              <i class='bx bx-plus'></i>
-            </button>
-          </div>
-        </div>
-      </div> --}}
     </section>
     <ul id="pagination">
     </ul>

@@ -60,6 +60,13 @@ app.get("/cashier/import", (req, res) => {
     });
 });
 
+
+app.get("/user/profile", (req, res) => {
+    res.render("user_profile", {
+        title: "user profile page",
+    });
+});
+
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });

@@ -65,9 +65,8 @@ module.exports = {
     },
 
     selectAll: async (tbName) => {
-        let dbcn = null;
         try {
-            const data = await dbcn.any(`SELECT * FROM "${tbName}"`);
+            const data = await db.any(`SELECT * FROM "${tbName}"`);
             return data;
         }
         catch (error) {

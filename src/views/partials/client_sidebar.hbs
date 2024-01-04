@@ -11,7 +11,7 @@
 
         </div>
         <button id="menu-btn">
-            <i class='bx bx-menu' ></i>
+            <i class='bx bx-menu'></i>
         </button>
     </section>
     <ul class="item-container">
@@ -33,10 +33,13 @@
             <img src="" alt="" class="avatar">
             <p class="open">Nguyễn Văn A</p>
         </a>
-        <button class="logout-btn ">
-            <i class='bx bx-log-out'></i>
-            <p class="open">Đăng xuất</p>
-        </button>
+        <form action="/logout" method="post">
+            <button type="submit" class="logout-btn ">
+                <i class='bx bx-log-out'></i>
+                <p class="open">Đăng xuất</p>
+            </button>
+        </form>
+
     </section>
 </aside>
 <script src="js/sidebar.js"></script>

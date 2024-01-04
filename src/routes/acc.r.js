@@ -11,10 +11,8 @@ router.get('/login', (req, res) => {
     let username = null;
     let pw = null;
     // Ghi nhớ đăng nhập
-    console.log(req.signedCookies);
     if (req.signedCookies.info) {
         const info = JSON.parse(req.signedCookies.info);
-        
         username = info.u;
         pw = info.pw;
     }
@@ -57,12 +55,14 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', passport.authenticate('passport-signup', {
     failureRedirect: '/',
-    successRedirect: '/home'
+    successRedirect: '/client'
 }));
 
 router.post('/logout', (req, res) => {
-    delete req.session.logined;
-    res.redirect('/');
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/login');
+    });
 });
 
 router.get('/gg', passport.authenticate('google', {
@@ -85,4 +85,5 @@ router.get('/fb/auth', passport.authenticate('facebook', {
     function (req, res) {
         res.redirect('/home');
     });
+
 module.exports = router;

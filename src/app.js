@@ -38,17 +38,17 @@ require('./mws/passport')(app);
 const route = require('./routes');
 route(app);
 
-app.get('/home', (req, res) => {
-    res.render('home', {
-        title: 'Home Page'
-    });
-});
+// app.get('/home', (req, res) => {
+//     res.render('home', {
+//         title: 'Home Page'
+//     });
+// });
 
-app.get('/bills', (req, res) => {
-    res.render('bills', {
-        title: 'Bills'
-    })
-})
+// app.get('/bills', (req, res) => {
+//     res.render('bills', {
+//         title: 'Bills'
+//     })
+// })
 
 // app.listen(port, () => {
 //     console.log(`App listening at http://localhost:${port}`);

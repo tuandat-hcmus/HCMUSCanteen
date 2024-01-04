@@ -1477,7 +1477,7 @@ button.filter-btn:hover {
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.new_revenue_container .btn-confirm button {
+.new_revenue_container .btn-confirm {
   float: right;
   border: none;
   border-radius: 0.625rem;
@@ -1487,10 +1487,6 @@ button.filter-btn:hover {
   font-family: "Be Vietnam Pro", sans-serif;
   background-color: #243c74;
   margin-top: 3rem;
-  cursor: pointer;
-}
-.new_revenue_container .btn-confirm button:hover {
-  background-color: #1b2d57;
 }
 
 .comment-container {

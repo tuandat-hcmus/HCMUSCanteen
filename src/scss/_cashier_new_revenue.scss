@@ -11,6 +11,7 @@
         @include textStyle($base-color, 400, $base-font-family);
         font-size: 1.5rem;
     }
+
     .grid {
         width: 100%;
         display: grid;
@@ -27,8 +28,9 @@
         &.row {
             @include textStyle($sub-color, 400, $base-font-family);
             padding: 1.063rem;
-            &:hover{
-                background-color:$light-bg-color;
+
+            &:hover {
+                background-color: $light-bg-color;
             }
         }
 
@@ -42,6 +44,7 @@
         height: 20rem;
         overflow: auto;
     }
+
     .badge {
         width: 100%;
         display: flex;
@@ -52,17 +55,18 @@
         @include textStyle($base-color, 400, $base-font-family);
     }
 
-    .btn-confirm button {
-        float: right;
-        border: none;
-        border-radius: 0.625rem;
-        padding: 0.5rem 1.5rem;
-        @include textStyle($nav-bg, 600, $base-font-family);
-        background-color: $base-color;
-        margin-top: 3rem;
-        cursor: pointer;
-        &:hover {
-            background-color: $heading-color;
-        }
+    .btn-confirm {
+
+        
+            float: right;
+            border: none;
+            border-radius: 0.625rem;
+            padding: 0.5rem 1.5rem;
+            @include textStyle($nav-bg, 600, $base-font-family);
+            background-color: $base-color;
+            margin-top: 3rem;
+            
+        
+        
     }
 }

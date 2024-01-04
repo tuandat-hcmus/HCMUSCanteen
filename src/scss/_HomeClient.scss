@@ -235,3 +235,8 @@ button.filter-btn {
         color: $base-color;
     }
 }
+
+#pagination {
+    display: flex;
+    list-style-type: none;
+}

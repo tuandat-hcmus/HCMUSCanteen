@@ -360,6 +360,11 @@ button.filter-btn:hover {
   color: #243C74;
 }
 
+#pagination {
+  display: flex;
+  list-style-type: none;
+}
+
 .left {
   padding: 1rem;
   width: 60%;

@@ -1,50 +1,42 @@
-let currentPage = 1;
-let currentType = 'Tất cả';
-loadPage('Tất cả', 1);
+$(document).ready(function () {
+    let currentPage = 1;
+    let currentType = 'Tất cả';
+    loadPages(currentType);
+    loadPage(currentType, 1);
+    // Xử lí chọn loại
+    // $('.dropdown-item').on('click', function () {
+    //     $('#btn').html($(this).text());
+    //     let type = $(this).text();
+    //     type = type.replace(/(\r\n|\n|\r)/gm, "");
+    //     loadPage(type, 1);
+    // });
+    async function loadPages(type) {
+        const res = await fetch(`/client/page?type=${type}`);
+        const data = await res.json();
+        const pages = Math.ceil(data.total / data.perpage);
+        const pageContainer = $('#pagination');
+        for (let i = 1; i <= pages; i++) {
+            pageContainer.append($(`<li><button class="page-click">${i}</button></li>`));
+        }
+        $('.page-click').on('click', function () {
+            loadPage(currentType, parseInt($(this).text()));
+        })
+    }
 
-// Xử lí chọn loại
-// $('.dropdown-item').on('click', function () {
-//     $('#btn').html($(this).text());
-//     let type = $(this).text();
-//     type = type.replace(/(\r\n|\n|\r)/gm, "");
-//     loadPage(type, 1);
-// });
 
-function loadPage(type, page) {
-    $.ajax({
-        url: `/client/page?type=${type}&page=${page}`,
-        method: 'GET',
-        success: function (data) {
-            currentPage = page;
-            currentType = type;
-            console.log(data);
 
-            const pages = Math.ceil(data.total / data.perpage);
-            let pagination = ``;
-            for (let i = 0; i < pages; i++) {
-                if (i === currentPage - 1) {
-                    pagination += `
-                            <li class="page-item active" aria-current="page">
-                            <span class="page-link">${i + 1}</span>
-                            </li>
-                        `
-                }
-                else {
-                    pagination += `
-                            <li class="page-item"><a class="page-link" href="#">${i + 1}</a></li>
-                        `;
-                }
-            }
-            $('#pagination').html(pagination);
-
-            $('#pagination').off('click', '.page-item').on('click', '.page-item', function () {
-                let page = parseInt($(this).children().html());
-                loadPage(currentType, page);
-            });
-
-            let dataHtml = ``;
-            for (let i = 0; i < data.perpage && i < data.data.length; i++) {
-                dataHtml += `
+    function loadPage(type, page) {
+        $.ajax({
+            url: `/client/page?type=${type}&page=${page}`,
+            method: 'GET',
+            success: function (data) {
+                currentPage = page;
+                currentType = type;
+                console.log(data);
+                const pages = Math.ceil(data.total / data.perpage);
+                let dataHtml = ``;
+                for (let i = 0; i < data.perpage && i < data.data.length; i++) {
+                    dataHtml += `
                     <div class="card-item">
                         <a href="" class="item-link">
                         <div class="img-container">
@@ -73,12 +65,14 @@ function loadPage(type, page) {
                         </div>
                     </div>
                     `
-            }
-            $('#card-container').html(dataHtml);
+                }
+                $('#card-container').html(dataHtml);
 
-        },
-        error: function (err) {
-            console.error('Error fetching data:', err);
-        }
-    });
-}
+            },
+            error: function (err) {
+                console.error('Error fetching data:', err);
+            }
+        });
+
+    }
+})

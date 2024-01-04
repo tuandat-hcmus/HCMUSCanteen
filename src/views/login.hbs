@@ -17,50 +17,50 @@
     </p>
   </div>
   <form action="/login" method="post" class="login-form">
+
     <h2 class="title">Đăng nhập</h2>
     <div class="input-field">
-      <input type="text" placeholder="Tên đăng nhập" />
+
+      <input type="text" placeholder="Tên đăng nhập" name="username" value="{{username}}" />
       <i class='bx bx-user first-icon'></i>
     </div>
     <div class="input-field">
-      <input type="password" placeholder="Mật khẩu" id="password" />
+      <input type="password" placeholder="Mật khẩu" id="password" name="password" value="{{password}}" />
       <i class='bx bx-cog first-icon'></i>
       <i class='show bx bx-show-alt' onclick="togglePasswordVisibility('password')"></i>
       <i class='hide bx bx-hide' style="display: none;" onclick="togglePasswordVisibility('password')"></i>
     </div>
     <div class="checkbox-text">
       <div class="checkbox-content">
-        <input type="checkbox" id="logCheck">
+        <input type="checkbox" id="logCheck" name="rememberPw" {{#if username}} checked {{/if}}>
         <label for="logCheck" class="text">Ghi nhớ tôi</label>
       </div>
       <a href="#" class="text">Quên mật khẩu</a>
     </div>
-
     <button type="submit" value="Đăng nhập">Đăng nhập </button>
-
     <div class="ruler">
       <hr class="horizontal-line">
       <div class="section">Hoặc</div>
     </div>
   </form>
   <ul class="social-media">
-      <li>
-        <form action="/gg">
-          <button type="submit">
-            <img src="img/google.svg" class="img_gg">
-            <span class="name">Đăng nhập với Google</span>
-          </button>
-        </form>
-      </li>
-      <li>
-        <form action="/fb">
-          <button>
-            <img src="img/facebook.svg" class="img_fb">
-            <span class="name">Đăng nhập với Facebook</span>
-          </button>
-        </form>
-      </li>
-    </ul>
+    <li>
+      <form action="/gg">
+        <button type="submit">
+          <img src="img/google.svg" class="img_gg">
+          <span class="name">Đăng nhập với Google</span>
+        </button>
+      </form>
+    </li>
+    <li>
+      <form action="/fb">
+        <button>
+          <img src="img/facebook.svg" class="img_fb">
+          <span class="name">Đăng nhập với Facebook</span>
+        </button>
+      </form>
+    </li>
+  </ul>
 </div>
 
 <script src="/js/login.js"></script>

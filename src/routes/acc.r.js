@@ -44,7 +44,7 @@ router.post('/login', passport.authenticate('passport-login', {
     catch (e) {
         console.log(e);
     }
-    res.redirect('/home');
+    res.redirect('/client');
 });
 
 router.get('/signup', (req, res) => {

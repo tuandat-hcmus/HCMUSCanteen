@@ -50,7 +50,7 @@ passport.use('passport-signup', new MyStrategy(async (req, username, password, d
             const Password = req.body.password;
             const HashPW = await bcrypt.hash(Password, saltBounds);
             // Mặc định là khách hàng 
-            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '0', '1', '0', null, null);
+            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '1', '0', '0', null, null);
             await AccountModel.insert(rs);
         } catch (e) {
             console.log("Passport signup error: ", e);

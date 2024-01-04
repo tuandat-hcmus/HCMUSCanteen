@@ -1,0 +1,132 @@
+ALTER TABLE IF EXISTS "DoanhThu" DROP CONSTRAINT IF EXISTS "FK_MaNV_MaND";
+
+ALTER TABLE IF EXISTS "HoaDon" DROP CONSTRAINT IF EXISTS "FK_NVLap_MaND";
+ALTER TABLE IF EXISTS "HoaDon" DROP CONSTRAINT IF EXISTS "FK_KHMua_MaND";
+
+ALTER TABLE IF EXISTS "ChiTietHoaDon" DROP CONSTRAINT IF EXISTS "FK_MaHD_MaHD";
+ALTER TABLE IF EXISTS "ChiTietHoaDon" DROP CONSTRAINT IF EXISTS "FK_MaSP_MaSP";
+
+ALTER TABLE IF EXISTS "SanPham" DROP CONSTRAINT IF EXISTS "FK_MaLoai_MaLoai";
+
+ALTER TABLE IF EXISTS "NhapHang" DROP CONSTRAINT IF EXISTS "FK_NguoiNhap_MaND";
+
+ALTER TABLE IF EXISTS "ChiTietNhapHang" DROP CONSTRAINT IF EXISTS "FK_MaNH_MaNH";
+
+ALTER TABLE IF EXISTS "ChiTietNhapHang" DROP CONSTRAINT IF EXISTS "FK_MaSP_MaSP";
+
+DROP TABLE IF EXISTS "NguoiDung";
+CREATE TABLE "NguoiDung" (
+    "MaND" SERIAL,
+    "HoTen" varchar(35) NOT NULL,
+    "SDT" char(12),
+    "NgaySinh" DATE,
+    "Email" text,
+    "GioiTinh" char(3) CHECK ("GioiTinh" IN ('Nam', 'Nữ')),
+    "UserName" text UNIQUE,
+    "MatKhau" text,
+    "LaKhachHang" BIT NOT NULL,
+    "LaAdmin" BIT NOT NULL,
+    "LaNhanVien" BIT NOT NULL,
+    "DiaChi" varchar(50),
+	GioLam TIMESTAMP WITHOUT TIME ZONE,
+	CONSTRAINT PK_NguoiDung PRIMARY KEY ("MaND")
+);
+
+DROP TABLE IF EXISTS "DoanhThu";
+CREATE TABLE "DoanhThu" (
+    "MaDT" CHAR(5),
+    "Ngay" DATE,
+    "TongDT" FLOAT8,
+    "MaNV" INT NOT NULL,
+	CONSTRAINT PK_DoanhThu PRIMARY KEY ("MaDT", "Ngay")
+);
+
+DROP TABLE IF EXISTS "HoaDon";
+CREATE TABLE "HoaDon" (
+    "MaHD" CHAR(5),
+    "NgayLap" DATE,
+    "PhuongThucTT" CHAR(15) CHECK ("PhuongThucTT" IN ('Tiền mặt', 'Chuyển khoản')) NOT NULL,
+    "TongHoaDon" FLOAT8,
+    "NVLap" INT NOT NULL,
+    "KHMua" INT NOT NULL,
+	CONSTRAINT PK_HoaDon PRIMARY KEY ("MaHD", "NgayLap")
+);
+
+DROP TABLE IF EXISTS "ChiTietHoaDon";
+CREATE TABLE "ChiTietHoaDon" (
+    "MaHD" CHAR(5),
+    "NgayLap" DATE,
+    "MaSP" CHAR(7),
+    "SoLuong" INTEGER NOT NULL,
+    "TongTien" FLOAT8 NOT NULL,
+    CONSTRAINT PK_ChiTietHoaDon PRIMARY KEY ("MaHD", "NgayLap", "MaSP")
+);
+
+DROP TABLE IF EXISTS "SanPham";
+CREATE TABLE "SanPham" (
+    "MaSP" CHAR(7),
+    "Ten" VARCHAR(25) NOT NULL,
+    "DonGia" FLOAT8 NOT NULL,
+    "SoLuongTon" INT NOT NULL,
+    "Anh" VARCHAR(50),
+    "MaLoai" CHAR(3) NOT NULL,
+	CONSTRAINT PK_SanPham PRIMARY KEY ("MaSP")
+);
+
+DROP TABLE IF EXISTS "Loai";
+CREATE TABLE "Loai" (
+    "MaLoai" CHAR(3),
+    "TenLoai" VARCHAR(12) NOT NULL,
+	CONSTRAINT PK_Loai PRIMARY KEY ("MaLoai")
+);
+
+DROP TABLE IF EXISTS "NhapHang";
+CREATE TABLE "NhapHang" (
+    "MaNH" CHAR(5),
+    "NgayLap" DATE,
+    "NguoiNhap" INT NOT NULL,
+	CONSTRAINT PK_NhapHang PRIMARY KEY ("MaNH", "NgayLap")
+);
+
+DROP TABLE IF EXISTS "ChiTietNhapHang";
+CREATE TABLE "ChiTietNhapHang" (
+    "MaNH" CHAR(5),
+    "NgayLap" DATE,
+    "MaSP" CHAR(7),
+    "SoLuong" INT NOT NULL,
+    CONSTRAINT PK_ChiTietNhapHang PRIMARY KEY ("MaNH", "NgayLap", "MaSP")
+);
+
+ALTER TABLE "DoanhThu" ADD CONSTRAINT "FK_MaNV_MaND" FOREIGN KEY ("MaNV") REFERENCES "NguoiDung" ("MaND");
+
+ALTER TABLE "HoaDon" ADD CONSTRAINT "FK_NVLap_MaND" FOREIGN KEY ("NVLap") REFERENCES "NguoiDung" ("MaND");
+ALTER TABLE "HoaDon" ADD CONSTRAINT "FK_KHMua_MaND" FOREIGN KEY ("KHMua") REFERENCES "NguoiDung" ("MaND");
+
+ALTER TABLE "ChiTietHoaDon" ADD CONSTRAINT "FK_MaHD_MaHD" FOREIGN KEY ("MaHD", "NgayLap") REFERENCES "HoaDon" ("MaHD", "NgayLap");
+ALTER TABLE "ChiTietHoaDon" ADD CONSTRAINT "FK_MaSP_MaSP" FOREIGN KEY ("MaSP") REFERENCES "SanPham" ("MaSP");
+
+ALTER TABLE "SanPham" ADD CONSTRAINT "FK_MaLoai_MaLoai" FOREIGN KEY ("MaLoai") REFERENCES "Loai" ("MaLoai");
+
+ALTER TABLE "NhapHang" ADD CONSTRAINT "FK_NguoiNhap_MaND" FOREIGN KEY ("NguoiNhap") REFERENCES "NguoiDung" ("MaND");
+
+ALTER TABLE "ChiTietNhapHang" ADD CONSTRAINT "FK_MaNH_MaNH" FOREIGN KEY ("MaNH", "NgayLap") REFERENCES "NhapHang" ("MaNH", "NgayLap");
+ALTER TABLE "ChiTietNhapHang" ADD CONSTRAINT "FK_MaSP_MaSP" FOREIGN KEY ("MaSP") REFERENCES "SanPham" ("MaSP");
+
+-- username: admin, pass: 123456
+INSERT INTO "NguoiDung" VALUES ('1', 'admin', '111-111-1111', '2024-01-01', 'admin@gmail.com', 'Nam', 'admin', '$2b$10$I4bL8B0gqW5Hui4MXzGLdupmLBJ5hq/Q0LQQB7PTIb1rNKfedkEG6', '0', '1', '0', null, null);
+-- username: khach, pass: a
+INSERT INTO "NguoiDung" VALUES ('2', 'khach', '111-111-1111', '2024-01-01', 'khachhang@gmail.com', 'Nam', 'khach', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '1', '0', '0', null, null);
+--  username: nhanvien, pass: a
+INSERT INTO "NguoiDung" VALUES ('3', 'nhanvien', '111-111-1111', '2024-01-01', 'nhanvien@gmail.com', 'Nam', 'nhanvien', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '0', '0', '1', null, null);
+
+INSERT INTO "Loai" VALUES ('1', 'Cơm');
+INSERT INTO "Loai" VALUES ('2', 'Mì');
+INSERT INTO "Loai" VALUES ('3', 'Đồ uống');
+INSERT INTO "Loai" VALUES ('4', 'Bánh');
+
+INSERT INTO "SanPham" VALUES ('1', 'Cơm gà', 30000, 100, null, 1);
+INSERT INTO "SanPham" VALUES ('2', 'Cơm sườn', 30000, 100, null, 1);
+INSERT INTO "SanPham" VALUES ('3', 'Mì gà', 30000, 100, null, 2);
+INSERT INTO "SanPham" VALUES ('4', 'Mì sườn', 30000, 100, null, 2);
+INSERT INTO "SanPham" VALUES ('5', 'Nước lọc', 30000, 100, null, 3);
+INSERT INTO "SanPham" VALUES ('6', 'Bánh mì', 30000, 100, null, 4);

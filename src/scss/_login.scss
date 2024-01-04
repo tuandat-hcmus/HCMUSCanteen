@@ -1,0 +1,263 @@
+@import 'variables';
+
+
+.login-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  min-height: 100vh;
+
+  .left {
+    padding: 2rem;
+    width: 45vw;
+
+    .name-logo {
+      &>h1 {
+        display: inline-block;
+      }
+    }
+
+
+    .school {
+      text-transform: uppercase;
+      font-size: 2rem;
+      color: $heading-color;
+      font-family: $base-font-family;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+
+    }
+
+
+    .cteen {
+      text-transform: uppercase;
+      color: $base-color;
+      font-family: $second-font-family;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+    }
+
+  }
+
+
+  .right {
+    width: 45vw;
+    padding: 2rem;
+    position: relative;
+
+    .cre-account {
+      display: flex;
+      font-family: $base-font-family;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    .login-form {
+
+      .title {
+        position: relative;
+        font-family: $base-font-family;
+        font-size: 3rem;
+        color: $base-color;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-align: center;
+      }
+
+      .input-field {
+        position: relative;
+        width: 100%;
+        height: 3rem;
+        margin: 2rem 0;
+
+        &>input {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          padding: 0 3rem;
+          background: transparent;
+          border: none;
+          outline: none;
+          border-bottom: 0.125rem solid $sub-color;
+          border-top: 0.125rem soild transparent;
+          font-size: 1rem;
+
+          &:focus-within {
+            border-bottom-color: $base-color;
+          }
+
+          &::placeholder {
+            padding: 0 3rem;
+          }
+        }
+
+        &>i {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 1.5rem;
+          color: $unactive-nav-color ;
+
+          &~input:focus,
+          &~input:valid {
+            border-bottom-color: $base-color;
+          }
+        }
+
+        &>i.icon {
+          left: 0;
+        }
+
+        &>i.show {
+          right: 0;
+        }
+
+        &>i.hide {
+          right: 0;
+        }
+      }
+
+      .checkbox-text {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.5rem 0;
+
+        .checkbox-content {
+          display: flex;
+          align-items: center;
+
+          input {
+            margin: 0 8px -2px 4px;
+            accent-color: $base-color;
+          }
+        }
+
+        .text {
+          color: $base-color;
+          font-size: 1rem;
+          ;
+        }
+
+        a {
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+        }
+
+      }
+
+      &>button {
+
+        width: 100%;
+        height: 100%;
+        border: none;
+        color: $light-bg-color;
+        height: 3rem;
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        border-radius: 1.5rem;
+        background-color: $base-color;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 1rem 0;
+        margin-bottom: 2rem;
+
+        &>hover {
+          background-color: $heading-color;
+        }
+      }
+
+      .ruler {
+        width: 100%;
+        height: 15px;
+        border-bottom: 1px solid $unactive-nav-color;
+        text-align: center;
+
+        .section {
+          font-size: 1.5rem;
+          color: $unactive-nav-color;
+          background-color: $nav-bg;
+          padding: 0 10px;
+          
+        }
+      }
+
+      .social-media {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        li {
+          width: 100%;
+          height: auto;
+          display: list-item;
+          text-align: center;
+          display: flex;
+          flex-direction: row-reverse;
+
+
+          &>button {
+            margin: 1rem 0;
+            width: 100%;
+            height: 100%;
+            border: 0.125rem solid $base-color;
+            color: $base-color;
+            height: 3rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border-radius: 1.5rem;
+            
+
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &>hover {
+              background-color: $heading-color;
+
+            }
+
+
+            .name{
+             flex:1;
+            }
+
+            .img_gg{
+              margin: auto;
+              height: 1.5rem;
+              
+            }
+            .img_fb {
+              margin: auto;
+             
+              height: 2.5rem;
+
+            }
+          }
+
+        }
+
+
+
+
+      }
+    }
+
+
+  }
+}

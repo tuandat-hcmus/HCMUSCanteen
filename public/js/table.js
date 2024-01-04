@@ -1,4 +1,4 @@
-const rows = $(".newest-order-table tbody tr");
+const rows = $("tbody tr");
 rows.each(function () {
     const statusCell = $(this).find("td:nth-child(4)");
     const status = statusCell.text();
@@ -15,3 +15,5 @@ rows.each(function () {
             break;
     }
 });
+
+

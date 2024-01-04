@@ -22,6 +22,16 @@ app.get("/home", (req, res) => {
         title: "Home Page",
     });
 });
+app.get('/login', (req, res) => {
+    res.render('login', {
+        title: 'Login page'
+    });
+});
+app.get('/signup', (req, res) => {
+    res.render('signup', {
+        title: 'Signup page'
+    });
+});
 
 app.get("/bills", (req, res) => {
     res.render("bills", {
@@ -31,6 +41,12 @@ app.get("/bills", (req, res) => {
 
 app.get("/cashier", (req, res) => {
     res.render("cashier", {});
+});
+
+app.get("/cashier/bill", (req, res) => {
+    res.render("cashier_bill", {
+        title: "report page",
+    });
 });
 
 app.listen(port, () => {

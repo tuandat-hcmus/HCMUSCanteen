@@ -4,7 +4,11 @@
 @import "sidebar";
 @import "order";
 @import "HomeClient";
-@import "_cashier_dashboard";
+@import "cashier_dashboard";
+@import "login";
+@import "signup";
+@import "filter";
+@import "cashier_bill_talbe";
 * {
     box-sizing: border-box;
 }

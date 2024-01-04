@@ -49,6 +49,12 @@ app.get("/cashier/bill", (req, res) => {
     });
 });
 
+app.get("/cashier/report", (req, res) => {
+    res.render("cashier_report", {
+        title: "report page",
+    });
+});
+
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });

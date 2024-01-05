@@ -29,13 +29,13 @@
             </a>
         </li>
         <li>
-            <a href="/catogories" class="nav-item">
+            <a href="/admin/categories" class="nav-item {{#if isCategories}} active {{/if}}">
                 <i class="bx bx-category"></i>
                 <p class="open">Categories</p>
             </a>
         </li>
         <li>
-            <a href="/menu" class="nav-item">
+            <a href="/admin/product" class="nav-item {{#if isProduct}} active {{/if}}">
                 <i class="bx bx-dish"></i>
                 <p class="open">Sản phẩm</p>
             </a>
@@ -47,7 +47,7 @@
             </a>
         </li>
         <li>
-            <a href="/admin/users" class="nav-item">
+            <a href="/admin/users" class="nav-item {{#if  isAdmin_user}} active {{/if}}">
                 <i class="bx bx-user"></i>
                 <p class="open">User</p>
             </a>

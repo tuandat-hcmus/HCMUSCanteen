@@ -140,6 +140,22 @@ app.get("/cashier/profile", (req, res) => {
         isCashier: true,
     });
 });
+app.get("/cashier/product", (req, res) => {
+    res.render("Product", {
+        title: "cashier Product page",
+        isCashier:true,
+        isProduct:true,
+    });
+});
+
+app.get("/cashier/categories", (req, res) => {
+    res.render("categories", {
+        title: "cashier categories page",
+        isCashier:true,
+        isCategories:true,
+    });
+});
+
 
 app.get("/admin/profile", (req, res) => {
     res.render("user_profile", {
@@ -148,6 +164,27 @@ app.get("/admin/profile", (req, res) => {
     });
 });
 
+app.get("/admin/categories", (req, res) => {
+    res.render("categories", {
+        title: "admin categories page",
+        isAdmin:true,
+        isCategories:true,
+    });
+});
+app.get("/admin/users", (req, res) => {
+    res.render("admin_users", {
+        title: "admin user page",
+        isAdmin:true,
+        isAdmin_user:true,
+    });
+});
+app.get("/admin/product", (req, res) => {
+    res.render("product", {
+        title: "admin Product page",
+        isAdmin:true,
+        isProduct:true,
+    });
+});
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);

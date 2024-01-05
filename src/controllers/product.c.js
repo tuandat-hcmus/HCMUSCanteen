@@ -67,5 +67,18 @@ module.exports = {
         catch (err) {
             console.log('Get type err: ', err);
         }
+    },
+
+    show: async (req, res, next) => {
+        try {
+            const product = await Product.getProduct(req.params.slug);
+            if(product == null) {
+                return next();
+            }
+            res.render('product', product);
+        }
+        catch (err) {
+            console.log('err type: ', err);
+        }
     }
 }

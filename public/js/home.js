@@ -86,7 +86,7 @@ $(document).ready(function () {
                 for (let i = 0; i < data.perpage && i < data.data.length; i++) {
                     dataHtml += `
                     <div class="card-item">
-                        <a href="" class="item-link">
+                        <a href="/product/${data.data[i].MaSP}" class="item-link">
                         <div class="img-container">
                             <img src="/img/products/Fried-rice.jpg" alt="rice">
                         </div>

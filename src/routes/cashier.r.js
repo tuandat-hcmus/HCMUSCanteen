@@ -25,4 +25,11 @@ router.get('/report', (req, res) => {
     })
 });
 
+router.get('/profile', (req, res) => {
+    res.render("user_profile", {
+        title: "Cashier Profile Page",
+        isCashier: true,
+    });
+})
+
 module.exports = router;

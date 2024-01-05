@@ -1497,7 +1497,7 @@ button.filter-btn:hover {
   cursor: pointer;
 }
 [class*=btn-]:hover {
-  transform: scale(1.25);
+  transform: scale(1.01);
 }
 
 .new_revenue_container {
@@ -1569,51 +1569,51 @@ button.filter-btn:hover {
   margin-top: 3rem;
 }
 
-.comment-container {
+.product-detail-container {
   display: flex;
   flex-direction: column;
   flex: 1;
   background-color: #f2f4f7;
-  padding: 1.375rem 1rem;
+  padding: 1rem;
+  gap: 1rem;
+  overflow: auto;
 }
-.comment-container header {
+.product-detail-container header {
   color: #243c74;
   font-weight: 800;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1.25rem;
 }
-.comment-container .dashboard-sub-header {
+.product-detail-container .dashboard-sub-header {
   color: #243c74;
   font-weight: 600;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.comment-container section {
+.product-detail-container section {
   background-color: #fff;
   border-radius: 0.5rem;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
 }
-.comment-container .card_food {
+.product-detail-container .card_food {
   position: relative;
   display: flex;
-  padding: 1.438rem;
-  margin-top: 0.938rem;
-  display: flex;
+  padding: 1.5rem;
   color: #000;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1rem;
 }
-.comment-container .card_food i {
+.product-detail-container .card_food i {
   font-size: 1rem;
   padding-right: 1rem;
 }
-.comment-container .card_food img.img_food {
-  display: inline-block;
-  width: 20rem;
-  height: 12.125rem;
+.product-detail-container .card_food .product-cover-img {
   border-radius: 0.5rem;
+  width: 30%;
+  background-size: cover;
+  background-position: center;
 }
-.comment-container .card_food .btn-order {
+.product-detail-container .card_food .btn-order {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
@@ -1625,126 +1625,126 @@ button.filter-btn:hover {
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.comment-container .card_food .food-detail {
+.product-detail-container .card_food .food-detail {
   padding-left: 1rem;
 }
-.comment-container .card_food .food-detail * {
+.product-detail-container .card_food .food-detail * {
   margin-top: 0.5rem;
 }
-.comment-container .card_food .food-detail .type {
+.product-detail-container .card_food .food-detail .type {
   color: #7c8cac;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1.25rem;
 }
-.comment-container .card_food .food-detail .name {
+.product-detail-container .card_food .food-detail .name {
   color: #000;
   font-weight: 700;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1.5rem;
 }
-.comment-container .card_food .food-detail .stock {
+.product-detail-container .card_food .food-detail .stock {
   color: #808080;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.comment-container .card_food .food-detail .price {
+.product-detail-container .card_food .food-detail .price {
   margin-top: 1.563rem;
   color: #243c74;
   font-weight: 500;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1.5rem;
 }
-.comment-container .comment-container {
-  flex: 1;
+.product-detail-container .comment-container {
+  flex-grow: 1;
   display: flex;
-  flex-direction: row;
-  width: 100%;
   background-color: #fff;
   border-radius: 0.5rem;
-  margin-top: 1rem;
+  padding: 1rem;
 }
-.comment-container .comment-container .overal {
+.product-detail-container .comment-container .overall {
   border-right: 1px solid #7c8cac;
-  flex: 1;
+  padding: 0 1rem 0 0;
+  padding-right: 1rem;
 }
-.comment-container .comment-container .overal .header {
+.product-detail-container .comment-container .overall .header {
   color: #000;
   font-weight: 600;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1.25rem;
 }
-.comment-container .comment-container .overal .star-container {
+.product-detail-container .comment-container .overall .star-container {
   padding: 1.563rem 0;
   text-align: center;
 }
-.comment-container .comment-container .overal .star-container .row1 {
+.product-detail-container .comment-container .overall .star-container .row1 {
   color: #243c74;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1.75rem;
 }
-.comment-container .comment-container .overal .sub-header {
+.product-detail-container .comment-container .overall .sub-header {
   color: #808080;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.comment-container .comment-container .overal .detail-star .row {
+.product-detail-container .comment-container .overall .detail-star .row {
   display: grid;
   grid-template-columns: 1;
 }
-.comment-container .comment-container .overal .detail-star .row .star-number {
+.product-detail-container .comment-container .overall .detail-star .row .star-number {
   color: #000;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.comment-container .comment-container .overal .detail-star .bxs-star {
+.product-detail-container .comment-container .overall .detail-star .bxs-star {
   color: #ffe234;
 }
-.comment-container .comment-container .detail-container {
-  flex: 2;
-  margin-left: 0.938rem;
-  height: 25rem;
+.product-detail-container .comment-container .detail-container {
+  padding: 0.25rem 0.25rem 0 1rem;
+  flex: 1;
+  height: 100%;
   overflow: auto;
 }
-.comment-container .comment-container .detail-container .card-comment {
+.product-detail-container .comment-container .detail-container .card-comment {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 0.5rem;
   padding: 0.688rem 0.875rem;
   margin-bottom: 1rem;
   display: flex;
-  flex-direction: row;
 }
-.comment-container .comment-container .detail-container .card-comment img.img-comment {
+.product-detail-container .comment-container .detail-container .card-comment .cover-container {
   width: 2rem;
   height: 2rem;
-  border-radius: 2rem;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
 }
-.comment-container .comment-container .detail-container .card-comment .detail {
+.product-detail-container .comment-container .detail-container .card-comment .detail {
   margin-left: 0.375rem;
 }
-.comment-container .comment-container .detail-container .card-comment .detail * {
+.product-detail-container .comment-container .detail-container .card-comment .detail * {
   margin-top: 0.188rem;
 }
-.comment-container .comment-container .detail-container .card-comment .detail .name {
+.product-detail-container .comment-container .detail-container .card-comment .detail .name {
   color: #000;
   font-weight: 500;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 0.75rem;
 }
-.comment-container .comment-container .detail-container .card-comment .detail .star-rated {
+.product-detail-container .comment-container .detail-container .card-comment .detail .star-rated {
   color: #243c74;
   font-weight: 400;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 0.75rem;
 }
-.comment-container .comment-container .detail-container .card-comment .detail .time {
+.product-detail-container .comment-container .detail-container .card-comment .detail .time {
   color: #808080;
   font-weight: 300;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 0.75rem;
 }
-.comment-container .comment-container .detail-container .card-comment .detail .content {
+.product-detail-container .comment-container .detail-container .card-comment .detail .content {
   margin-top: 0.5rem;
 }
 

@@ -14,50 +14,79 @@
       </a>
     </p>
   </div>
-  <form action="/signup" method="post" class="signup-form">
+  <form action="/signup" method="post" class="signup-form" id="signup-form">
     <h2 class="title">Đăng ký</h2>
-    <div class="input-field">
-      <input type="text" placeholder="Họ và tên" name="fullname" />
-    </div>
-    <div class="input-field">
-      <input type="text" placeholder="Tên đăng nhập" name="username" />
-    </div>
-    <div class="input-field">
-      <input type="email" placeholder="Email" name="email" />
-    </div>
-    <div class="input-field">
-      <input type="password" placeholder="Mật khẩu" id="password" name="password" />
-      <i class='show bx bx-show-alt' onclick="togglePasswordVisibility('password')"></i>
-      <i class='hide bx bx-hide' style="display: none;" onclick="togglePasswordVisibility('password')"></i>
-    </div>
-    <div class="input-field">
-      <input type="password" placeholder="Nhập lại mật khẩu" id="confirmpassword" />
-      <i class='show1 bx bx-show-alt' onclick="toggleConfirmPasswordVisibility('confirmpassword')"></i>
-      <i class='hide1 bx bx-hide' style="display: none;"
-        onclick="toggleConfirmPasswordVisibility('confirmpassword')"></i>
-    </div>
-    <div class="birthday">
-      <div>Ngày sinh: <input type="date" name="birth">
+    <div class="input_container">
+      <div class="input-field">
+        <input type="text" placeholder="Họ và tên" name="fullname" />
       </div>
     </div>
-    <div class="gender-checkbox">
-      <div>Giới Tính:</div>
-      <div>
-        <input type="radio" id="male" name="gender" value="Nam">
-        <label for="male">Nam</label>
-      </div>
-      <div>
-        <input type="radio" id="female" name="gender" value="Nữ">
-        <label for="female">Nữ</label>
+    <div class="input_container">
+      <div class="input-field">
+        <input type="text" placeholder="Tên đăng nhập" name="username" />
       </div>
     </div>
-    <div class="input-field">
-      <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Số điện thoại" />
+    <div class="input_container">
+      <div class="input-field">
+        <input type="" placeholder="Email" name="email" />
+      </div>
+      
     </div>
+    <div class="input_container">
+      <div class="input-field">
+        <input type="password" placeholder="Mật khẩu" id="password" name="password" />
+        <i class='show bx bx-show-alt' onclick="togglePasswordVisibility('password')"></i>
+        <i class='hide bx bx-hide' style="display: none;" onclick="togglePasswordVisibility('password')"></i>
+      </div>
+    </div>
+
+    <div class="input_container">
+      <div class="input-field">
+        <input type="password" placeholder="Nhập lại mật khẩu" id="confirmpassword" name="re_password"/>
+
+        <i class='show1 bx bx-show-alt' onclick="toggleConfirmPasswordVisibility('confirmpassword')"></i>
+        <i class='hide1 bx bx-hide' style="display: none;"
+          onclick="toggleConfirmPasswordVisibility('confirmpassword')"></i>
+
+      </div>
+    </div>
+
+    <div class="input_container">
+      <div class="birthday">
+        <div>Ngày sinh: 
+        </div>
+        <input type="date" name="birth">
+      </div>
+    </div>
+
+    <div class="input_container">
+      <div class="gender-checkbox">
+        <div>Giới Tính:</div>
+        <div>
+          <input type="radio" id="male" name="gender" value="Nam">
+          <label for="male">Nam</label>
+        </div>
+        <div>
+          <input type="radio" id="female" name="gender" value="Nữ">
+          <label for="female">Nữ</label>
+        </div>
+      </div>
+    </div>
+    <div class="input_container">
+      <div class="input-field">
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Số điện thoại" />
+
+      </div>
+
+    </div>
+
     <button type="submit" value="Đăng ký">Đăng ký ngay </button>
 
   </form>
 
 </div>
 
-<script src="/js/login.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+<script src="/js/signup.js"></script>

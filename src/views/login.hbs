@@ -16,16 +16,25 @@
   </div>
   <form action="/login" method="post" class="login-form">
     <h2 class="title">Đăng nhập</h2>
-    <div class="input-field">
-      <input type="text" placeholder="Tên đăng nhập" />
-      <i class='bx bx-user first-icon'></i>
+    <div class="input_container">
+      <div class="input-field">
+        <input type="text" placeholder="Tên đăng nhập" onblur="errorValid('user')" id="user"/>
+        <i class='bx bx-user first-icon'></i>
+      </div>
+      <span id="error_user" class="message_error">Chưa nhập tên đăng nhập</span>
     </div>
-    <div class="input-field">
-      <input type="password" placeholder="Mật khẩu" id="password" />
-      <i class='bx bx-cog first-icon'></i>
-      <i class='show bx bx-show-alt' onclick="togglePasswordVisibility('password')"></i>
-      <i class='hide bx bx-hide' style="display: none;" onclick="togglePasswordVisibility('password')"></i>
+
+    <div class="input_container">
+      <div class="input-field">
+        <input type="password" placeholder="Mật khẩu" id="password"  onblur="errorValid('password')"/>
+        <i class='bx bx-cog first-icon'></i>
+        <i class='show bx bx-show-alt' onclick="togglePasswordVisibility('password')" ></i>
+        <i class='hide bx bx-hide' style="display: none;" onclick="togglePasswordVisibility('password')"></i>
+      </div>
+      <span id="error_password" class="message_error">Chưa nhập mật khẩu</span>
+
     </div>
+
     <div class="checkbox-text">
       <div class="checkbox-content">
         <input type="checkbox" id="logCheck">
@@ -34,7 +43,7 @@
       <a href="#" class="text">Quên mật khẩu</a>
     </div>
 
-    <button type="submit" value="Đăng nhập">Đăng nhập </button>
+    <button type="submit" value="Đăng nhập" id="đăng nhập" onclick="errorValid()">Đăng nhập </button>
 
     <div class="ruler">
       <hr class="horizontal-line">
@@ -42,23 +51,23 @@
     </div>
   </form>
   <ul class="social-media">
-      <li>
-        <form action="/gg">
-          <button type="submit">
-            <img src="img/google.svg" class="img_gg">
-            <span class="name">Đăng nhập với Google</span>
-          </button>
-        </form>
-      </li>
-      <li>
-        <form action="/fb">
-          <button>
-            <img src="img/facebook.svg" class="img_fb">
-            <span class="name">Đăng nhập với Facebook</span>
-          </button>
-        </form>
-      </li>
-    </ul>
+    <li>
+      <form action="/gg">
+        <button type="submit">
+          <img src="img/google.svg" class="img_gg">
+          <span class="name">Đăng nhập với Google</span>
+        </button>
+      </form>
+    </li>
+    <li>
+      <form action="/fb">
+        <button>
+          <img src="img/facebook.svg" class="img_fb">
+          <span class="name">Đăng nhập với Facebook</span>
+        </button>
+      </form>
+    </li>
+  </ul>
 </div>
 
 <script src="/js/login.js"></script>

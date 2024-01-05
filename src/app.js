@@ -127,9 +127,10 @@ app.get("/user/profile", (req, res) => {
 });
 
 app.get("/user/bill", (req, res) => {
-    res.render("user_bill", {
+    res.render("bill", {
         title: "user bill page",
         isUser:true,
+        isBill:true,
     });
 });
 

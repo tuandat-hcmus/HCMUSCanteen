@@ -1252,7 +1252,7 @@ button.filter-btn:hover {
   border-radius: 1rem;
   padding: 2rem;
   width: 75vw;
-  height: 85vh;
+  height: 85%;
   margin: 7vh auto;
 }
 .content_pos .content_import .head_import {
@@ -1293,7 +1293,7 @@ button.filter-btn:hover {
   text-align: center;
 }
 .content_pos .content_import .table_container {
-  height: 20rem;
+  height: 30vh;
   overflow: auto;
 }
 .content_pos .content_import .table_container .btn-trash {
@@ -1332,7 +1332,6 @@ button.filter-btn:hover {
   border: none;
   color: #f2f4f7;
   cursor: pointer;
-  border-radius: 0.625rem;
 }
 .content_pos .content_import .foot_import button:hover {
   background-color: #1b2d57;
@@ -1463,7 +1462,7 @@ button.filter-btn:hover {
   margin-bottom: 1rem;
 }
 .new_revenue_container .row-container {
-  height: 20rem;
+  height: 30vh;
   overflow: auto;
 }
 .new_revenue_container .badge {

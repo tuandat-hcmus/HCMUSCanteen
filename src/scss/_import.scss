@@ -8,7 +8,7 @@
         border-radius: 1rem;
         padding: 2rem;
         width: 75vw;
-        height: 85vh;
+        height: 85%;
         margin: 7vh auto;
 
         .head_import {
@@ -61,7 +61,7 @@
         }
 
         .table_container {
-            height: 20rem;
+            height: 30vh;
             overflow: auto;
             .btn-trash{
                 color: $danger-color;
@@ -109,7 +109,7 @@
                     background-color: $heading-color;
                 }
 
-                border-radius: 0.625rem;
+            
             }
         }
 

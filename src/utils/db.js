@@ -14,10 +14,9 @@ const db = pgp(cn);
 module.exports = {
     insertWithoutID: async (tbName, entity) => {
         try {
-            const { id, ...userFields } = entity;
             const query = {
-                text: `INSERT INTO "${tbName}" ("${Object.keys(userFields).join('", "')}") VALUES(${Object.keys(userFields).map((_, i) => `$${i + 1}`).join(', ')}) RETURNING *`,
-                values: Object.values(userFields),
+                text: `INSERT INTO "${tbName}" ("${Object.keys(entity).join('", "')}") VALUES(${Object.keys(entity).map((_, i) => `$${i + 1}`).join(', ')}) RETURNING *`,
+                values: Object.values(entity),
             };
             const result = await db.oneOrNone(query);
             if (result) {
@@ -30,7 +29,9 @@ module.exports = {
         } catch (error) {
             console.log('Insert error: ', error);
         }
+        return null;
     },
+
 
     insert: async (tbName, entity) => {
         try {

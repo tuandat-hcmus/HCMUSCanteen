@@ -51,9 +51,14 @@ passport.use('passport-signup', new MyStrategy(async (req, username, password, d
             const HashPW = await bcrypt.hash(Password, saltBounds);
             // Mặc định là khách hàng 
             rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '1', '0', '0', null, null);
-            await AccountModel.insert(rs);
+            if (await AccountModel.insert(rs) == null) {
+                done('Invalid auth');
+                return;
+            };
         } catch (e) {
             console.log("Passport signup error: ", e);
+            done('Invalid auth');
+            return;
         }
         return done(null, rs);
     }

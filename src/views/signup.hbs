@@ -19,6 +19,9 @@
   </div>
   <form action="/signup" method="post" class="signup-form">
     <h2 class="title">Đăng ký</h2>
+    {{#if existed}}
+    <div class="text-danger ms-2 mb-3" style="margin-top: 20px;">Tên đăng nhập đã tồn tại</div>
+    {{/if}}
     <div class="input-field">
       <input type="text" placeholder="Họ và tên" name="fullname" />
     </div>

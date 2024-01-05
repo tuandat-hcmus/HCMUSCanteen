@@ -49,6 +49,10 @@ module.exports = {
     },
 
     getType: async (req, res) => {
+        if (!req.session.loggedIn) {
+            res.redirect('/login');
+            return;
+        }
         try {
             let name = '';
             if (req.user) {

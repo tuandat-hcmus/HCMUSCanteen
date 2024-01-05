@@ -2,8 +2,21 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+router.get('/', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/client');
+    } else {
+        res.redirect('/login');
+    }
+})
+
 router.get('/login', (req, res) => {
-    if (req.user) {
+    const messages = req.flash('error');
+    if (messages[0] == 'Invalid auth') {
+        res.render('login', { wrong: true });
+        return;
+    }
+    if (req.session.loggedIn) {
         // console.log(req.user);
         res.redirect('/client');
         return;
@@ -25,8 +38,11 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('passport-login', {
     failureRedirect: '/',
+    failureFlash: true
 }), (req, res) => {
     try {
+        req.session.loggedIn = true;
+
         // Ghi đăng nhập cũ vào input
         const Username = req.body.username;
         const Password = req.body.password;
@@ -48,20 +64,32 @@ router.post('/login', passport.authenticate('passport-login', {
 });
 
 router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/client');
+    }
+    const messages = req.flash('error');
+    if (messages[0] == 'Invalid auth') {
+        res.render('signup', { existed: true });
+        return;
+    }
     res.render('signup', {
         title: 'Signup page'
     });
 });
 
 router.post('/signup', passport.authenticate('passport-signup', {
-    failureRedirect: '/',
-    successRedirect: '/client'
-}));
+    failureRedirect: '/signup',
+    failureFlash: true
+}), (req, res) => {
+    req.session.loggedIn = true;
+    res.redirect('/client');
+});
 
 router.post('/logout', (req, res) => {
     req.logout(function (err) {
         if (err) { return next(err); }
-        res.redirect('/login');
+        delete req.session.loggedIn;
+        res.redirect('/');
     });
 });
 

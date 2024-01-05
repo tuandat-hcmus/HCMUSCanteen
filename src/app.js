@@ -7,6 +7,7 @@ const hbs = require('express-handlebars');
 //---
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 
 app.engine(
     ".hbs",
@@ -19,6 +20,9 @@ app.set("views", path.join(__dirname, "views"));
 
 // set static files
 app.use(express.static("public"));
+
+//flash
+app.use(flash());
 
 //---
 const https = require('https');
@@ -144,7 +148,8 @@ app.get("/user/comment", (req, res) => {
 app.get("/user/profile", (req, res) => {
     res.render("user_profile", {
         title: "user profile page",
-        isUser:true,
+        isUser: true,
+        user: req.user
     });
 });
 

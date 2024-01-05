@@ -16,6 +16,9 @@ passport.deserializeUser(async (username, done) => {
 // PPassport xử lí đăng nhập
 passport.use('passport-login', new MyStrategy(async (req, username, password, done) => {
     const rs = await AccountModel.getUser(username);
+    if (!rs) {
+        return done(null, false, { message: 'Invalid username' });
+    }
     let auth;
     if (rs) {
         try {
@@ -27,10 +30,13 @@ passport.use('passport-login', new MyStrategy(async (req, username, password, do
             console.log("Passport login error: ", e);
         }
     }
+    if (!auth) {
+        return done(null, false, { message: 'Invalid password' });
+    }
     if (auth) {
         return done(null, rs);
     }
-    done('Invalid auth');
+    //done('Invalid auth');
 }, {
     username: 'username',
     password: 'password'
@@ -57,7 +63,8 @@ passport.use('passport-signup', new MyStrategy(async (req, username, password, d
         }
         return done(null, rs);
     }
-    done('Invalid auth');
+    return done(null, false, { message: 'Invalid username' });
+    //done('Invalid auth');
 }, {
     username: 'username',
     password: 'password'

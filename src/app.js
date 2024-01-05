@@ -44,41 +44,6 @@ require('./mws/passport')(app);
 const route = require('./routes');
 route(app);
 
-
-app.get("/cashier/bill", (req, res) => {
-    res.render("bill", {
-        title: "Bills",
-        isBill: true,
-        isCashier: true,
-    });
-});
-
-app.get("/cashier/dashboard", (req, res) => {
-    res.render("dashboard", {
-       title:"Cashier dashboard page",
-        isCashier: true,
-        isDashboard: true,
-        
-    });
-    
-});
-
-app.get("/cashier/bill", (req, res) => {
-    res.render("bill", {
-        title: "bill page",
-        isCashier: true,
-        isBill: true,
-    });
-});
-
-app.get("/cashier/report", (req, res) => {
-    res.render("report", {
-        title: "cashier_report page",
-        isCashier: true,
-        isReport: true,
-    });
-});
-
 app.get("/admin/report", (req, res) => {
     res.render("report", {
         title: "amdin_report page",
@@ -192,25 +157,39 @@ server.listen(port, () => console.log(`Listening on port ${port}`));
 
 const customer = new Set();
 const employee = new Set();
+const admin = new Set();
 const io = require('socket.io')(server);
 io.on('connection', socket => {
-    console.log(socket.id);
-    socket.on('sendOrder', (data) => {
-        console.log(data);
-        io.to('employees').emit('orders', data);
+    socket.on('identify', (userData) => {
+        console.log(userData);
+        if (userData && userData.role === 'khach') {
+            socket.join('customers');
+            customer.add(socket.id);
+            console.log('Customer connected: ', socket.id);
+        } else if (userData && userData.role === 'nv') {
+            socket.join('employees');
+            employee.add(socket.id);
+            console.log('Employee connected: ', socket.id);
+        } else if (userData && userData.role === 'admin') {
+            socket.join('admin');
+            admin.add(socket.id);
+            console.log('Admin connected: ', socket.id);
+        }
     });
 
-    socket.on('identify', (userData) => {
-        if (userData && userData.role === 'khach') {
-            console.log("customer");
-            socket.join('customers');
-        } else if (userData && userData.role === 'nv') {
-            console.log("employee");
-            socket.join('employees');
+    socket.on('sendOrder', (data) => {
+        if (data) {
+            io.to('employees').emit('customerOrder', data);
+            socket.emit('orderCallback', {data: 'Success'});
+        }
+        else {
+            socket.emit('orderCallback', {data: 'Failed'});
         }
     });
 
     socket.on('disconnect', () => {
-        console.log('disconnected: ', socket.id);
+        if (customer.delete(socket.id)) console.log('Customer disconnected: ', socket.id);
+        if (employee.delete(socket.id)) console.log('Employee disconnected: ', socket.id);
+        if (admin.delete(socket.id)) console.log('Admin disconnected: ', socket.id);
     })
 });

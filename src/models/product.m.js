@@ -11,7 +11,7 @@ module.exports = class Product {
         this.MaLoai = MaLoai;
     }
     static async insert(product) {
-        return db.insert(tbName, product);
+        return db.insertWithoutID(tbName, product);
     }
     static async getProduct(id) {
         return db.select(tbName, "MaSP", id);

@@ -47,18 +47,19 @@ CREATE TABLE "DoanhThu" (
 DROP TABLE IF EXISTS "HoaDon";
 CREATE TABLE "HoaDon" (
     "MaHD" SERIAL,
-    "NgayLap" DATE,
-    "PhuongThucTT" CHAR(15) CHECK ("PhuongThucTT" IN ('Tiền mặt', 'Chuyển khoản')) NOT NULL,
+    "NgayLap" TIMESTAMP WITHOUT TIME ZONE,
+    "PhuongThucTT" CHAR(15) CHECK ("PhuongThucTT" IN ('Tiền mặt', 'Momo', 'VNPay')) NOT NULL,
     "TongHoaDon" FLOAT8,
-    "NVLap" INT NOT NULL,
+    "NVLap" INT,
     "KHMua" INT NOT NULL,
+    "TinhTrang" CHAR(15) CHECK ("TinhTrang" IN ('Chưa thanh toán', 'Đã thanh toán', 'Huỷ')) NOT NULL,
 	CONSTRAINT PK_HoaDon PRIMARY KEY ("MaHD", "NgayLap")
 );
 
 DROP TABLE IF EXISTS "ChiTietHoaDon";
 CREATE TABLE "ChiTietHoaDon" (
     "MaHD" INT,
-    "NgayLap" DATE,
+    "NgayLap" TIMESTAMP WITHOUT TIME ZONE,
     "MaSP" INT,
     "SoLuong" INTEGER NOT NULL,
     "TongTien" FLOAT8 NOT NULL,
@@ -107,6 +108,7 @@ CREATE TABLE "DanhGia" (
     "Ngay" DATE,
     "TongDT" FLOAT8,
     "NoiDung" text NOT NULL,
+    "Sao" INT NOT NULL,
 	CONSTRAINT PK_DanhGia PRIMARY KEY ("MaND", "MaSP", "Ngay")
 );
 

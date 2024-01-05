@@ -77,14 +77,14 @@ module.exports = {
 
     selectAllBy: async (tbName, colOrder, isDesc) => {
         try {
-            const query = `
+            let query = `
             SELECT * FROM "${tbName}"
             `;
             if (colOrder) {
                 if (isDesc) {
-                    query += `ORDER BY ${colOrder} DESC `;
+                    query += `ORDER BY "${colOrder}" DESC `;
                 }
-                else query += `ORDER BY ${colOrder} ASC `;
+                else query += `ORDER BY "${colOrder}" ASC `;
             }
             const data = await db.any(query);
             return data;
@@ -96,9 +96,9 @@ module.exports = {
 
     selectTopByCol: async (tbName, col, limit, isDesc) => {
         try {
-            const query = `
+            let query = `
             SELECT * 
-            FROM ${tbName}
+            FROM "${tbName}"
             WHERE ${col} IS NOT NULL 
             `;
             if (isDesc) {
@@ -157,7 +157,7 @@ module.exports = {
 
     joinTB: async (tb1, tb2, col1, col2, colWhere, val, colOrder, isDesc, limit) => {
         try {
-            const query = `
+            let query = `
                 SELECT *
                 FROM "${tb1}"
                 JOIN "${tb2}" ON "${tb1}"."${col1}" = "${tb2}"."${col2}"

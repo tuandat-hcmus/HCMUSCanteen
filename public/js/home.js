@@ -1,8 +1,8 @@
+const orderArr = [];
+let sum = 0;
 $(document).ready(function () {
     let currentPage = 1;
     let currentType = 'Tất cả';
-    const orderArr = [];
-    let sum = 0;
     $('#tong-value').text(sum / 1000 + ".000Đ");
     loadPage(currentType, 1);
     // Xử lí chọn loại
@@ -144,12 +144,11 @@ $(document).ready(function () {
         });
 
     }
-
-    function money() {
-        let sum = 0;
-        orderArr.forEach(element => {
-            sum += element.DonGia * element.SoLuong;
-        });
-        return sum;
-    }
 })
+function money() {
+    let sum = 0;
+    orderArr.forEach(element => {
+        sum += element.DonGia * element.SoLuong;
+    });
+    return sum;
+}

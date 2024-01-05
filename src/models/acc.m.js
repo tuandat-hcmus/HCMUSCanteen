@@ -22,4 +22,12 @@ module.exports = class User {
     static async getUser(username) {
         return db.select(tbName, "UserName", username);
     }
+    static async getUserByID(id) {
+        return db.select(tbName, "MaND", id);
+    }
+    static async getUser2(username, cb) {
+        const res = db.select(tbName, "UserName", username);
+        cb(res);
+        return res;
+    }
 }

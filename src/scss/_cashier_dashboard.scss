@@ -73,6 +73,7 @@
             @include textStyle($light-bg-color, 400, $base-font-family);
             cursor: pointer;
             border: none;
+            margin-left: 2rem;
             &:hover{
                 transform:scale(1.05);
             }

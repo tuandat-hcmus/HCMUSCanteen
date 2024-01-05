@@ -1,0 +1,71 @@
+.report_detail_container{
+    margin: 3%;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: $order-bg-color;
+    width: 100%;
+    
+    .report_detail_head{
+        
+        .Ma{
+        @include textStyle($base-color ,600,$base-font-family);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .Ngay{
+            @include textStyle($sub-color ,400,$second-font-family);
+            font-size: 1.5rem;
+
+        }
+        
+
+    }
+    .DoanhThu{
+        background-color: $order-button-color;
+        width: 96%;
+        margin: 2%;
+        border-radius: 0.25rem;
+        height: 3rem;
+        padding: 0 3%;
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        @include textStyle($normal-text-color,400,$second-font-family);
+        
+    }
+    
+    .detail{
+        background-color: $nav-bg;
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+        padding: 1% 3%;
+        margin: 2%;
+        overflow: auto;
+        .table_content {
+            font-size: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 3fr 6fr 3fr 1fr;
+            @include textStyle($sub-color-dark,300,$base-font-family);
+            margin: 1rem 0;
+
+            div {
+                text-align: center;
+                
+            }
+        }
+        .head{
+            @include textStyle($base-color,500,$base-font-family);
+            border-bottom: 0.125rem solid $unactive-nav-color;
+            padding: 0.5rem;
+        }
+        .sub{
+            overflow: auto  ;
+            height: 50%;
+        }
+
+    }
+
+
+
+
+}

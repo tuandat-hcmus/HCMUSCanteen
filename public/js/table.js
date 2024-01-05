@@ -6,14 +6,13 @@ rows.each(function () {
     
     switch (status) {
         case "Đã thanh toán":
-            statusCell.append('<button >Button</button>');
+            statusCell.append('<button >Xác nhận</button>');
             statusCell.toggleClass("paid");
             break;
         case "Chưa thanh toán":
 		statusCell.toggleClass("pending");
         case "Hủy":
 		statusCell.toggleClass("canceled");
-
             
             break;
     }

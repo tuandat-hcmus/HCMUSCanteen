@@ -45,12 +45,12 @@ app.get("/cashier/bill", (req, res) => {
 
 app.get("/cashier/dashboard", (req, res) => {
     res.render("dashboard", {
-       title:"Cashier dashboard page",
+        title: "Cashier dashboard page",
         isCashier: true,
         isDashboard: true,
-        
+
     });
-    
+
 });
 
 app.get("/cashier/bill", (req, res) => {
@@ -86,12 +86,12 @@ app.get("/admin/bill", (req, res) => {
 });
 app.get("/admin/dashboard", (req, res) => {
     res.render("dashboard", {
-       title:"Admin dashboard page",
+        title: "Admin dashboard page",
         isAdmin: true,
         isDashboard: true,
-        
+
     });
-    
+
 });
 
 
@@ -107,30 +107,30 @@ app.get("/admin/import", (req, res) => {
 app.get("/admin", (req, res) => {
     res.render("admin", {
         title: "admin page",
-        isAdmin:true,
-        isDashboard:true,
+        isAdmin: true,
+        isDashboard: true,
     });
 });
 
 app.get("/user/comment", (req, res) => {
     res.render("comment", {
         title: "user comment",
-        
+
     });
 });
 
 app.get("/user/profile", (req, res) => {
     res.render("user_profile", {
         title: "user profile page",
-        isUser:true,
+        isUser: true,
     });
 });
 
 app.get("/user/bill", (req, res) => {
     res.render("bill", {
         title: "user bill page",
-        isUser:true,
-        isBill:true,
+        isUser: true,
+        isBill: true,
     });
 });
 
@@ -143,16 +143,16 @@ app.get("/cashier/profile", (req, res) => {
 app.get("/cashier/product", (req, res) => {
     res.render("Product", {
         title: "cashier Product page",
-        isCashier:true,
-        isProduct:true,
+        isCashier: true,
+        isProduct: true,
     });
 });
 
 app.get("/cashier/categories", (req, res) => {
     res.render("categories", {
         title: "cashier categories page",
-        isCashier:true,
-        isCategories:true,
+        isCashier: true,
+        isCategories: true,
     });
 });
 
@@ -160,29 +160,43 @@ app.get("/cashier/categories", (req, res) => {
 app.get("/admin/profile", (req, res) => {
     res.render("user_profile", {
         title: "admin profile page",
-        isAdmin:true,
+        isAdmin: true,
     });
 });
 
 app.get("/admin/categories", (req, res) => {
     res.render("categories", {
         title: "admin categories page",
-        isAdmin:true,
-        isCategories:true,
+        isAdmin: true,
+        isCategories: true,
     });
 });
 app.get("/admin/users", (req, res) => {
     res.render("admin_users", {
         title: "admin user page",
-        isAdmin:true,
-        isAdmin_user:true,
+        isAdmin: true,
+        isAdmin_user: true,
     });
 });
 app.get("/admin/product", (req, res) => {
     res.render("product", {
         title: "admin Product page",
-        isAdmin:true,
-        isProduct:true,
+        isAdmin: true,
+        isProduct: true,
+    });
+});
+
+app.get("/admin/product", (req, res) => {
+    res.render("product", {
+        title: "admin Product page",
+        isAdmin: true,
+        isProduct: true,
+    });
+});
+app.get("/report/detail", (req, res) => {
+    res.render("report_detail", {
+        title: "Report detail",
+        
     });
 });
 

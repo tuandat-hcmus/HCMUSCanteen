@@ -48,7 +48,7 @@ module.exports = {
         }
     },
 
-    getType: async (req, res) => {
+    index: async (req, res) => {
         try {
             let name = '';
             if (req.user) {

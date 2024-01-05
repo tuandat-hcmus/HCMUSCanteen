@@ -1,31 +1,77 @@
 $(document).ready(function () {
     let currentPage = 1;
     let currentType = 'Tất cả';
+    let totalPages = null;
+    let showedPages = null;
+    let firstPage = 1;
+    let lastPage = null;
     loadPages(currentType);
     loadPage(currentType, 1);
     // Xử lí chọn loại
     $('input[name="categories"]').on('click', function () {
         loadPage($(this).val(), 1);
-        $('#pagination').empty();
+        $('#page-container').empty();
         loadPages($(this).val());
     });
-    // $('.dropdown-item').on('click', function () {
-    //     $('#btn').html($(this).text());
-    //     let type = $(this).text();
-    //     type = type.replace(/(\r\n|\n|\r)/gm, "");
-    //     loadPage(type, 1);
-    // });
-    async function loadPages(type) {
-        const res = await fetch(`/client/page?type=${type}`);
-        const data = await res.json();
-        const pages = Math.ceil(data.total / data.perpage);
-        const pageContainer = $('#pagination');
-        for (let i = 1; i <= pages; i++) {
-            pageContainer.append($(`<li><button class="page-click">${i}</button></li>`));
+
+    
+    // reload page container
+    function loadPageContainer(first, last) {
+        console.log(first, last);
+        for(let i = first; i <= last; i++) {
+            $('#page-container').append(`<button class="page-item ${i == currentPage ? "page-active" : ""}">${i}</button>`);
         }
-        $('.page-click').on('click', function () {
-            loadPage(currentType, parseInt($(this).text()));
-        })
+        $('.page-item').on('click', function () {
+            if ($('.page-active').length) {
+                $('.page-active').removeClass('page-active');
+            }
+            $(this).addClass('page-active');
+            currentPage = parseInt($(this).text());
+            loadPage(currentType, currentPage);
+        });
+    }
+
+    // next page button click event
+    $('#next-page').on('click', function() {
+        if (currentPage < totalPages) {
+            ++currentPage;
+            loadPage(currentType, currentPage);
+            if(currentPage > lastPage) {
+                firstPage++;
+                lastPage++;
+            }
+            $('#page-container').empty();
+            loadPageContainer(firstPage, lastPage);
+        }
+    });
+
+    // previous page button click event
+    $('#previous-page').on('click', function() {
+        if (currentPage > 1) {
+            --currentPage;
+            loadPage(currentType, currentPage);
+            if(currentPage < firstPage) {
+                firstPage--;
+                lastPage--;
+            }
+            $('#page-container').empty();
+            loadPageContainer(firstPage, lastPage);
+        }
+    })
+
+    async function loadPages(type) {
+        try {
+            const res = await fetch(`/client/page?type=${type}`);
+            const data = await res.json();
+            totalPages = Math.ceil(data.total / data.perpage);
+            showedPages = (totalPages < 3) ? totalPages : 3;
+            firstPage = 1;
+            lastPage = showedPages;
+            loadPageContainer(firstPage, lastPage);
+        }
+        catch {
+            (err) => console.log(err);
+        }
     }
 
     function loadPage(type, page) {
@@ -36,7 +82,6 @@ $(document).ready(function () {
                 currentPage = page;
                 currentType = type;
                 console.log(data);
-                const pages = Math.ceil(data.total / data.perpage);
                 let dataHtml = ``;
                 for (let i = 0; i < data.perpage && i < data.data.length; i++) {
                     dataHtml += `
@@ -70,12 +115,10 @@ $(document).ready(function () {
                     `
                 }
                 $('#card-container').html(dataHtml);
-
             },
             error: function (err) {
                 console.error('Error fetching data:', err);
             }
         });
-
     }
-})
+});

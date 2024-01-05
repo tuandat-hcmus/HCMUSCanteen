@@ -622,8 +622,38 @@ button.filter-btn:hover {
 }
 
 #pagination {
+  margin-top: 1rem;
+  padding: 0.5rem;
   display: flex;
-  list-style-type: none;
+  background-color: #fff;
+  align-items: stretch;
+  justify-content: center;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.3);
+  gap: 0.5rem;
+}
+#pagination #page-container {
+  display: flex;
+  gap: 0.5rem;
+}
+#pagination button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
+  background-color: transparent;
+  color: #243c74;
+  border: none;
+  border-radius: 0.5rem;
+  transition: all 350ms;
+}
+#pagination button:hover {
+  background-color: #f2f4f7;
+}
+#pagination button.page-active {
+  color: #fff;
+  background-color: #243c74;
 }
 
 .dashboard-container {

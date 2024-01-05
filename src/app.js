@@ -43,23 +43,7 @@ require('./mws/passport')(app);
 // app.use(accountRouter);
 const route = require('./routes');
 route(app);
-app.get("/home", (req, res) => {
-    res.render("home", {
-        title: "Home Page",
-        isHome: true,
-        isUser: true,
-    });
-});
-app.get("/login", (req, res) => {
-    res.render("login", {
-        title: "Login page",
-    });
-});
-app.get("/signup", (req, res) => {
-    res.render("signup", {
-        title: "Signup page",
-    });
-});
+
 
 app.get("/cashier/bill", (req, res) => {
     res.render("bill", {

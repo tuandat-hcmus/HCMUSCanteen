@@ -49,7 +49,7 @@ module.exports = {
     },
 
     getType: async (req, res) => {
-        if (!req.session.loggedIn) {
+        if (!req.user) {
             res.redirect('/login');
             return;
         }
@@ -65,7 +65,7 @@ module.exports = {
                 type: data,
                 isHome: true,
                 isUser: true,
-                name: name
+                username: name
             });
         }
         catch (err) {

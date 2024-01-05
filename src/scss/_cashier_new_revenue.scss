@@ -6,6 +6,7 @@
     display: grid;
     border-radius: 1.25rem;
     padding: 1.375rem 2.75rem;
+    position: relative;
 
     .date {
         @include textStyle($base-color, 400, $base-font-family);
@@ -68,5 +69,15 @@
             
         
         
+            
+    }
+    .btn-close {
+        position: absolute;
+        top: -2.5rem;
+        right: -2.5rem;
+        cursor: pointer;
+        i {
+            font-size: 2.5rem;
+        }
     }
 }

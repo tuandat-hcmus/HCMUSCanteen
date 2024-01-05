@@ -1427,6 +1427,7 @@ button.filter-btn:hover {
   display: grid;
   border-radius: 1.25rem;
   padding: 1.375rem 2.75rem;
+  position: relative;
 }
 .new_revenue_container .date {
   color: #243c74;
@@ -1486,6 +1487,15 @@ button.filter-btn:hover {
   font-family: "Be Vietnam Pro", sans-serif;
   background-color: #243c74;
   margin-top: 3rem;
+}
+.new_revenue_container .btn-close {
+  position: absolute;
+  top: -2.5rem;
+  right: -2.5rem;
+  cursor: pointer;
+}
+.new_revenue_container .btn-close i {
+  font-size: 2.5rem;
 }
 
 .comment-container {

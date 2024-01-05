@@ -1,4 +1,5 @@
 const Product = require('../models/product.m');
+const { search } = require('../routes/acc.r');
 
 module.exports = {
     Add: async (req, res, next) => {
@@ -23,12 +24,22 @@ module.exports = {
             const type = req.query.type || 'Tất cả';
             const orderBy = req.query.orderBy || null;
             const isDesc = req.query.isDesc || null;
+            const searchInput = req.query.search || null;
             let data = null;
-            if (type === 'Tất cả') {
-                data = await Product.getAll(orderBy, isDesc);
+            if (searchInput == null) {
+                if (type === 'Tất cả') {
+                    data = await Product.getAll(orderBy, isDesc);
+                } else {
+                    data = await Product.getBy(type, orderBy, isDesc);
+                }
             } else {
-                data = await Product.getBy(type, orderBy, isDesc);
+                if (type === 'Tất cả') {
+                    data = await Product.getSearch(searchInput);
+                } else {
+                    data = await Product.getByWithSearch(type, orderBy, isDesc, searchInput);
+                }
             }
+
             const total = data.length;
 
             const currentPage = req.query.page || 1;
@@ -45,6 +56,31 @@ module.exports = {
             });
         } catch (error) {
             console.log('Product page error: ', error);
+        }
+    },
+
+    getSearch: async (req, res, next) => {
+        try {
+            const input = req.query.input;
+            let data = null;
+            data = await Product.getSearch(input);
+
+            const total = data.length;
+
+            const currentPage = req.query.page || 1;
+            const itemsPerPage = 2;
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            data = data.slice(startIndex, endIndex);
+
+            res.json({
+                data: data,
+                perpage: itemsPerPage,
+                total: total,
+                type: 'Tất cả'
+            });
+        } catch (error) {
+            console.log('Search page error: ', error);
         }
     },
 

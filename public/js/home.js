@@ -1,13 +1,16 @@
+//const { search } = require("../../src/routes/acc.r");
+
 $(document).ready(function () {
     let currentPage = 1;
     let currentType = 'Tất cả';
+    let searchInput = '';
     const orderArr = [];
     let sum = 0;
     $('#tong-value').text(sum / 1000 + ".000Đ");
-    loadPage(currentType, 1);
+    loadPage(currentType, 1, 1);
     // Xử lí chọn loại
     $('input[name="categories"]').on('click', function () {
-        loadPage($(this).val(), 1);
+        loadPage($(this).val(), 1, 1);
     });
     // $('.dropdown-item').on('click', function () {
     //     $('#btn').html($(this).text());
@@ -15,14 +18,38 @@ $(document).ready(function () {
     //     type = type.replace(/(\r\n|\n|\r)/gm, "");
     //     loadPage(type, 1);
     // });
+    $('#searchInput').on('keypress', function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
 
-    function loadPage(type, page) {
+            const searchTerm = $(this).val();
+
+            loadPage(searchTerm, 1, 2);
+        }
+    });
+
+    function loadPage(type, page, flag) {
+        let url;
+        if (flag === 1) {
+            if (searchInput != '') {
+                url = `/client/page?type=${type}&page=${page}&search=${searchInput}`;
+            } else {
+                url = `/client/page?type=${type}&page=${page}`;
+            }
+        } else {
+            url = `/client/search?input=${type}&page=${page}`;
+        }
         $.ajax({
-            url: `/client/page?type=${type}&page=${page}`,
+            url: url,
             method: 'GET',
             success: function (data) {
                 currentPage = page;
-                currentType = type;
+                if (flag === 1) {
+                    currentType = type;
+                } else {
+                    currentType = 'Tất cả';
+                    searchInput = type;
+                }
                 const pages = Math.ceil(data.total / data.perpage);
                 // --------------
                 $('#pagination').empty();
@@ -31,7 +58,11 @@ $(document).ready(function () {
                     pageContainer.append($(`<li><button class="page-click">${i}</button></li>`));
                 }
                 $('.page-click').on('click', function () {
-                    loadPage(currentType, parseInt($(this).text()));
+                    if(flag === 1) {
+                        loadPage(currentType, parseInt($(this).text()), 1);
+                    } else {
+                        loadPage(searchInput, parseInt($(this).text()), 2);
+                    }
                 })
                 // ---------------
                 let dataHtml = ``;
@@ -129,7 +160,7 @@ $(document).ready(function () {
                                 $('#tong-value').text(money() / 1000 + ".000Đ");
                                 checkOrderConditions();
                             });
-                            $('#' + data.data[i].MaSP + ".sl").on('input', function() {
+                            $('#' + data.data[i].MaSP + ".sl").on('input', function () {
                                 let index = orderArr.findIndex(item => item.MaSP === data.data[i].MaSP);
                                 orderArr[index].SoLuong = parseInt($(this).val());
                                 $('#tong-value').text(money() / 1000 + ".000Đ");
@@ -152,4 +183,5 @@ $(document).ready(function () {
         });
         return sum;
     }
+
 })

@@ -49,6 +49,10 @@ module.exports = {
     },
 
     getType: async (req, res) => {
+        if (!req.session.loggedIn) {
+            res.redirect('/login');
+            return;
+        }
         try {
             let name = '';
             if (req.user) {
@@ -59,6 +63,8 @@ module.exports = {
             res.render('home', {
                 title: 'Home Page',
                 type: data,
+                isHome: true,
+                isUser: true,
                 name: name
             });
         }

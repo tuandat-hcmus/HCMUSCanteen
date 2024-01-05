@@ -1,0 +1,59 @@
+.cashier_report_table {
+    border-radius: 5rem;
+}
+.cashier_report_table table {
+    width: 100%;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    overflow: hidden; /* Ensure rounded corners are visible */
+    background-color: $nav-bg;
+    position: relative;
+    border-collapse: separate;
+    text-align: left;
+    margin-top: 2.25rem;
+    padding-bottom: 3rem;
+
+    th,
+    td {
+        border-bottom: 1px solid $sub-color;
+        padding: 1.125rem;
+    }
+    thead {
+        background-color: $base-color;
+        @include textStyle($nav-bg, 600, $base-font-family);
+    }
+    tbody {
+        @include textStyle($normal-text-color, 300, $base-font-family);
+        font-size: 0.813rem;
+    }
+
+    .btn-detail {
+        @include textStyle($normal-text-color, 100, $base-font-family);
+        font-size: 1.5rem;
+    }
+
+    tbody tr:hover {
+        background-color: $light-bg-color !important;
+        border-color: $light-bg-color !important;
+    }
+    td {
+        &.paid {
+            color: $green-active;
+        }
+        &.pending {
+            color: $pending-color;
+        }
+        &.canceled {
+            color: $danger-color;
+        }
+    }
+    th,
+    td {
+        background-clip: padding-box;
+    }
+
+    .btn-delete-report {
+        color: $danger-color;
+        font-size: 1.5rem;
+    }
+}

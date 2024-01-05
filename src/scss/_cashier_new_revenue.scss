@@ -1,0 +1,72 @@
+.new_revenue_container {
+    background-color: $nav-bg;
+    width: 70vw;
+    height: 85vh;
+    margin: 7vh auto;
+    display: grid;
+    border-radius: 1.25rem;
+    padding: 1.375rem 2.75rem;
+
+    .date {
+        @include textStyle($base-color, 400, $base-font-family);
+        font-size: 1.5rem;
+    }
+
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 3fr 2fr 2fr 2fr;
+        row-gap: 15px;
+        justify-items: center;
+
+        .header {
+            @include textStyle($base-color, 400, $base-font-family);
+            padding-top: 1.563rem;
+            padding-bottom: 1.188rem;
+        }
+
+        &.row {
+            @include textStyle($sub-color, 400, $base-font-family);
+            padding: 1.063rem;
+
+            &:hover {
+                background-color: $light-bg-color;
+            }
+        }
+
+        &.header-container {
+            border-bottom: 1px solid $base-color;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .row-container {
+        height: 20rem;
+        overflow: auto;
+    }
+
+    .badge {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 1.375rem 2.875rem 1.375rem 0.75rem;
+        margin-top: 2rem;
+        background-color: $yellow-total-color;
+        @include textStyle($base-color, 400, $base-font-family);
+    }
+
+    .btn-confirm {
+
+        
+            float: right;
+            border: none;
+            border-radius: 0.625rem;
+            padding: 0.5rem 1.5rem;
+            @include textStyle($nav-bg, 600, $base-font-family);
+            background-color: $base-color;
+            margin-top: 3rem;
+            
+        
+        
+    }
+}

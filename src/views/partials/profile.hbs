@@ -1,0 +1,41 @@
+<div id="edit" onclick="offEdit()">
+  {{>edit_profile}}
+</div>
+
+<div class="profile">
+    <header>
+        Profile
+    </header>
+
+    <section class="phead">
+        <img src="" alt="" class="avatar" />
+        <div class="col1">
+            <div class="name">
+                {{user.HoTen}}
+            </div>
+            <div>
+                {{user.UserName}}
+            </div>
+        </div>
+    </section>
+    <div class="detail_pro">
+        <div class="d_title">
+            <h1>Thông tin</h1>
+            <div><i class='bx bxs-edit-alt icon' onclick="onEdit()" ></i></div>
+        </div>
+        <div   class="detail" >
+            <p>Họ và tên:{{name}}</p> 
+            <p>Tuổi:{{age}}</p>
+            <p>Giới tính:{{gender}}</p>
+            <p>Ngày sinh:{{dob}}</p>
+            <p>Tên đăng nhập:{{username}}</p>
+            <p>Mật khẩu:{{password}}</p>
+            <p>Email:{{email}}</p>
+            <p>SDT:{{phone}}</p>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="/js/edit_profile.js"></script>

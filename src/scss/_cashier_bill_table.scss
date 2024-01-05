@@ -1,0 +1,56 @@
+.bill-order-table {
+    position: relative;
+    border-collapse: separate;
+    width: 100%;
+
+    margin-top: 2.25rem;
+    padding: 0 8rem;
+    background-color: $nav-bg;
+    padding-bottom: 2rem;
+    
+    th{
+        padding: 2rem 5rem 2rem 0;
+    }
+    td {
+        border-bottom: 1px solid $border-table;
+        padding: 0.375rem;
+    }
+    thead {
+        @include textStyle($normal-text-color, 600, $base-font-family);
+    }
+    tbody {
+        @include textStyle($normal-text-color, 300, $base-font-family);
+        font-size: 0.813rem;
+    }
+
+    .btn-detail {
+        @include textStyle($normal-text-color, 300, $base-font-family);
+        font-size: 1.5rem;
+        
+    }
+
+    tbody tr:hover {
+        background-color: $light-bg-color !important;
+        border-color: $light-bg-color !important;
+    }
+    td {
+        &.paid {
+            color: $green-active;
+        }
+        &.pending {
+            color: $pending-color;
+        }
+        &.canceled {
+            color: $danger-color;
+        }
+    }
+    th,
+    td {
+        background-clip: padding-box;
+    }
+    [class*="btn-"]{
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}

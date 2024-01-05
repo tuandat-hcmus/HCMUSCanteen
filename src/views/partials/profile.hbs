@@ -1,4 +1,4 @@
-<div id="edit" onclick="offEdit()">
+<div id="overlay">
   {{>edit_profile}}
 </div>
 
@@ -23,7 +23,7 @@
     <div class="detail_pro">
         <div class="d_title">
             <h1>Thông tin</h1>
-            <div><i class='bx bxs-edit-alt icon' onclick="onEdit()" ></i></div>
+            <div><i class='bx bxs-edit-alt icon' onclick="on()" ></i></div>
         </div>
         <div   class="detail" >
             <p>Họ và tên:{{name}}</p> 
@@ -40,4 +40,4 @@
     </div>
 
 </div>
-<script src="/js/edit_profile.js"></script>
+<script src="/js/overlay.js"></script>

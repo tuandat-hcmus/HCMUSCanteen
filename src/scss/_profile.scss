@@ -98,7 +98,8 @@
     }
 }
 
-.edit_detail {
+.edit_detail_profile {
+    position: relative;
     background-color: $light-bg-color;
     font-family: $base-font-family;
     border-radius: 1rem;
@@ -106,4 +107,14 @@
     width: 50vw;
     height: 50vh;
     margin: 25vh auto;
+
+    .btn-close {
+        position: absolute;
+        top: -2rem;
+        right: -2rem;
+        cursor: pointer;
+        i {
+            font-size: 2rem;
+        }
+    }
 }

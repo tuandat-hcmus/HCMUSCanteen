@@ -1816,7 +1816,8 @@ button.filter-btn:hover {
   margin: 2rem 3rem;
 }
 
-.edit_detail {
+.edit_detail_profile {
+  position: relative;
   background-color: #f2f4f7;
   font-family: "Be Vietnam Pro", sans-serif;
   border-radius: 1rem;
@@ -1824,6 +1825,15 @@ button.filter-btn:hover {
   width: 50vw;
   height: 50vh;
   margin: 25vh auto;
+}
+.edit_detail_profile .btn-close {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  cursor: pointer;
+}
+.edit_detail_profile .btn-close i {
+  font-size: 2rem;
 }
 
 * {

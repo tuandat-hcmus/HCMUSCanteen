@@ -86,7 +86,7 @@ CREATE TABLE "Loai" (
 
 DROP TABLE IF EXISTS "NhapHang";
 CREATE TABLE "NhapHang" (
-    "MaNH" SERIAL,
+    "MaNH" VARCHAR(10),
     "NgayLap" DATE,
     "NguoiNhap" INT NOT NULL,
 	CONSTRAINT PK_NhapHang PRIMARY KEY ("MaNH", "NgayLap")
@@ -94,7 +94,7 @@ CREATE TABLE "NhapHang" (
 
 DROP TABLE IF EXISTS "ChiTietNhapHang";
 CREATE TABLE "ChiTietNhapHang" (
-    "MaNH" INT,
+    "MaNH" VARCHAR(10),
     "NgayLap" DATE,
     "MaSP" INT,
     "SoLuong" INT NOT NULL,
@@ -154,3 +154,8 @@ INSERT INTO "DoanhThu" VALUES ('DT001', '2023-01-19', '19000000', '-2');
 INSERT INTO "DoanhThu" VALUES ('DT002', '2023-01-09', '9000000', '-2');
 INSERT INTO "DoanhThu" VALUES ('DT003', '2023-02-19', '110000000', '-2');
 INSERT INTO "DoanhThu" VALUES ('DT004', '2023-02-09', '200000000', '-3');
+
+INSERT INTO "NhapHang" VALUES ('NH001', '2023-01-19', '-2');
+INSERT INTO "NhapHang" VALUES ('NH002', '2023-01-09', '-2');
+INSERT INTO "NhapHang" VALUES ('NH003', '2023-02-19', '-2');
+INSERT INTO "NhapHang" VALUES ('NH004', '2023-02-09', '-3');

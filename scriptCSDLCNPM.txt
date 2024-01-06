@@ -141,9 +141,9 @@ INSERT INTO "Loai" VALUES ('-2','Mì');
 INSERT INTO "Loai" VALUES ('-3', 'Đồ uống');
 INSERT INTO "Loai" VALUES ('-4', 'Bánh');
 
-INSERT INTO "SanPham" VALUES ('-1', 'Cơm gà', 30000, 100, null, -1);
-INSERT INTO "SanPham" VALUES ('-2', 'Cơm sườn', 30000, 100, null, -1);
-INSERT INTO "SanPham" VALUES ('-3', 'Mì gà', 30000, 100, null, -2);
-INSERT INTO "SanPham" VALUES ('-4', 'Mì sườn', 30000, 100, null, -2);
-INSERT INTO "SanPham" VALUES ('-5', 'Nước lọc', 30000, 100, null, -3);
-INSERT INTO "SanPham" VALUES ('-6', 'Bánh mì', 30000, 100, null, -4);
+INSERT INTO "SanPham" VALUES ('1', 'Cơm gà', 30000, 100, null, -1);
+INSERT INTO "SanPham" VALUES ('2', 'Cơm sườn', 30000, 100, null, -1);
+INSERT INTO "SanPham" VALUES ('3', 'Mì gà', 30000, 100, null, -2);
+INSERT INTO "SanPham" VALUES ('4', 'Mì sườn', 30000, 100, null, -2);
+INSERT INTO "SanPham" VALUES ('5', 'Nước lọc', 30000, 100, null, -3);
+INSERT INTO "SanPham" VALUES ('6', 'Bánh mì', 30000, 100, null, -4);

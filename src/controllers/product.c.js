@@ -55,6 +55,7 @@ module.exports = {
         }
         try {
             let name = '';
+            let ggid = null;
             if (req.user) {
                 if (req.user.HoTen) name = req.user.HoTen;
                 if (req.user.displayName) {

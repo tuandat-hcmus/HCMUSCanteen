@@ -14,10 +14,9 @@ const db = pgp(cn);
 module.exports = {
     insertWithoutID: async (tbName, entity) => {
         try {
-            const { id, ...userFields } = entity;
             const query = {
-                text: `INSERT INTO "${tbName}" ("${Object.keys(userFields).join('", "')}") VALUES(${Object.keys(userFields).map((_, i) => `$${i + 1}`).join(', ')}) RETURNING *`,
-                values: Object.values(userFields),
+                text: `INSERT INTO "${tbName}" ("${Object.keys(entity).join('", "')}") VALUES(${Object.keys(entity).map((_, i) => `$${i + 1}`).join(', ')}) RETURNING *`,
+                values: Object.values(entity),
             };
             const result = await db.oneOrNone(query);
             if (result) {
@@ -30,7 +29,9 @@ module.exports = {
         } catch (error) {
             console.log('Insert error: ', error);
         }
+        return null;
     },
+
 
     insert: async (tbName, entity) => {
         try {
@@ -76,14 +77,14 @@ module.exports = {
 
     selectAllBy: async (tbName, colOrder, isDesc) => {
         try {
-            const query = `
+            let query = `
             SELECT * FROM "${tbName}"
             `;
             if (colOrder) {
                 if (isDesc) {
-                    query += `ORDER BY ${colOrder} DESC `;
+                    query += `ORDER BY "${colOrder}" DESC `;
                 }
-                else query += `ORDER BY ${colOrder} ASC `;
+                else query += `ORDER BY "${colOrder}" ASC `;
             }
             const data = await db.any(query);
             return data;
@@ -95,9 +96,9 @@ module.exports = {
 
     selectTopByCol: async (tbName, col, limit, isDesc) => {
         try {
-            const query = `
+            let query = `
             SELECT * 
-            FROM ${tbName}
+            FROM "${tbName}"
             WHERE ${col} IS NOT NULL 
             `;
             if (isDesc) {
@@ -156,7 +157,7 @@ module.exports = {
 
     joinTB: async (tb1, tb2, col1, col2, colWhere, val, colOrder, isDesc, limit) => {
         try {
-            const query = `
+            let query = `
                 SELECT *
                 FROM "${tb1}"
                 JOIN "${tb2}" ON "${tb1}"."${col1}" = "${tb2}"."${col2}"
@@ -176,5 +177,25 @@ module.exports = {
         } catch (error) {
             console.log("Join table error: ", error);
         }
-    }
+    },
+
+    update: async (tbName, col, colval, id, val) => {
+        try {
+            let query = `UPDATE "${tbName}" SET `;
+            for (let i = 0; i < col.length; i++) {
+                // Parameterize values to prevent SQL injection
+                query += `"${col[i]}" = $${i + 1}, `;
+            }
+            query = query.slice(0, -2); // Remove the trailing comma and space
+            query += ` WHERE "${id}" = $${col.length + 1}`;
+
+            // Combine column values and the identifier value for parameterization
+            const values = [...colval, val];
+            console.log(query, values);
+            const result = await db.result(query, values);
+            return result.rowCount;
+        } catch (error) {
+            console.log('Select property by condition error: ', error);
+        }
+    },
 }

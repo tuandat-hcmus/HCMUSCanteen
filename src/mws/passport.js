@@ -16,6 +16,9 @@ passport.deserializeUser(async (username, done) => {
 // PPassport xử lí đăng nhập
 passport.use('passport-login', new MyStrategy(async (req, username, password, done) => {
     const rs = await AccountModel.getUser(username);
+    if (!rs) {
+        return done(null, false, { message: 'Invalid username' });
+    }
     let auth;
     if (rs) {
         try {
@@ -27,10 +30,13 @@ passport.use('passport-login', new MyStrategy(async (req, username, password, do
             console.log("Passport login error: ", e);
         }
     }
+    if (!auth) {
+        return done(null, false, { message: 'Invalid password' });
+    }
     if (auth) {
         return done(null, rs);
     }
-    done('Invalid auth');
+    //done('Invalid auth');
 }, {
     username: 'username',
     password: 'password'
@@ -50,14 +56,20 @@ passport.use('passport-signup', new MyStrategy(async (req, username, password, d
             const Password = req.body.password;
             const HashPW = await bcrypt.hash(Password, saltBounds);
             // Mặc định là khách hàng 
-            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '1', '0', '0', null, null);
-            await AccountModel.insert(rs);
+            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, null, '1', '0', '0', null, null);
+            if (await AccountModel.insert(rs) == null) {
+                done('Invalid auth');
+                return;
+            };
         } catch (e) {
             console.log("Passport signup error: ", e);
+            done('Invalid auth');
+            return;
         }
         return done(null, rs);
     }
-    done('Invalid auth');
+    return done(null, false, { message: 'Invalid username' });
+    //done('Invalid auth');
 }, {
     username: 'username',
     password: 'password'

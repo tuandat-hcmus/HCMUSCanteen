@@ -7,6 +7,7 @@ const hbs = require('express-handlebars');
 //---
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 
 app.engine(
     ".hbs",
@@ -19,6 +20,9 @@ app.set("views", path.join(__dirname, "views"));
 
 // set static files
 app.use(express.static("public"));
+
+//flash
+app.use(flash());
 
 //---
 const https = require('https');
@@ -56,26 +60,39 @@ server.listen(port, () => console.log(`Listening on port ${port}`));
 
 const customer = new Set();
 const employee = new Set();
+const admin = new Set();
 const io = require('socket.io')(server);
 io.on('connection', socket => {
-    console.log(socket.id);
-    socket.on('sendOrder', (data) => {
-        console.log(data);
-        io.to('employees').emit('orders', data);
-    });
-
     socket.on('identify', (userData) => {
         if (userData && userData.role === 'khach') {
-            console.log("customer");
             socket.join('customers');
+            customer.add(socket.id);
+            console.log('Customer connected: ', socket.id);
         } else if (userData && userData.role === 'nv') {
-            console.log("employee");
             socket.join('employees');
+            employee.add(socket.id);
+            console.log('Employee connected: ', socket.id);
+        } else if (userData && userData.role === 'admin') {
+            socket.join('admin');
+            admin.add(socket.id);
+            console.log('Admin connected: ', socket.id);
+        }
+    });
+
+    socket.on('sendOrder', (data) => {
+        if (data) {
+            io.to('employees').emit('customerOrder', data);
+            socket.emit('orderCallback', {data: 'Success'});
+        }
+        else {
+            socket.emit('orderCallback', {data: 'Failed'});
         }
     });
 
     socket.on('disconnect', () => {
-        console.log('disconnected: ', socket.id);
+        if (customer.delete(socket.id)) console.log('Customer disconnected: ', socket.id);
+        if (employee.delete(socket.id)) console.log('Employee disconnected: ', socket.id);
+        if (admin.delete(socket.id)) console.log('Admin disconnected: ', socket.id);
     })
 });
 

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const orderController = require('../controllers/order.c');
+
 
 router.get('/', (req, res) => {
     res.render('dashboard', {
@@ -31,5 +33,9 @@ router.get('/profile', (req, res) => {
         isCashier: true,
     });
 })
+
+router.post('/loaddata', orderController.LoadPage);
+router.get('/updatedata', orderController.UpdateData);
+
 
 module.exports = router;

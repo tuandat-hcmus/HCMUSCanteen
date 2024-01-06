@@ -14,6 +14,9 @@ ALTER TABLE IF EXISTS "ChiTietNhapHang" DROP CONSTRAINT IF EXISTS "FK_MaNH_MaNH"
 
 ALTER TABLE IF EXISTS "ChiTietNhapHang" DROP CONSTRAINT IF EXISTS "FK_MaSP_MaSP";
 
+ALTER TABLE IF EXISTS "DanhGia" DROP CONSTRAINT IF EXISTS "FK_MaND_MaND";
+ALTER TABLE IF EXISTS "DanhGia" DROP CONSTRAINT IF EXISTS "FK_MaSP_MaSP";
+
 DROP TABLE IF EXISTS "NguoiDung";
 CREATE TABLE "NguoiDung" (
     "MaND" SERIAL,
@@ -35,7 +38,7 @@ CREATE TABLE "NguoiDung" (
 
 DROP TABLE IF EXISTS "DoanhThu";
 CREATE TABLE "DoanhThu" (
-    "MaDT" CHAR(5),
+    "MaDT" SERIAL,
     "Ngay" DATE,
     "TongDT" FLOAT8,
     "MaNV" INT NOT NULL,
@@ -44,20 +47,21 @@ CREATE TABLE "DoanhThu" (
 
 DROP TABLE IF EXISTS "HoaDon";
 CREATE TABLE "HoaDon" (
-    "MaHD" CHAR(5),
-    "NgayLap" DATE,
-    "PhuongThucTT" CHAR(15) CHECK ("PhuongThucTT" IN ('Tiền mặt', 'Chuyển khoản')) NOT NULL,
+    "MaHD" SERIAL,
+    "NgayLap" TIMESTAMP WITHOUT TIME ZONE,
+    "PhuongThucTT" CHAR(15) CHECK ("PhuongThucTT" IN ('Tiền mặt', 'Momo', 'VNPay')) NOT NULL,
     "TongHoaDon" FLOAT8,
-    "NVLap" INT NOT NULL,
+    "NVLap" INT,
     "KHMua" INT NOT NULL,
+    "TinhTrang" CHAR(15) CHECK ("TinhTrang" IN ('Chưa thanh toán', 'Đã thanh toán', 'Huỷ')) NOT NULL,
 	CONSTRAINT PK_HoaDon PRIMARY KEY ("MaHD", "NgayLap")
 );
 
 DROP TABLE IF EXISTS "ChiTietHoaDon";
 CREATE TABLE "ChiTietHoaDon" (
-    "MaHD" CHAR(5),
-    "NgayLap" DATE,
-    "MaSP" CHAR(7),
+    "MaHD" INT,
+    "NgayLap" TIMESTAMP WITHOUT TIME ZONE,
+    "MaSP" INT,
     "SoLuong" INTEGER NOT NULL,
     "TongTien" FLOAT8 NOT NULL,
     CONSTRAINT PK_ChiTietHoaDon PRIMARY KEY ("MaHD", "NgayLap", "MaSP")
@@ -65,25 +69,25 @@ CREATE TABLE "ChiTietHoaDon" (
 
 DROP TABLE IF EXISTS "SanPham";
 CREATE TABLE "SanPham" (
-    "MaSP" CHAR(7),
-    "Ten" VARCHAR(25) NOT NULL,
+    "MaSP" SERIAL,
+    "Ten" VARCHAR(25) NOT NULL UNIQUE,
     "DonGia" FLOAT8 NOT NULL,
     "SoLuongTon" INT NOT NULL,
     "Anh" VARCHAR(50),
-    "MaLoai" CHAR(3) NOT NULL,
+    "MaLoai" INT NOT NULL,
 	CONSTRAINT PK_SanPham PRIMARY KEY ("MaSP")
 );
 
 DROP TABLE IF EXISTS "Loai";
 CREATE TABLE "Loai" (
-    "MaLoai" CHAR(3),
+    "MaLoai" SERIAL,
     "TenLoai" VARCHAR(12) NOT NULL,
 	CONSTRAINT PK_Loai PRIMARY KEY ("MaLoai")
 );
 
 DROP TABLE IF EXISTS "NhapHang";
 CREATE TABLE "NhapHang" (
-    "MaNH" CHAR(5),
+    "MaNH" SERIAL,
     "NgayLap" DATE,
     "NguoiNhap" INT NOT NULL,
 	CONSTRAINT PK_NhapHang PRIMARY KEY ("MaNH", "NgayLap")
@@ -102,11 +106,21 @@ CREATE TABLE "DanhGia" (
 
 DROP TABLE IF EXISTS "ChiTietNhapHang";
 CREATE TABLE "ChiTietNhapHang" (
-    "MaNH" CHAR(5),
+    "MaNH" INT,
     "NgayLap" DATE,
-    "MaSP" CHAR(7),
+    "MaSP" INT,
     "SoLuong" INT NOT NULL,
     CONSTRAINT PK_ChiTietNhapHang PRIMARY KEY ("MaNH", "NgayLap", "MaSP")
+);
+
+DROP TABLE IF EXISTS "DanhGia";
+CREATE TABLE "DanhGia" (
+    "MaND" INT,
+    "MaSP" INT,
+    "Ngay" DATE,
+    "NoiDung" text NOT NULL,
+    "Sao" INT NOT NULL,
+	CONSTRAINT PK_DanhGia PRIMARY KEY ("MaND", "MaSP", "Ngay")
 );
 
 ALTER TABLE "DoanhThu" ADD CONSTRAINT "FK_MaNV_MaND" FOREIGN KEY ("MaNV") REFERENCES "NguoiDung" ("MaND");
@@ -124,21 +138,25 @@ ALTER TABLE "NhapHang" ADD CONSTRAINT "FK_NguoiNhap_MaND" FOREIGN KEY ("NguoiNha
 ALTER TABLE "ChiTietNhapHang" ADD CONSTRAINT "FK_MaNH_MaNH" FOREIGN KEY ("MaNH", "NgayLap") REFERENCES "NhapHang" ("MaNH", "NgayLap");
 ALTER TABLE "ChiTietNhapHang" ADD CONSTRAINT "FK_MaSP_MaSP" FOREIGN KEY ("MaSP") REFERENCES "SanPham" ("MaSP");
 
+ALTER TABLE "DanhGia" ADD CONSTRAINT "FK_MaND_MaND" FOREIGN KEY ("MaND") REFERENCES "NguoiDung" ("MaND");
+ALTER TABLE "DanhGia" ADD CONSTRAINT "FK_MaSP_MaSP" FOREIGN KEY ("MaSP") REFERENCES "SanPham" ("MaSP");
+
 -- username: admin, pass: 123456
 INSERT INTO "NguoiDung" VALUES ('1', 'admin', '111-111-1111', '2024-01-01', 'admin@gmail.com', 'user1.jpg', 'Nam', 'admin', '$2b$10$I4bL8B0gqW5Hui4MXzGLdupmLBJ5hq/Q0LQQB7PTIb1rNKfedkEG6', '0', '1', '0', null, null);
 -- username: khach, pass: a
 INSERT INTO "NguoiDung" VALUES ('2', 'khach', '111-111-1111', '2024-01-01', 'khachhang@gmail.com', 'user2.jpg', 'Nam', 'khach', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '1', '0', '0', null, null);
 --  username: nhanvien, pass: a
-INSERT INTO "NguoiDung" VALUES ('3', 'nhanvien', '111-111-1111', '2024-01-01', 'nhanvien@gmail.com', 'ser3.jpg', 'Nam', 'nhanvien', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '0', '0', '1', null, null);
+INSERT INTO "NguoiDung" VALUES ('3', 'nhanvien', '111-111-1111', '2024-01-01', 'nhanvien@gmail.com', 'user3.jpg', 'Nam', 'nhanvien', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '0', '0', '1', null, null);
 
-INSERT INTO "Loai" VALUES ('1', 'Cơm');
-INSERT INTO "Loai" VALUES ('2', 'Mì');
-INSERT INTO "Loai" VALUES ('3', 'Đồ uống');
-INSERT INTO "Loai" VALUES ('4', 'Bánh');
+INSERT INTO "Loai" VALUES ('-1', 'Cơm');
+INSERT INTO "Loai" VALUES ('-2','Mì');
+INSERT INTO "Loai" VALUES ('-3', 'Đồ uống');
+INSERT INTO "Loai" VALUES ('-4', 'Bánh');
 
-INSERT INTO "SanPham" VALUES ('1', 'Cơm gà', 30000, 100, 'noodle.jpeg', 1);
-INSERT INTO "SanPham" VALUES ('2', 'Cơm sườn', 30000, 100, 'noodle.jpeg', 1);
-INSERT INTO "SanPham" VALUES ('3', 'Mì gà', 30000, 100, 'noodle.jpeg', 2);
-INSERT INTO "SanPham" VALUES ('4', 'Mì sườn', 30000, 100, 'noodle.jpeg', 2);
-INSERT INTO "SanPham" VALUES ('5', 'Nước lọc', 30000, 100, 'noodle.jpeg', 3);
-INSERT INTO "SanPham" VALUES ('6', 'Bánh mì', 30000, 100, 'noodle.jpeg', 4);
+INSERT INTO "SanPham" VALUES ('-1', 'Cơm gà', 30000, 100, 'noodle.jpeg', -1);
+INSERT INTO "SanPham" VALUES ('-2', 'Cơm sườn', 30000, 100, 'noodle.jpeg', -1);
+INSERT INTO "SanPham" VALUES ('-3', 'Mì gà', 30000, 100, 'noodle.jpeg', -2);
+INSERT INTO "SanPham" VALUES ('-4', 'Mì sườn', 30000, 100, 'noodle.jpeg', -2);
+INSERT INTO "SanPham" VALUES ('-5', 'Nước lọc', 30000, 100, 'noodle.jpeg', -3);
+INSERT INTO "SanPham" VALUES ('-6', 'Bánh mì', 30000, 100, 'noodle.jpeg', -4);
+

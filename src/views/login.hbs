@@ -4,7 +4,7 @@
     <h1 class="cteen">canteen</h1>
   </div>
   <div class="image-container">
-      <img src="/img/Login_img.svg" alt="Login_img">
+    <img src="/img/Login_img.svg" alt="Login_img">
   </div>
 </div>
 
@@ -19,6 +19,9 @@
   <form action="/login" method="post" class="login-form">
 
     <h2 class="title">Đăng nhập</h2>
+    {{#if wrong}}
+    <div class="text-danger ms-2 mb-3" style="margin-top: 20px;">Tài khoản hoặc mật khẩu không đúng</div>
+    {{/if}}
     <div class="input-field">
 
       <input type="text" placeholder="Tên đăng nhập" name="username" value="{{username}}" />

@@ -2,10 +2,40 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+router.get('/', (req, res) => {
+    if (req.user) {
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
+    }
+    else {
+        res.redirect('/login');
+    }
+})
+
 router.get('/login', (req, res) => {
+    const messages = req.flash('error');
+    if (messages[0] == 'Invalid auth') {
+        res.render('login', { wrong: true });
+        return;
+    }
     if (req.user) {
         // console.log(req.user);
-        res.redirect('/client');
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
         return;
     }
     let username = null;
@@ -25,6 +55,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('passport-login', {
     failureRedirect: '/',
+    failureFlash: true
 }), (req, res) => {
     try {
         // Ghi đăng nhập cũ vào input
@@ -44,17 +75,48 @@ router.post('/login', passport.authenticate('passport-login', {
     catch (e) {
         console.log(e);
     }
-    res.redirect('/client');
+    if (req.user) {
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
+    }
+    else {
+        res.redirect('/login');
+    }
 });
 
 router.get('/signup', (req, res) => {
+    if (req.user) {
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
+        return;
+    }
+    const messages = req.flash('error');
+    if (messages[0] == 'Invalid auth') {
+        res.render('signup', { existed: true });
+        return;
+    }
     res.render('signup', {
         title: 'Signup page'
     });
 });
 
 router.post('/signup', passport.authenticate('passport-signup', {
-    failureRedirect: '/',
+    failureRedirect: '/signup',
+    failureFlash: true,
     successRedirect: '/client'
 }));
 

@@ -4,10 +4,6 @@ function checkOrderConditions() {
     $(".order-btn").prop("disabled", !(hasItems && paymentOptionChosen));
 }
 checkOrderConditions();
-$(".delete-order").on("click", (event) => {
-    $(event.target).closest(".item").remove();
-    checkOrderConditions();
-});
 
 $(".payment-btn").on("change", () => {
     checkOrderConditions();

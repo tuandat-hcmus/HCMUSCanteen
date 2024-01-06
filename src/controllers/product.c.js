@@ -50,11 +50,19 @@ module.exports = {
     },
 
     index: async (req, res) => {
+        if (!req.user) {
+            res.redirect('/login');
+            return;
+        }
         try {
             let name = '';
+            let ggid = null;
             if (req.user) {
-                if (req.user.HoTen) name = req.user.HoTen;
-                if (req.user.displayName) name = req.user.displayName;
+                if (req.user.HoTen !== undefined) name = req.user.HoTen;
+                if (req.user.displayName !== undefined) {
+                    name = req.user.displayName;
+                    ggid = req.user.id;
+                }
             }
             const data = await Product.getType();
             res.render('home', {
@@ -62,7 +70,8 @@ module.exports = {
                 type: data,
                 isHome: true,
                 isUser: true,
-                name: name
+                username: name,
+                ggid: ggid
             });
         }
         catch (err) {

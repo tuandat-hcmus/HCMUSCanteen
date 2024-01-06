@@ -37,7 +37,7 @@ CREATE TABLE "NguoiDung" (
 
 DROP TABLE IF EXISTS "DoanhThu";
 CREATE TABLE "DoanhThu" (
-    "MaDT" SERIAL,
+    "MaDT" VARCHAR (10),
     "Ngay" DATE,
     "TongDT" FLOAT8,
     "MaNV" INT NOT NULL,
@@ -47,18 +47,19 @@ CREATE TABLE "DoanhThu" (
 DROP TABLE IF EXISTS "HoaDon";
 CREATE TABLE "HoaDon" (
     "MaHD" SERIAL,
-    "NgayLap" DATE,
-    "PhuongThucTT" CHAR(15) CHECK ("PhuongThucTT" IN ('Tiền mặt', 'Chuyển khoản')) NOT NULL,
+    "NgayLap" TIMESTAMP WITHOUT TIME ZONE,
+    "PhuongThucTT" CHAR(15) CHECK ("PhuongThucTT" IN ('Tiền mặt', 'Momo', 'VNPay')) NOT NULL,
     "TongHoaDon" FLOAT8,
-    "NVLap" INT NOT NULL,
+    "NVLap" INT,
     "KHMua" INT NOT NULL,
+    "TinhTrang" CHAR(15) CHECK ("TinhTrang" IN ('Chưa thanh toán', 'Đã thanh toán', 'Huỷ')) NOT NULL,
 	CONSTRAINT PK_HoaDon PRIMARY KEY ("MaHD", "NgayLap")
 );
 
 DROP TABLE IF EXISTS "ChiTietHoaDon";
 CREATE TABLE "ChiTietHoaDon" (
     "MaHD" INT,
-    "NgayLap" DATE,
+    "NgayLap" TIMESTAMP WITHOUT TIME ZONE,
     "MaSP" INT,
     "SoLuong" INTEGER NOT NULL,
     "TongTien" FLOAT8 NOT NULL,
@@ -107,6 +108,7 @@ CREATE TABLE "DanhGia" (
     "Ngay" DATE,
     "TongDT" FLOAT8,
     "NoiDung" text NOT NULL,
+    "Sao" INT NOT NULL,
 	CONSTRAINT PK_DanhGia PRIMARY KEY ("MaND", "MaSP", "Ngay")
 );
 
@@ -134,6 +136,7 @@ INSERT INTO "NguoiDung" VALUES ('0', 'admin', '111-111-1111', '2024-01-01', 'adm
 INSERT INTO "NguoiDung" VALUES ('-1', 'khach', '111-111-1111', '2024-01-01', 'khachhang@gmail.com', 'Nam', 'khach', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '1', '0', '0', null, null);
 --  username: nhanvien, pass: a
 INSERT INTO "NguoiDung" VALUES ('-2', 'nhanvien', '111-111-1111', '2024-01-01', 'nhanvien@gmail.com', 'Nam', 'nhanvien', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '0', '0', '1', null, null);
+INSERT INTO "NguoiDung" VALUES ('-3', 'nhanvien2', '222-222-2222', '2024-01-01', 'nhanvien2@gmail.com', 'Nam', 'nhanvien2', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '0', '0', '1', null, null);
 
 INSERT INTO "Loai" VALUES ('-1', 'Cơm');
 INSERT INTO "Loai" VALUES ('-2','Mì');
@@ -146,3 +149,8 @@ INSERT INTO "SanPham" VALUES ('-3', 'Mì gà', 30000, 100, null, -2);
 INSERT INTO "SanPham" VALUES ('-4', 'Mì sườn', 30000, 100, null, -2);
 INSERT INTO "SanPham" VALUES ('-5', 'Nước lọc', 30000, 100, null, -3);
 INSERT INTO "SanPham" VALUES ('-6', 'Bánh mì', 30000, 100, null, -4);
+
+INSERT INTO "DoanhThu" VALUES ('DT001', '2023-01-19', '19000000', '-2');
+INSERT INTO "DoanhThu" VALUES ('DT002', '2023-01-09', '9000000', '-2');
+INSERT INTO "DoanhThu" VALUES ('DT003', '2023-02-19', '110000000', '-2');
+INSERT INTO "DoanhThu" VALUES ('DT004', '2023-02-09', '200000000', '-3');

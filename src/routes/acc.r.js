@@ -4,8 +4,17 @@ const passport = require('passport');
 
 router.get('/', (req, res) => {
     if (req.user) {
-        res.redirect('/client');
-    } else {
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier/dashboard');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
+    }
+    else {
         res.redirect('/login');
     }
 })
@@ -18,7 +27,15 @@ router.get('/login', (req, res) => {
     }
     if (req.user) {
         // console.log(req.user);
-        res.redirect('/client');
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier/dashboard');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
         return;
     }
     let username = null;
@@ -58,12 +75,33 @@ router.post('/login', passport.authenticate('passport-login', {
     catch (e) {
         console.log(e);
     }
-    res.redirect('/client');
+    if (req.user) {
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier/dashboard');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
+    }
+    else {
+        res.redirect('/login');
+    }
 });
 
 router.get('/signup', (req, res) => {
     if (req.user) {
-        res.redirect('/client');
+        if (req.user.LaNhanVien === '1') {
+            res.redirect('/cashier/dashboard');
+        }
+        else if (req.user.LaAdmin === '1') {
+            res.redirect('/admin');
+        }
+        else {
+            res.redirect('/client');
+        }
         return;
     }
     const messages = req.flash('error');

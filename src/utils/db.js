@@ -89,14 +89,14 @@ module.exports = {
 
     selectAllBy: async (tbName, colOrder, isDesc) => {
         try {
-            const query = `
+            let query = `
             SELECT * FROM "${tbName}"
             `;
             if (colOrder) {
                 if (isDesc) {
-                    query += `ORDER BY ${colOrder} DESC `;
+                    query += `ORDER BY "${colOrder}" DESC `;
                 }
-                else query += `ORDER BY ${colOrder} ASC `;
+                else query += `ORDER BY "${colOrder}" ASC `;
             }
             const data = await db.any(query);
             return data;
@@ -108,9 +108,9 @@ module.exports = {
 
     selectTopByCol: async (tbName, col, limit, isDesc) => {
         try {
-            const query = `
+            let query = `
             SELECT * 
-            FROM ${tbName}
+            FROM "${tbName}"
             WHERE ${col} IS NOT NULL 
             `;
             if (isDesc) {
@@ -150,6 +150,19 @@ module.exports = {
             return parseInt(result.count, 10);
         } catch (error) {
             console.log('Count error: ', error);
+        }
+    },
+
+    joinTBAll: async (tb1, tb2, col1, col2) => {
+        try {
+            const query = `
+                SELECT *
+                FROM "${tb1}"
+                JOIN "${tb2}" ON "${tb1}"."${col1}" = "${tb2}"."${col2}"
+            `;
+            return db.manyOrNone(query);
+        } catch (error) {
+            console.log("Join table all error: ", error);
         }
     },
 

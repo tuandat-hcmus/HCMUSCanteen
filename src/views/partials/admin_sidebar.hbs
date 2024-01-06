@@ -64,10 +64,12 @@
             <img src="" alt="" class="avatar" />
             <p class="open">Admin</p>
         </a>
-        <button class="logout-btn">
-            <i class="bx bx-log-out"></i>
-            <p class="open">Đăng xuất</p>
-        </button>
+        <form action="/logout" method="post">
+            <button type="submit" class="logout-btn" style="cursor: pointer;">
+                <i class='bx bx-log-out'></i>
+                <p class="open">Đăng xuất</p>
+            </button>
+        </form>
     </section>
 
 </aside>

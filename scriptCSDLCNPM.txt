@@ -106,7 +106,6 @@ CREATE TABLE "DanhGia" (
     "MaND" INT,
     "MaSP" INT,
     "Ngay" DATE,
-    "TongDT" FLOAT8,
     "NoiDung" text NOT NULL,
     "Sao" INT NOT NULL,
 	CONSTRAINT PK_DanhGia PRIMARY KEY ("MaND", "MaSP", "Ngay")

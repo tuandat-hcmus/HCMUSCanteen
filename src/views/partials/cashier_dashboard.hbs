@@ -58,30 +58,7 @@
                         </tr>
                     </thead>
                     <tbody id="billtbody">
-                        {{#each bill}}
-                        <tr>
-                            <td> {{@index}}</td>
-                            <td>{{this.MaHD}}</td>
-                            <td>{{this.PhuongThucTT}}</td>
-                            <td>{{this.TinhTrang}}</td>
-                            <td><i class="bx bx-file-find btn-detail"></i></td>
-                        </tr>
-                        {{!-- <tr>
-                            <td> {{no}}1</td>
-                            <td>{{id}}HD001</td>
-                            <td>{{method}}Card</td>
-                            <td>{{state}}Hủy</td>
-                            <td><i class="bx bx-file-find btn-detail"></i></td>
-                        </tr>
-                        <tr>
-                            <td> {{no}}1</td>
-                            <td>{{id}}HD001</td>
-                            <td>{{method}}Card</td>
-                            <td>{{state}}Chưa thanh toán</td>
-                            <td><i class="bx bx-file-find btn-detail"></i></td>
-
-                        </tr> --}}
-                        {{/each}}
+                    
                     </tbody>
                 </table>
                 <i class="bx bx-expand-alt btn-expand"></i>
@@ -95,55 +72,8 @@
             </div>
 
             <section id="customerinfo">
-                {{#each customer}}
-                <div class="client">
-                    <div class="no">{{no_client}}1</div>
-                    <div> <img src="" alt="" class="img-client" /></div>
-                    <div class="name-time">
-                        <div class="_name">
-                            {{this.user.UserName}}
-                        </div>
-                        <div class="_time">
-                            {{this.time}} phút trước
-                        </div>
-
-                    </div>
-
-                </div>
-                {{/each}}
-                {{!-- <div class="client">
-                    <div class="no">{{no_client}}1</div>
-                    <div> <img src="" alt="" class="img-client" /></div>
-                    <div class="name-time">
-                        <div class="_name">
-                            {{name_client}}
-                            Nguyễn Văn A
-                        </div>
-                        <div class="_time">
-                            {{time}}2 phút trước
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="client">
-                    <div class="no">{{no_client}}1</div>
-                    <div> <img src="" alt="" class="img-client" /></div>
-                    <div class="name-time">
-                        <div class="_name">
-                            {{name_client}}
-                            Nguyễn Văn A
-                        </div>
-                        <div class="_time">
-                            {{time}}2 phút trước
-                        </div>
-
-                    </div>
-
-                </div> --}}
+                
             </section>
         </div>
     </div>
 </div>
-
-<script src="/js/table.js"></script>

@@ -29,4 +29,7 @@ module.exports = class Bill {
         cb(res);
         return res;
     }
+    static async update(colval, id) {
+        return db.update(tbName, ["TinhTrang", "NVLap"], colval, "MaHD", id);
+    }
 }

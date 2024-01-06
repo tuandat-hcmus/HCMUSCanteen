@@ -2,9 +2,16 @@ const express = require('express');
 const router = express.Router();
 const orderController = require('../controllers/order.c');
 
-router.get("/dashboard", orderController.LoadPage);
+router.get("/dashboard", (req, res, next) => {
+    res.render("dashboard", {
+        title: "Cashier dashboard page",
+        isCashier: true,
+        isDashboard: true
+    });
+});
 
-// router.post('hasorder', orderController.ReFresh);
+router.post('/loaddata', orderController.LoadPage);
+router.get('/updatedata', orderController.UpdateData);
 
 router.get("/bill", (req, res) => {
     res.render("bill", {

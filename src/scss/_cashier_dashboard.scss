@@ -66,6 +66,18 @@
         section {
             margin-top: 1rem;
         }
+        button{
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+            background-color: $green-active;
+            @include textStyle($light-bg-color, 400, $base-font-family);
+            cursor: pointer;
+            border: none;
+            margin-left: 2rem;
+            &:hover{
+                transform:scale(1.05);
+            }
+        }
     }
 
     .newest-order {

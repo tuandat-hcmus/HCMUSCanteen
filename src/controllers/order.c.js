@@ -12,14 +12,16 @@ module.exports = {
             const name = req.body.name;
             const sum = req.body.sum;
             const date = new Date()
+            console.log(name);
             await User.getUser2(name, async (user) => {
                 const u = await user;
+                console.log(u);
                 await BillModel.insert(new BillModel(date, payment, sum, null, u.MaND, "Chưa thanh toán"), async (rs) => {
                     const bill = await rs;
                     data.forEach(async element => {
                         await BillDetail.insert(new BillDetail(bill.MaHD, date, element.MaSP, element.SoLuong, sum));
                     });
-                    res.json({user: u, bill: bill});
+                    res.json({ user: u, bill: bill });
                 });
             });
         }
@@ -36,17 +38,23 @@ module.exports = {
                 const user = await User.getUserByID(element.KHMua);
                 const time = current - element.NgayLap;
                 const minutes = Math.floor((time % (60 * 60 * 1000)) / (60 * 1000));
-            
+
                 return { user, time: minutes };
             });
             const customer = await Promise.all(promises);
-            res.render("dashboard", {
-                title: "Cashier dashboard page",
-                isCashier: true,
-                isDashboard: true,
+            res.json({
                 bill: r,
                 customer: customer
             });
         });
     },
+    UpdateData: async (req, res) => {
+        const id = req.query.id;
+        const username = req.user.HoTen;
+        await User.getUser2(username, async (rs) => {
+            const u = await rs;
+            await BillModel.update(["Đã thanh toán", u.MaND], id);
+            res.json(true);
+        });
+    }
 }

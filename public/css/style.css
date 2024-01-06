@@ -697,6 +697,20 @@ button.filter-btn:hover {
 .dashboard-container .state-container section {
   margin-top: 1rem;
 }
+.dashboard-container .state-container button {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: #00a67e;
+  color: #f2f4f7;
+  font-weight: 400;
+  font-family: "Be Vietnam Pro", sans-serif;
+  cursor: pointer;
+  border: none;
+  margin-left: 2rem;
+}
+.dashboard-container .state-container button:hover {
+  transform: scale(1.05);
+}
 .dashboard-container .newest-order {
   flex: 1;
 }

@@ -177,5 +177,25 @@ module.exports = {
         } catch (error) {
             console.log("Join table error: ", error);
         }
-    }
+    },
+
+    update: async (tbName, col, colval, id, val) => {
+        try {
+            let query = `UPDATE "${tbName}" SET `;
+            for (let i = 0; i < col.length; i++) {
+                // Parameterize values to prevent SQL injection
+                query += `"${col[i]}" = $${i + 1}, `;
+            }
+            query = query.slice(0, -2); // Remove the trailing comma and space
+            query += ` WHERE "${id}" = $${col.length + 1}`;
+
+            // Combine column values and the identifier value for parameterization
+            const values = [...colval, val];
+            console.log(query, values);
+            const result = await db.result(query, values);
+            return result.rowCount;
+        } catch (error) {
+            console.log('Select property by condition error: ', error);
+        }
+    },
 }

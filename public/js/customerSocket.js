@@ -1,5 +1,11 @@
 $(() => {
-    const name = $('#username').val();
+    let name = $('#username').val();
+    let ggname = null;
+    if ($('#ggid').val()) {
+        ggname = name;
+        name = $('#ggid').val();
+    }
+    // console.log($('#ggid').val());
     const socket = io();
     socket.emit('identify', { role: 'khach' });
 
@@ -11,6 +17,7 @@ $(() => {
         formData.append('payment', payment);
         formData.append('name', name);
         formData.append('sum', money());
+        formData.append('ggname', ggname);
         // console.log(formData);
         $.ajax({
             url: `/client/order`,

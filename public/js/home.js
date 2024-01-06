@@ -122,9 +122,9 @@ $(document).ready(function () {
                 // sự kiện click add-btn
 
                 for (let i = 0; i < data.perpage && i < data.data.length; i++) {
-                    console.log('#' + data.data[i].MaSP.trim() + '.add-btn');
-
-                    $('#' + data.data[i].MaSP.trim() + '.add-btn').on('click', function () {
+                    // console.log('#' + data.data[i].MaSP.trim() + '.add-btn');
+                    console.log(document.querySelector(`#${data.data[i].MaSP}`));
+                    $('#' + data.data[i].MaSP).on('click', function () {
                         console.log(data.data[i].MaSP);
                         if (!orderArr.some(order => order.MaSP === data.data[i].MaSP)) {
                             orderArr.push({

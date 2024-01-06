@@ -21,6 +21,7 @@ CREATE TABLE "NguoiDung" (
     "SDT" char(12),
     "NgaySinh" DATE,
     "Email" text,
+    "Anh" text,
     "GioiTinh" char(3) CHECK ("GioiTinh" IN ('Nam', 'Nữ')),
     "UserName" text UNIQUE,
     "MatKhau" text,
@@ -88,6 +89,17 @@ CREATE TABLE "NhapHang" (
 	CONSTRAINT PK_NhapHang PRIMARY KEY ("MaNH", "NgayLap")
 );
 
+DROP TABLE IF EXISTS "DanhGia";
+CREATE TABLE "DanhGia" (
+    "MaND" INT,
+    "MaSP" INT,
+    "Ngay" DATE,
+    "TongDT" FLOAT8,
+    "NoiDung" text NOT NULL,
+    "Sao" INT NOT NULL,
+	CONSTRAINT PK_DanhGia PRIMARY KEY ("MaND", "MaSP", "Ngay")
+);
+
 DROP TABLE IF EXISTS "ChiTietNhapHang";
 CREATE TABLE "ChiTietNhapHang" (
     "MaNH" CHAR(5),
@@ -113,11 +125,11 @@ ALTER TABLE "ChiTietNhapHang" ADD CONSTRAINT "FK_MaNH_MaNH" FOREIGN KEY ("MaNH",
 ALTER TABLE "ChiTietNhapHang" ADD CONSTRAINT "FK_MaSP_MaSP" FOREIGN KEY ("MaSP") REFERENCES "SanPham" ("MaSP");
 
 -- username: admin, pass: 123456
-INSERT INTO "NguoiDung" VALUES ('1', 'admin', '111-111-1111', '2024-01-01', 'admin@gmail.com', 'Nam', 'admin', '$2b$10$I4bL8B0gqW5Hui4MXzGLdupmLBJ5hq/Q0LQQB7PTIb1rNKfedkEG6', '0', '1', '0', null, null);
+INSERT INTO "NguoiDung" VALUES ('1', 'admin', '111-111-1111', '2024-01-01', 'admin@gmail.com', 'user1.jpg', 'Nam', 'admin', '$2b$10$I4bL8B0gqW5Hui4MXzGLdupmLBJ5hq/Q0LQQB7PTIb1rNKfedkEG6', '0', '1', '0', null, null);
 -- username: khach, pass: a
-INSERT INTO "NguoiDung" VALUES ('2', 'khach', '111-111-1111', '2024-01-01', 'khachhang@gmail.com', 'Nam', 'khach', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '1', '0', '0', null, null);
+INSERT INTO "NguoiDung" VALUES ('2', 'khach', '111-111-1111', '2024-01-01', 'khachhang@gmail.com', 'user2.jpg', 'Nam', 'khach', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '1', '0', '0', null, null);
 --  username: nhanvien, pass: a
-INSERT INTO "NguoiDung" VALUES ('3', 'nhanvien', '111-111-1111', '2024-01-01', 'nhanvien@gmail.com', 'Nam', 'nhanvien', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '0', '0', '1', null, null);
+INSERT INTO "NguoiDung" VALUES ('3', 'nhanvien', '111-111-1111', '2024-01-01', 'nhanvien@gmail.com', 'ser3.jpg', 'Nam', 'nhanvien', '$2b$10$zZecXiqAo.sjhPYO8O5oaeLvBtRlVd6NjoIZhluPDA3E6Aw3A8BTW', '0', '0', '1', null, null);
 
 INSERT INTO "Loai" VALUES ('1', 'Cơm');
 INSERT INTO "Loai" VALUES ('2', 'Mì');

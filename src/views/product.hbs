@@ -1,7 +1,7 @@
-{{>cashier_sidebar}}
+{{>client_sidebar}}
 <section class="product-detail-container">
     <section class="card_food">
-        <div class="product-cover-img" style="background-image: url(/img/products/{{Anh}});">
+        <div class="product-cover-img" style="background-image: url(/img/products/{{product.Anh}});">
 
         </div>
 
@@ -10,11 +10,11 @@
         </button>
 
         <div class="food-detail">
-            <div class="type">{{MaLoai}} </div>
-            <div class="name">{{Ten}}</div>
-            <div class="stock"> Số lượng còn: {{SoLuongTon}}</div>
+            <div class="type">{{product.MaLoai}} </div>
+            <div class="name">{{product.Ten}}</div>
+            <div class="stock"> Số lượng còn: {{product.SoLuongTon}}</div>
             <div class="star">{{n_star}} ({{n_comment}} đánh giá)</div>
-            <div class="price">{{DonGia}}</div>
+            <div class="price">{{product.DonGia}}</div>
         </div>
     </section>
 
@@ -53,7 +53,7 @@
                 </div>
                 <div class="detail">
                     <div class="name">
-                        {{name-client}}Johnny Cage
+                        {{user.HoTen}}
                     </div>
 
                     <div class="star-rated">

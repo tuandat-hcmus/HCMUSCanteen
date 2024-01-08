@@ -128,6 +128,19 @@ module.exports = {
         }
     },
 
+    selectMany: async (tbName, col, val) => {
+        try {
+            const query = `
+                SELECT *
+                FROM "${tbName}"
+                WHERE "${col}" = '${val}'
+            `;
+            return db.manyOrNone(query);
+        } catch (error) {
+            console.log('Select property by condition error: ', error);
+        }
+    },
+
     count: async (tbName) => {
         try {
             const query = `

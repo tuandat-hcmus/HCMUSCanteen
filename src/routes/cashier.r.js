@@ -36,6 +36,7 @@ router.get('/profile', (req, res) => {
 
 router.post('/loaddata', orderController.LoadPage);
 router.get('/updatedata', orderController.UpdateData);
+router.get('/getbilldetail', orderController.getBillDetail);
 
 
 module.exports = router;

@@ -56,5 +56,12 @@ module.exports = {
             await BillModel.update(["Đã thanh toán", u.MaND], id);
             res.json(true);
         });
+    },
+
+    getBillDetail: async (req, res) => {
+        const id = req.query.billid;
+        const data = await BillDetail.getByID(id);
+        console.log(data);
+        res.send(JSON.stringify(data));
     }
 }

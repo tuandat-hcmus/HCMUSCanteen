@@ -1,14 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const orderController = require('../controllers/order.c');
+const billController = require('../controllers/bill.c');
 
 
 router.get('/', (req, res) => {
     if (req.user && req.user.LaNhanVien === '1') {
+        const birth = new Date(req.user.NgaySinh);
         res.render('dashboard', {
             title: 'Cashier Dashboard',
             isCashier: true,
             isDashboard: true,
+            user: req.user,
+            age: new Date().getFullYear() - birth.getFullYear() | 0,
+            role: "Nhân viên",
         });
     }
     else {
@@ -16,12 +21,15 @@ router.get('/', (req, res) => {
     }
 });
 
-router.get('/bills', (req, res) => {
+router.get('/bills', async (req, res) => {
     if (req.user && req.user.LaNhanVien === '1') {
+        const bills = await billController.getBill();
         res.render('bill', {
-            title:'Bills',
+            title: 'Bills',
             isCashier: true,
             isBill: true,
+            user: req.user,
+            bills: bills,
         })
     }
     else {
@@ -35,6 +43,7 @@ router.get('/report', (req, res) => {
             title: 'Cashier Report',
             isCashier: true,
             isReport: true,
+            user: req.user
         });
     }
     else {
@@ -47,6 +56,7 @@ router.get('/profile', (req, res) => {
         res.render("user_profile", {
             title: "Cashier Profile Page",
             isCashier: true,
+            user: req.user
         });
     }
     else {

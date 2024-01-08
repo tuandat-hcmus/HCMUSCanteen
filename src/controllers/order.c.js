@@ -11,11 +11,9 @@ module.exports = {
             const payment = req.body.payment;
             const name = req.body.name;
             const sum = req.body.sum;
-            const date = new Date()
-            console.log(name);
+            const date = new Date();
             await User.getUser2(name, async (user) => {
                 const u = await user;
-                console.log(u);
                 await BillModel.insert(new BillModel(date, payment, sum, null, u.MaND, "Chưa thanh toán"), async (rs) => {
                     const bill = await rs;
                     data.forEach(async element => {
@@ -44,7 +42,9 @@ module.exports = {
             const customer = await Promise.all(promises);
             res.json({
                 bill: r,
-                customer: customer
+                customer: customer.sort(function (a, b) {
+                    return a.time - b.time;
+                })
             });
         });
     },
@@ -63,5 +63,5 @@ module.exports = {
         const data = await BillDetail.getByID(id);
         console.log(data);
         res.send(JSON.stringify(data));
-    }
+    },
 }

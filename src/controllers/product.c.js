@@ -71,7 +71,7 @@ module.exports = {
                 isHome: true,
                 isUser: true,
                 username: name,
-                ggid: ggid
+                ggid: ggid,
             });
         }
         catch (err) {

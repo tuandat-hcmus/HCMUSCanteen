@@ -1,11 +1,58 @@
 $(() => {
     loadData();
     const socket = io();
-    socket.emit('identify', { role: 'nv' });
+    socket.emit('identify', { role: $('#role').val() });
 
     socket.on('customerOrder', (data) => {
         if (data) {
-            loadData();
+            console.log(data);
+            //loadData();
+            $('#billtbody').prepend($(`
+                    <tr id="${data.bill.MaHD}">
+                        <td></td>
+                        <td>${data.bill.MaHD}</td>
+                        <td>${data.bill.PhuongThucTT}</td>
+                        <td class="pending">
+                            ${data.bill.TinhTrang}
+                            <button id="${data.bill.MaHD}btn" onclick="handleClick(${data.bill.MaHD})">Xác nhận</button>
+                        </td>
+                        <td>
+                            <form action="/cashier/getbilldetail" method="get">
+                            <input type="hidden" value="${data.bill.MaHD}" name="billid">
+                            <button class="bx bx-file-find btn-detail"></button>
+                            </form>
+                        </td>
+                    </tr>
+                    `));
+            $('#customerinfo').prepend($(`
+                    <div class="client">
+                        <div class="no"></div>
+                        <div> <img src="" alt="" class="img-client" /></div>
+                        <div class="name-time">
+                            <div class="_name">
+                                ${data.user.HoTen}
+                            </div>
+                            <div class="_time">
+                                0 phút trước
+                            </div>
+    
+                        </div>
+                    </div>
+                    `));
+            // Cập nhật stt
+            
+            let i = 1;
+            $("#billtbody tr").each(function () {
+                let firstChild = $(this).find("td:eq(0)");
+                firstChild.text(i)
+                i++;
+            });
+            let j = 1;
+            $("#customerinfo").find("div.client").each(function () {
+                let firstChild = $(this).find("div:eq(0)");
+                firstChild.text(j)
+                j++;
+            });
         }
     });
 });
@@ -18,7 +65,7 @@ function loadData() {
         contentType: false, // Set to false to prevent jQuery from setting contentType
         cache: false, // Prevent caching
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             $('#billtbody').empty();
             for (let i = 0; i < data.bill.length; i++) {
                 $('#billtbody').append($(`
@@ -44,7 +91,7 @@ function loadData() {
                         <div> <img src="" alt="" class="img-client" /></div>
                         <div class="name-time">
                             <div class="_name">
-                                ${data.customer[i].user.UserName}
+                                ${data.customer[i].user.HoTen}
                             </div>
                             <div class="_time">
                                 ${data.customer[i].time} phút trước
@@ -57,7 +104,7 @@ function loadData() {
             const rows = $("tbody tr");
             rows.each(function () {
                 const statusCell = $(this).find("td:nth-child(4)");
-                const status = statusCell.text();
+                const status = statusCell.text().trim();
 
                 switch (status) {
                     case "Đã thanh toán":
@@ -84,7 +131,9 @@ function handleClick(id) {
         url: `/cashier/updatedata?id=${id}`,
         method: 'GEt',
         success: function (data) {
-            loadData();
+            let i =  $('#' + id + 'btn').parent();
+            i.toggleClass("pending").toggleClass("paid");
+            i.text("Đã thanh toán");
         },
         error: function (err) {
             console.error('Error fetching data:', err);

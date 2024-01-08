@@ -68,11 +68,11 @@ io.on('connection', socket => {
             socket.join('customers');
             customer.add(socket.id);
             console.log('Customer connected: ', socket.id);
-        } else if (userData && userData.role === 'nv') {
+        } else if (userData && userData.role.trim() === 'Nhân viên') {
             socket.join('employees');
             employee.add(socket.id);
             console.log('Employee connected: ', socket.id);
-        } else if (userData && userData.role === 'admin') {
+        } else if (userData && userData.role.trim() === 'Admin') {
             socket.join('admin');
             admin.add(socket.id);
             console.log('Admin connected: ', socket.id);

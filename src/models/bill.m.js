@@ -32,4 +32,7 @@ module.exports = class Bill {
     static async update(colval, id) {
         return db.update(tbName, ["TinhTrang", "NVLap"], colval, "MaHD", id);
     }
+    static async getManyBy(col, val) {
+        return db.selectMany(tbName, col, val);
+    }
 }

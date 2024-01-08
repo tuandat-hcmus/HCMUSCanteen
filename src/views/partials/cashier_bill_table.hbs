@@ -10,31 +10,19 @@
             </tr>
         </thead>
         <tbody>
+            {{#each bills}}
             <tr>
-                <td> {{no}}1</td>
-                <td>{{id}}HD001</td>
-                <td>{{method}}Card</td>
-                <td>{{state}}Đã thanh toán</td>
+                <td>{{@index}}</td>
+                <td>{{this.MaHD}}</td>
+                <td>{{this.PhuongThucTT}}</td>
+                <td>{{this.TinhTrang}}</td>
                 <td><i class="bx bx-file-find btn-detail"></i></td>
             </tr>
-            <tr>
-                <td> {{no}}1</td>
-                <td>{{id}}HD001</td>
-                <td>{{method}}Card</td>
-                <td>{{state}}Hủy</td>
-                <td><i class="bx bx-file-find btn-detail"></i></td>
-            </tr>
-            <tr>
-                <td> {{no}}1</td>
-                <td>{{id}}HD001</td>
-                <td>{{method}}Card</td>
-                <td>{{state}}Chưa thanh toán</td>
-                <td><i class="bx bx-file-find btn-detail"></i></td>
-
-            </tr>
+            {{/each}}
         </tbody>
     </table>
     
 
 </section>
 <script src="/js/table.js"></script>
+<script src="/js/cashier_bill.js"></script>

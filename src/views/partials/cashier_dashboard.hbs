@@ -7,33 +7,29 @@
         <img src="" alt="" class="cashier-image" />
         <div class="col1">
             <div>
-                {{name}}
-                Nguyễn Thị Thu
+                {{user.UserName}}
             </div>
             <div>
                 Tuổi:
                 {{age}}
-                24
             </div>
             <div>
                 Giới tính:
-                {{sex}}
-                nữ
+                {{user.GioiTinh}}
             </div>
             <div>
                 Chức vụ:
                 {{role}}
-                Thu ngân
             </div>
 
         </div>
         <div class="col2">
             <div><i class="bx bx-phone"></i>Điện thoại:
-                {{phone}}</div>
+                {{user.SDT}}</div>
             <div><i class="bx bx-envelope"></i>Email:
-                {{email}}</div>
+                {{user.Email}}</div>
             <div><i class="bx bx-target-lock"></i>Địa chỉ:
-                {{address}}</div>
+                {{user.DiaChi}}</div>
         </div>
         <button class="btn-edit">
             Chỉnh sửa

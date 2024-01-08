@@ -19,7 +19,7 @@ passport.use(new FacebookStrategy({
         let rs = await AccountModel.getUser(profile.id);
         if (!rs) {
             try {
-                rs = new AccountModel(profile.displayName, null, null, null, profile.id, null, null, '1', '0', '0', null, null);
+                rs = new AccountModel(profile.displayName, null, null, null, profile.id, null, null, null, '1', '0', '0', null, null);
                 await AccountModel.insert(rs);
             }
             catch (e) {

@@ -2,7 +2,7 @@
 const rows = $("tbody tr");
 rows.each(function () {
     const statusCell = $(this).find("td:nth-child(4)");
-    const status = statusCell.text();
+    const status = statusCell.text().trim();
     console.log(this);
     
     switch (status) {

@@ -18,4 +18,7 @@ module.exports = class BillDetail {
     static async getAllBy(orderBy, isDesc) {
         return db.selectAllBy(tbName, orderBy, isDesc);
     }
+    static async getByID(id) {
+        return db.selectMany(tbName, "MaHD", id);
+    }
 }

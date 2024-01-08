@@ -1,4 +1,5 @@
 const Product = require('../models/product.m');
+const Account = require('../models/acc.m');
 
 module.exports = {
     Add: async (req, res, next) => {
@@ -32,7 +33,7 @@ module.exports = {
             const total = data.length;
 
             const currentPage = req.query.page || 1;
-            const itemsPerPage = 2;
+            const itemsPerPage = 3;
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
             data = data.slice(startIndex, endIndex);
@@ -48,7 +49,7 @@ module.exports = {
         }
     },
 
-    getType: async (req, res) => {
+    index: async (req, res) => {
         if (!req.user) {
             res.redirect('/login');
             return;
@@ -57,8 +58,8 @@ module.exports = {
             let name = '';
             let ggid = null;
             if (req.user) {
-                if (req.user.HoTen) name = req.user.HoTen;
-                if (req.user.displayName) {
+                if (req.user.HoTen !== undefined) name = req.user.HoTen;
+                if (req.user.displayName !== undefined) {
                     name = req.user.displayName;
                     ggid = req.user.id;
                 }
@@ -75,6 +76,30 @@ module.exports = {
         }
         catch (err) {
             console.log('Get type err: ', err);
+        }
+    },
+
+    show: async (req, res, next) => {
+        try {
+            const product = await Product.getProduct(req.params.slug);
+            console.log(req.user);
+            let user;
+            if (req.user.displayName !== undefined) {
+                user = await Account.getUser(req.user.id);
+            } else {
+                user = req.user;
+            }
+            if (product == null) {
+                return next();
+            }
+            res.render('product', {
+                product: product,
+                user: user,
+                name: user.HoTen
+            });
+        }
+        catch (err) {
+            console.log('err type: ', err);
         }
     }
 }

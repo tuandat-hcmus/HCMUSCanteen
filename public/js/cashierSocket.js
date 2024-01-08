@@ -27,7 +27,12 @@ function loadData() {
                         <td>${data.bill[i].MaHD}</td>
                         <td>${data.bill[i].PhuongThucTT}</td>
                         <td>${data.bill[i].TinhTrang}</td>
-                        <td><i class="bx bx-file-find btn-detail"></i></td>
+                        <td>
+                            <form action="/cashier/getbilldetail" method="get">
+                            <input type="hidden" value="${data.bill[i].MaHD}" name="billid">
+                            <button class="bx bx-file-find btn-detail"></button>
+                            </form>
+                        </td>
                     </tr>
                     `));
             }

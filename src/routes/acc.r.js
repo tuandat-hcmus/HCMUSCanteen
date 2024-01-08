@@ -5,7 +5,7 @@ const passport = require('passport');
 router.get('/', (req, res) => {
     if (req.user) {
         if (req.user.LaNhanVien === '1') {
-            res.redirect('/cashier/dashboard');
+            res.redirect('/cashier');
         }
         else if (req.user.LaAdmin === '1') {
             res.redirect('/admin');
@@ -28,7 +28,7 @@ router.get('/login', (req, res) => {
     if (req.user) {
         // console.log(req.user);
         if (req.user.LaNhanVien === '1') {
-            res.redirect('/cashier/dashboard');
+            res.redirect('/cashier');
         }
         else if (req.user.LaAdmin === '1') {
             res.redirect('/admin');
@@ -77,7 +77,7 @@ router.post('/login', passport.authenticate('passport-login', {
     }
     if (req.user) {
         if (req.user.LaNhanVien === '1') {
-            res.redirect('/cashier/dashboard');
+            res.redirect('/cashier');
         }
         else if (req.user.LaAdmin === '1') {
             res.redirect('/admin');
@@ -94,7 +94,7 @@ router.post('/login', passport.authenticate('passport-login', {
 router.get('/signup', (req, res) => {
     if (req.user) {
         if (req.user.LaNhanVien === '1') {
-            res.redirect('/cashier/dashboard');
+            res.redirect('/cashier');
         }
         else if (req.user.LaAdmin === '1') {
             res.redirect('/admin');

@@ -56,7 +56,7 @@ passport.use('passport-signup', new MyStrategy(async (req, username, password, d
             const Password = req.body.password;
             const HashPW = await bcrypt.hash(Password, saltBounds);
             // Mặc định là khách hàng 
-            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, '1', '0', '0', null, null);
+            rs = new AccountModel(Fullname, Phone, Birth, Gender, Username, HashPW, Email, null, '1', '0', '0', null, null);
             if (await AccountModel.insert(rs) == null) {
                 done('Invalid auth');
                 return;

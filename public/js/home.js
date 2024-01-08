@@ -31,33 +31,6 @@ $(document).ready(function () {
         });
     }
 
-    // next page button click event
-    $('#next-page').on('click', function () {
-        if (currentPage < totalPages) {
-            ++currentPage;
-            loadPage(currentType, currentPage);
-            if (currentPage > lastPage) {
-                firstPage++;
-                lastPage++;
-            }
-            $('#page-container').empty();
-            loadPageContainer(firstPage, lastPage);
-        }
-    });
-
-    // previous page button click event
-    $('#previous-page').on('click', function () {
-        if (currentPage > 1) {
-            --currentPage;
-            loadPage(currentType, currentPage);
-            if (currentPage < firstPage) {
-                firstPage--;
-                lastPage--;
-            }
-            $('#page-container').empty();
-            loadPageContainer(firstPage, lastPage);
-        }
-    })
 
     function loadPage(type, page) {
         $.ajax({
@@ -68,6 +41,33 @@ $(document).ready(function () {
                 currentType = type;
                 console.log(data);
                 //----------------------
+                // next page button click event
+                $('#next-page').on('click', function () {
+                    if (currentPage < totalPages) {
+                        ++currentPage;
+                        loadPage(currentType, currentPage);
+                        if (currentPage > lastPage) {
+                            firstPage++;
+                            lastPage++;
+                        }
+                        $('#page-container').empty();
+                        loadPageContainer(firstPage, lastPage);
+                    }
+                });
+
+                // previous page button click event
+                $('#previous-page').on('click', function () {
+                    if (currentPage > 1) {
+                        --currentPage;
+                        loadPage(currentType, currentPage);
+                        if (currentPage < firstPage) {
+                            firstPage--;
+                            lastPage--;
+                        }
+                        $('#page-container').empty();
+                        loadPageContainer(firstPage, lastPage);
+                    }
+                })
                 $('#page-container').empty();
                 const totalPages = Math.ceil(data.total / data.perpage);
                 showedPages = (totalPages < 3) ? totalPages : 3;
